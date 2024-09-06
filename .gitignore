@@ -3,6 +3,7 @@
 
 # Intermediate files
 Intermediate/
+Binaries/
 
 # Prerequisites
 *.d
