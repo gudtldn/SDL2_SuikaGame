@@ -1,9 +1,9 @@
-# visual studio folder
+# Custom Ignore
 .vs/
-
-# Intermediate files
 Intermediate/
 Binaries/
+
+*.zip
 
 # Prerequisites
 *.d
