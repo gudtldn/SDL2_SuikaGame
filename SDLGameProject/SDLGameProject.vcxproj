@@ -167,10 +167,12 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Key.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Window.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Key.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
