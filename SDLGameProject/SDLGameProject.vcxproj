@@ -167,12 +167,17 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core.c" />
     <ClCompile Include="Key.c" />
+    <ClCompile Include="LogSystem.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="Window.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="GlobalMacro.h" />
     <ClInclude Include="Key.h" />
+    <ClInclude Include="LogSystem.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
