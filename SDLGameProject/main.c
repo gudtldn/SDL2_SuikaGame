@@ -33,7 +33,7 @@ int main()
                 if (key == KEY_ESCAPSE)
                     quit = true;
 
-                LOG_INFO(LogGame, "Key press detected: %d\n", key);
+                LOG_INFO(LogGame, "Key press detected: %d", key);
             }
         }
 
