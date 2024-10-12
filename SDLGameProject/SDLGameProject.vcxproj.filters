@@ -15,36 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.c">
+    <ClCompile Include="Source/Main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Window.c">
+    <ClCompile Include="Source/Window.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Key.c">
+    <ClCompile Include="Source/Key.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="LogSystem.c">
+    <ClCompile Include="Source/LogSystem.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Core.c">
+    <ClCompile Include="Source/Core.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
+    <ClInclude Include="Source/Window.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Key.h">
+    <ClInclude Include="Source/Key.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="LogSystem.h">
+    <ClInclude Include="Source/LogSystem.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalMacro.h">
+    <ClInclude Include="Source/GlobalMacro.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Core.h">
+    <ClInclude Include="Source/Core.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

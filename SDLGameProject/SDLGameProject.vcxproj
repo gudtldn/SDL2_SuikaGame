@@ -167,18 +167,18 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core.c" />
-    <ClCompile Include="Key.c" />
-    <ClCompile Include="LogSystem.c" />
-    <ClCompile Include="Main.c" />
-    <ClCompile Include="Window.c" />
+    <ClCompile Include="Source/Core.c" />
+    <ClCompile Include="Source/Key.c" />
+    <ClCompile Include="Source/LogSystem.c" />
+    <ClCompile Include="Source/Main.c" />
+    <ClCompile Include="Source/Window.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core.h" />
-    <ClInclude Include="GlobalMacro.h" />
-    <ClInclude Include="Key.h" />
-    <ClInclude Include="LogSystem.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Source/Core.h" />
+    <ClInclude Include="Source/GlobalMacro.h" />
+    <ClInclude Include="Source/Key.h" />
+    <ClInclude Include="Source/LogSystem.h" />
+    <ClInclude Include="Source/Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
