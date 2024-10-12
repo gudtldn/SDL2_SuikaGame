@@ -1,0 +1,34 @@
+{
+    "version": 4,
+    "env": {
+        "myDefaultIncludePath": [
+            "${workspaceFolder}/SDLGameProject/Source",
+            "${workspaceFolder}/ThirdParty/SDL2/include"
+        ],
+        "myDefaultCompilerPath": "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/cl.exe"
+    },
+    "configurations": [
+        {
+            "name": "Debug",
+            "includePath": ["${env:myDefaultIncludePath}"],
+            "defines": [
+                "_DEBUG"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "cStandard": "c17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "compilerPath": "${env:myDefaultCompilerPath}"
+        },
+        {
+            "name": "Release",
+            "includePath": ["${env:myDefaultIncludePath}"],
+            "defines": [
+                "NDEBUG"
+            ],
+            "windowsSdkVersion": "10.0.22621.0",
+            "cStandard": "c17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "compilerPath": "${env:myDefaultCompilerPath}"
+        }
+    ]
+}
