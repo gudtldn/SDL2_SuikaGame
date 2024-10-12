@@ -6,6 +6,10 @@
 	],
     "settings": {
         "python.analysis.typeCheckingMode": "basic",
+        "files.associations": {
+            "*.c": "c",
+            "*.h": "c",
+        }
     },
 	"extensions": {
 		"recommendations": [
