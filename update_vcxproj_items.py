@@ -52,12 +52,50 @@ def update_vcxproj(vcxproj_path: str, include_files: IncludeFiles) -> None:
     # 변경사항 저장
     tree.write(vcxproj_path, encoding="utf-8", xml_declaration=True)
 
-if __name__ == "__main__":
-    source_directory = "./SDLGameProject/Source"              # 소스 파일이 있는 디렉토리
-    vcxproj_path = "./SDLGameProject/SDLGameProject.vcxproj"  # .vcxproj 파일 경로
+def update_vcxproj_filters(vcxproj_filters_path: str, include_files: IncludeFiles) -> None:
+    tree = ET.parse(vcxproj_filters_path)
+    root = tree.getroot()
 
-    update_vcxproj(
-        vcxproj_path,
-        find_source_files(source_directory)
-    )
-    print("프로젝트 파일이 성공적으로 업데이트되었습니다.")
+    ns = {"": "http://schemas.microsoft.com/developer/msbuild/2003"}
+    ET.register_namespace("", ns[""])
+
+    # 기존 필터 정의 유지
+    filter_group = root.find(".//ItemGroup[Filter]", ns)
+    if filter_group is None:
+        filter_group = ET.SubElement(root, "ItemGroup")
+        ET.SubElement(filter_group, "Filter", Include="소스 파일")
+        ET.SubElement(filter_group, "Filter", Include="헤더 파일")
+
+    # ClCompile 항목 업데이트
+    clcompile_group = root.find(".//ItemGroup[ClCompile]", ns)
+    if clcompile_group is None:
+        clcompile_group = ET.SubElement(root, "ItemGroup")
+    else:
+        clcompile_group.clear()
+
+    for file in include_files['c']:
+        item = ET.SubElement(clcompile_group, "ClCompile", Include=file)
+        ET.SubElement(item, "Filter").text = "소스 파일"
+
+    # ClInclude 항목 업데이트
+    clinclude_group = root.find(".//ItemGroup[ClInclude]", ns)
+    if clinclude_group is None:
+        clinclude_group = ET.SubElement(root, "ItemGroup")
+    else:
+        clinclude_group.clear()
+
+    for file in include_files['h']:
+        item = ET.SubElement(clinclude_group, "ClInclude", Include=file)
+        ET.SubElement(item, "Filter").text = "헤더 파일"
+
+    tree.write(vcxproj_filters_path, encoding="utf-8", xml_declaration=True)
+
+if __name__ == "__main__":
+    source_directory = "./SDLGameProject/Source"                             # 소스 파일이 있는 디렉토리
+    vcxproj_path = "./SDLGameProject/SDLGameProject.vcxproj"                 # .vcxproj 파일 경로
+    vcxproj_filters_path = "./SDLGameProject/SDLGameProject.vcxproj.filters" # .vcxproj.filters 파일 경로
+
+    include_files = find_source_files(source_directory)
+    update_vcxproj(vcxproj_path, include_files)
+    update_vcxproj_filters(vcxproj_filters_path, include_files)
+    print("프로젝트 파일과 필터 파일이 성공적으로 업데이트되었습니다.")
