@@ -4,6 +4,7 @@ Intermediate/
 Binaries/
 
 *.zip
+*.log
 
 # Prerequisites
 *.d
