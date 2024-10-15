@@ -1,1 +1,1 @@
-# SDLGameProject
+# SDL2_SuikaGame

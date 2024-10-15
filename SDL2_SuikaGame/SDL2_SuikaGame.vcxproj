@@ -22,7 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{b098bca0-3a7d-473d-8421-04a0c3576e01}</ProjectGuid>
-    <RootNamespace>SDLGameProject</RootNamespace>
+    <RootNamespace>SDL2_SuikaGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

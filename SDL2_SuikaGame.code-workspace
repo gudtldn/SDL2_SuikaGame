@@ -21,7 +21,7 @@
         "version": "2.0.0",
         "tasks": [
             {
-                "label": "SDLGameProject x64 Debug Build",
+                "label": "SDL2_SuikaGame x64 Debug Build",
                 "type": "shell",
                 "command": "${workspaceFolder}\\Build\\BatchFiles\\Build.bat",
                 "args": ["-config", "Debug", "-platform", "x64"],
@@ -34,7 +34,7 @@
                 "group": "build"
             },
             {
-                "label": "SDLGameProject x64 Release Build",
+                "label": "SDL2_SuikaGame x64 Release Build",
                 "type": "shell",
                 "command": "${workspaceFolder}\\Build\\BatchFiles\\Build.bat",
                 "args": ["-config", "Release", "-platform", "x64"],
@@ -47,7 +47,7 @@
                 "group": "build"
             },
             {
-                "label": "SDLGameProject x86 Debug Build",
+                "label": "SDL2_SuikaGame x86 Debug Build",
                 "type": "shell",
                 "command": "${workspaceFolder}\\Build\\BatchFiles\\Build.bat",
                 "args": ["-config", "Debug", "-platform", "x86"],
@@ -60,7 +60,7 @@
                 "group": "build"
             },
             {
-                "label": "SDLGameProject x86 Release Build",
+                "label": "SDL2_SuikaGame x86 Release Build",
                 "type": "shell",
                 "command": "${workspaceFolder}\\Build\\BatchFiles\\Build.bat",
                 "args": ["-config", "Release", "-platform", "x86"],
@@ -78,11 +78,11 @@
         "version": "0.2.0",
         "configurations": [
             {
-                "name": "Launch SDLGameProject (Debug)",
+                "name": "Launch SDL2_SuikaGame (Debug)",
                 "type": "cppvsdbg",
                 "request": "launch",
-                "program": "${workspaceFolder}\\Binaries\\x64\\Debug\\SDLGameProject.exe",
-                "preLaunchTask": "SDLGameProject x64 Debug Build",
+                "program": "${workspaceFolder}\\Binaries\\x64\\Debug\\SDL2_SuikaGame.exe",
+                "preLaunchTask": "SDL2_SuikaGame x64 Debug Build",
                 "args": [],
                 "cwd": "${workspaceFolder}",
                 "console": "integratedTerminal",
@@ -95,11 +95,11 @@
                 ]
             },
             {
-                "name": "Launch SDLGameProject (Release)",
+                "name": "Launch SDL2_SuikaGame (Release)",
                 "type": "cppvsdbg",
                 "request": "launch",
-                "program": "${workspaceFolder}\\Binaries\\x64\\Release\\SDLGameProject.exe",
-                "preLaunchTask": "SDLGameProject x64 Release Build",
+                "program": "${workspaceFolder}\\Binaries\\x64\\Release\\SDL2_SuikaGame.exe",
+                "preLaunchTask": "SDL2_SuikaGame x64 Release Build",
                 "args": [],
                 "cwd": "${workspaceFolder}",
                 "console": "integratedTerminal",
@@ -112,11 +112,11 @@
                 ]
             },
             {
-                "name": "Launch SDLGameProject (x86 Debug)",
+                "name": "Launch SDL2_SuikaGame (x86 Debug)",
                 "type": "cppvsdbg",
                 "request": "launch",
-                "program": "${workspaceFolder}\\Binaries\\Win32\\Debug\\SDLGameProject.exe",
-                "preLaunchTask": "SDLGameProject x86 Debug Build",
+                "program": "${workspaceFolder}\\Binaries\\Win32\\Debug\\SDL2_SuikaGame.exe",
+                "preLaunchTask": "SDL2_SuikaGame x86 Debug Build",
                 "args": [],
                 "cwd": "${workspaceFolder}",
                 "console": "integratedTerminal",
@@ -129,11 +129,11 @@
                 ]
             },
             {
-                "name": "Launch SDLGameProject (x86 Release)",
+                "name": "Launch SDL2_SuikaGame (x86 Release)",
                 "type": "cppvsdbg",
                 "request": "launch",
-                "program": "${workspaceFolder}\\Binaries\\Win32\\Release\\SDLGameProject.exe",
-                "preLaunchTask": "SDLGameProject x86 Release Build",
+                "program": "${workspaceFolder}\\Binaries\\Win32\\Release\\SDL2_SuikaGame.exe",
+                "preLaunchTask": "SDL2_SuikaGame x86 Release Build",
                 "args": [],
                 "cwd": "${workspaceFolder}",
                 "console": "integratedTerminal",

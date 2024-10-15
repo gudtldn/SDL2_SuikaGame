@@ -91,9 +91,9 @@ def update_vcxproj_filters(vcxproj_filters_path: str, include_files: IncludeFile
     tree.write(vcxproj_filters_path, encoding="utf-8", xml_declaration=True)
 
 if __name__ == "__main__":
-    source_directory = "./SDLGameProject/Source"                             # 소스 파일이 있는 디렉토리
-    vcxproj_path = "./SDLGameProject/SDLGameProject.vcxproj"                 # .vcxproj 파일 경로
-    vcxproj_filters_path = "./SDLGameProject/SDLGameProject.vcxproj.filters" # .vcxproj.filters 파일 경로
+    source_directory = "./SDL2_SuikaGame/Source"                             # 소스 파일이 있는 디렉토리
+    vcxproj_path = "./SDL2_SuikaGame/SDL2_SuikaGame.vcxproj"                 # .vcxproj 파일 경로
+    vcxproj_filters_path = "./SDL2_SuikaGame/SDL2_SuikaGame.vcxproj.filters" # .vcxproj.filters 파일 경로
 
     include_files = find_source_files(source_directory)
     update_vcxproj(vcxproj_path, include_files)

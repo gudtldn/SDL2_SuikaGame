@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 rem ## SDL Game Project build script
 
 rem ## Change these variables to match your project
-set ProjectName=SDLGameProject
+set ProjectName=SDL2_SuikaGame
 set SolutionFile=%ProjectName%.sln
 set Configuration=Debug
 set Platform=x64
