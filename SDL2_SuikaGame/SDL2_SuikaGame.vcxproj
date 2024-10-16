@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,7 +152,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -166,7 +166,21 @@
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup><ClCompile Include="Source/Engine/Core.c" /><ClCompile Include="Source/Engine/LogSystem.c" /><ClCompile Include="Source/Engine/Window.c" /><ClCompile Include="Source/Game/GameState.c" /><ClCompile Include="Source/Game/main.c" /></ItemGroup><ItemGroup><ClInclude Include="Source/Engine/Core.h" /><ClInclude Include="Source/Engine/GlobalMacro.h" /><ClInclude Include="Source/Engine/LogSystem.h" /><ClInclude Include="Source/Engine/Window.h" /><ClInclude Include="Source/Game/GameState.h" /></ItemGroup><ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source/Engine/Core.c" />
+    <ClCompile Include="Source/Engine/LogSystem.c" />
+    <ClCompile Include="Source/Engine/Window.c" />
+    <ClCompile Include="Source/Game/GameState.c" />
+    <ClCompile Include="Source/Game/main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source/Engine/Core.h" />
+    <ClInclude Include="Source/Engine/GlobalMacro.h" />
+    <ClInclude Include="Source/Engine/LogSystem.h" />
+    <ClInclude Include="Source/Engine/Window.h" />
+    <ClInclude Include="Source/Game/GameState.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
