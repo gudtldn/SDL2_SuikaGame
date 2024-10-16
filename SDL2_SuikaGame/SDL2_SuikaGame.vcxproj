@@ -92,7 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -112,7 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -132,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -152,7 +152,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -170,15 +170,19 @@
     <ClCompile Include="Source/Engine/Core.c" />
     <ClCompile Include="Source/Engine/LogSystem.c" />
     <ClCompile Include="Source/Engine/Window.c" />
-    <ClCompile Include="Source/Game/GameState.c" />
-    <ClCompile Include="Source/Game/main.c" />
+    <ClCompile Include="Source/SuikaGame/GameState.c" />
+    <ClCompile Include="Source/SuikaGame/main.c" />
+    <ClCompile Include="Source/SuikaGame/Game/Game.c" />
+    <ClCompile Include="Source/SuikaGame/Menu/Menu.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source/Engine/Core.h" />
     <ClInclude Include="Source/Engine/GlobalMacro.h" />
     <ClInclude Include="Source/Engine/LogSystem.h" />
     <ClInclude Include="Source/Engine/Window.h" />
-    <ClInclude Include="Source/Game/GameState.h" />
+    <ClInclude Include="Source/SuikaGame/GameState.h" />
+    <ClInclude Include="Source/SuikaGame/Game/Game.h" />
+    <ClInclude Include="Source/SuikaGame/Menu/Menu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
