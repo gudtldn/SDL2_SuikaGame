@@ -12,12 +12,13 @@ def find_source_files(directory: str) -> IncludeFiles:
 
     # 디렉토리 내의 모든 .c, .h 파일을 찾아서 분류
     for root, dirs, files in os.walk(directory):
-        root = root.replace("\\", "/").split("/")[-1]
+        root = "/".join(root.replace("\\", "/").split("/")[2:])
         for file in files:
             if file.endswith(".c"):
                 include_files['c'].append(f"{root}/{file}")
             elif file.endswith(".h"):
                 include_files['h'].append(f"{root}/{file}")
+            print(f"파일: {root}/{file}")
 
     return include_files
 
