@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -166,25 +166,7 @@
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Source/Engine/Core.c" />
-    <ClCompile Include="Source/Engine/LogSystem.c" />
-    <ClCompile Include="Source/Engine/Window.c" />
-    <ClCompile Include="Source/SuikaGame/GameState.c" />
-    <ClCompile Include="Source/SuikaGame/main.c" />
-    <ClCompile Include="Source/SuikaGame/Game/Game.c" />
-    <ClCompile Include="Source/SuikaGame/Menu/Menu.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Source/Engine/Core.h" />
-    <ClInclude Include="Source/Engine/GlobalMacro.h" />
-    <ClInclude Include="Source/Engine/LogSystem.h" />
-    <ClInclude Include="Source/Engine/Window.h" />
-    <ClInclude Include="Source/SuikaGame/GameState.h" />
-    <ClInclude Include="Source/SuikaGame/Game/Game.h" />
-    <ClInclude Include="Source/SuikaGame/Menu/Menu.h" />
-  </ItemGroup>
-  <ItemGroup>
+  <ItemGroup><ClCompile Include="Source/Engine/Core.c" /><ClCompile Include="Source/Engine/LogSystem.c" /><ClCompile Include="Source/Engine/Window.c" /><ClCompile Include="Source/SuikaGame/GameState.c" /><ClCompile Include="Source/SuikaGame/main.c" /><ClCompile Include="Source/SuikaGame/Game/Game.c" /><ClCompile Include="Source/SuikaGame/Menu/MainMenu.c" /></ItemGroup><ItemGroup><ClInclude Include="Source/Engine/Core.h" /><ClInclude Include="Source/Engine/GlobalMacro.h" /><ClInclude Include="Source/Engine/LogSystem.h" /><ClInclude Include="Source/Engine/Window.h" /><ClInclude Include="Source/SuikaGame/GameState.h" /><ClInclude Include="Source/SuikaGame/Game/Game.h" /><ClInclude Include="Source/SuikaGame/Menu/MainMenu.h" /></ItemGroup><ItemGroup>
     <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
