@@ -166,7 +166,7 @@
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup><ClCompile Include="Source/Core.c" /><ClCompile Include="Source/LogSystem.c" /><ClCompile Include="Source/main.c" /><ClCompile Include="Source/Window.c" /></ItemGroup><ItemGroup><ClInclude Include="Source/Core.h" /><ClInclude Include="Source/GlobalMacro.h" /><ClInclude Include="Source/LogSystem.h" /><ClInclude Include="Source/Window.h" /></ItemGroup><ItemGroup>
+  <ItemGroup><ClCompile Include="Source/Core.c" /><ClCompile Include="Source/GameState.c" /><ClCompile Include="Source/LogSystem.c" /><ClCompile Include="Source/main.c" /><ClCompile Include="Source/Window.c" /></ItemGroup><ItemGroup><ClInclude Include="Source/Core.h" /><ClInclude Include="Source/GameState.h" /><ClInclude Include="Source/GlobalMacro.h" /><ClInclude Include="Source/LogSystem.h" /><ClInclude Include="Source/Window.h" /></ItemGroup><ItemGroup>
     <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
