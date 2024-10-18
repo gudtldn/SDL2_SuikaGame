@@ -3,6 +3,7 @@
     "env": {
         "myDefaultIncludePath": [
             "${workspaceFolder}/ThirdParty/SDL2/include",
+            "${workspaceFolder}/ThirdParty/SDL2_image/include",
             "${workspaceFolder}/SDL2_SuikaGame/Source",
             "${workspaceFolder}/SDL2_SuikaGame/Source/Engine"
         ],

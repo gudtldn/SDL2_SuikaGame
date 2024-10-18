@@ -23,7 +23,7 @@
             {
                 "label": "SDL2_SuikaGame x64 Debug Build",
                 "type": "shell",
-                "command": "${workspaceFolder}\\Build\\BatchFiles\\Build.bat",
+                "command": "${workspaceFolder}/Build/BatchFiles/Build.bat",
                 "args": ["-config", "Debug", "-platform", "x64"],
                 "options": {
                     "cwd": "${workspaceFolder}"
@@ -36,7 +36,7 @@
             {
                 "label": "SDL2_SuikaGame x64 Release Build",
                 "type": "shell",
-                "command": "${workspaceFolder}\\Build\\BatchFiles\\Build.bat",
+                "command": "${workspaceFolder}/Build/BatchFiles/Build.bat",
                 "args": ["-config", "Release", "-platform", "x64"],
                 "options": {
                     "cwd": "${workspaceFolder}"
@@ -49,7 +49,7 @@
             {
                 "label": "SDL2_SuikaGame x86 Debug Build",
                 "type": "shell",
-                "command": "${workspaceFolder}\\Build\\BatchFiles\\Build.bat",
+                "command": "${workspaceFolder}/Build/BatchFiles/Build.bat",
                 "args": ["-config", "Debug", "-platform", "x86"],
                 "options": {
                     "cwd": "${workspaceFolder}"
@@ -62,7 +62,7 @@
             {
                 "label": "SDL2_SuikaGame x86 Release Build",
                 "type": "shell",
-                "command": "${workspaceFolder}\\Build\\BatchFiles\\Build.bat",
+                "command": "${workspaceFolder}/Build/BatchFiles/Build.bat",
                 "args": ["-config", "Release", "-platform", "x86"],
                 "options": {
                     "cwd": "${workspaceFolder}"
@@ -81,7 +81,7 @@
                 "name": "Launch SDL2_SuikaGame (Debug)",
                 "type": "cppvsdbg",
                 "request": "launch",
-                "program": "${workspaceFolder}\\Binaries\\x64\\Debug\\SDL2_SuikaGame.exe",
+                "program": "${workspaceFolder}/Binaries/x64/Debug/SDL2_SuikaGame.exe",
                 "preLaunchTask": "SDL2_SuikaGame x64 Debug Build",
                 "args": [],
                 "cwd": "${workspaceFolder}",
@@ -90,7 +90,7 @@
                 "environment": [
                     {
                         "name": "PATH",
-                        "value": "${workspaceFolder}\\ThirdParty\\SDL2\\lib\\x64;${env:PATH}"
+                        "value": "${workspaceFolder}/ThirdParty/SDL2/lib/x64;${env:PATH}"
                     }
                 ]
             },
@@ -98,7 +98,7 @@
                 "name": "Launch SDL2_SuikaGame (Release)",
                 "type": "cppvsdbg",
                 "request": "launch",
-                "program": "${workspaceFolder}\\Binaries\\x64\\Release\\SDL2_SuikaGame.exe",
+                "program": "${workspaceFolder}/Binaries/x64/Release/SDL2_SuikaGame.exe",
                 "preLaunchTask": "SDL2_SuikaGame x64 Release Build",
                 "args": [],
                 "cwd": "${workspaceFolder}",
@@ -107,7 +107,7 @@
                 "environment": [
                     {
                         "name": "PATH",
-                        "value": "${workspaceFolder}\\ThirdParty\\SDL2\\lib\\x64;${env:PATH}"
+                        "value": "${workspaceFolder}/ThirdParty/SDL2/lib/x64;${env:PATH}"
                     }
                 ]
             },
@@ -115,7 +115,7 @@
                 "name": "Launch SDL2_SuikaGame (x86 Debug)",
                 "type": "cppvsdbg",
                 "request": "launch",
-                "program": "${workspaceFolder}\\Binaries\\Win32\\Debug\\SDL2_SuikaGame.exe",
+                "program": "${workspaceFolder}/Binaries/Win32/Debug/SDL2_SuikaGame.exe",
                 "preLaunchTask": "SDL2_SuikaGame x86 Debug Build",
                 "args": [],
                 "cwd": "${workspaceFolder}",
@@ -124,7 +124,7 @@
                 "environment": [
                     {
                         "name": "PATH",
-                        "value": "${workspaceFolder}\\ThirdParty\\SDL2\\lib\\x86;${env:PATH}"
+                        "value": "${workspaceFolder}/ThirdParty/SDL2/lib/x86;${env:PATH}"
                     }
                 ]
             },
@@ -132,7 +132,7 @@
                 "name": "Launch SDL2_SuikaGame (x86 Release)",
                 "type": "cppvsdbg",
                 "request": "launch",
-                "program": "${workspaceFolder}\\Binaries\\Win32\\Release\\SDL2_SuikaGame.exe",
+                "program": "${workspaceFolder}/Binaries/Win32/Release/SDL2_SuikaGame.exe",
                 "preLaunchTask": "SDL2_SuikaGame x86 Release Build",
                 "args": [],
                 "cwd": "${workspaceFolder}",
@@ -141,7 +141,7 @@
                 "environment": [
                     {
                         "name": "PATH",
-                        "value": "${workspaceFolder}\\ThirdParty\\SDL2\\lib\\x86;${env:PATH}"
+                        "value": "${workspaceFolder}/ThirdParty/SDL2/lib/x86;${env:PATH}"
                     }
                 ]
             }
