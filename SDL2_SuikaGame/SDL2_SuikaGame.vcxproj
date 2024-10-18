@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -92,16 +92,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;$(SolutionDir)ThirdParty/SDL2_image/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -112,18 +113,19 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;$(SolutionDir)ThirdParty/SDL2_image/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,16 +134,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;$(SolutionDir)ThirdParty/SDL2_image/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,21 +155,40 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;$(SolutionDir)ThirdParty/SDL2_image/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup><ClCompile Include="Source/Engine/Core.c" /><ClCompile Include="Source/Engine/LogSystem.c" /><ClCompile Include="Source/Engine/Window.c" /><ClCompile Include="Source/SuikaGame/GameState.c" /><ClCompile Include="Source/SuikaGame/main.c" /><ClCompile Include="Source/SuikaGame/Game/Game.c" /><ClCompile Include="Source/SuikaGame/Menu/MainMenu.c" /></ItemGroup><ItemGroup><ClInclude Include="Source/Engine/Core.h" /><ClInclude Include="Source/Engine/GlobalMacro.h" /><ClInclude Include="Source/Engine/LogSystem.h" /><ClInclude Include="Source/Engine/Window.h" /><ClInclude Include="Source/SuikaGame/GameState.h" /><ClInclude Include="Source/SuikaGame/Game/Game.h" /><ClInclude Include="Source/SuikaGame/Menu/MainMenu.h" /></ItemGroup><ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source/Engine/Core.c" />
+    <ClCompile Include="Source/Engine/LogSystem.c" />
+    <ClCompile Include="Source/Engine/Window.c" />
+    <ClCompile Include="Source/SuikaGame/GameState.c" />
+    <ClCompile Include="Source/SuikaGame/main.c" />
+    <ClCompile Include="Source/SuikaGame/Game/Game.c" />
+    <ClCompile Include="Source/SuikaGame/Menu/MainMenu.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source/Engine/Core.h" />
+    <ClInclude Include="Source/Engine/GlobalMacro.h" />
+    <ClInclude Include="Source/Engine/LogSystem.h" />
+    <ClInclude Include="Source/Engine/Window.h" />
+    <ClInclude Include="Source/SuikaGame/GameState.h" />
+    <ClInclude Include="Source/SuikaGame/Game/Game.h" />
+    <ClInclude Include="Source/SuikaGame/Menu/MainMenu.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
