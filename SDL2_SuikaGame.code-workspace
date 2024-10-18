@@ -23,7 +23,7 @@
             {
                 "label": "SDL2_SuikaGame x64 Debug Build",
                 "type": "shell",
-                "command": "${workspaceFolder}/Build/BatchFiles/Build.bat",
+                "command": "${workspaceFolder}/Scripts/BuildScript.bat",
                 "args": ["-config", "Debug", "-platform", "x64"],
                 "options": {
                     "cwd": "${workspaceFolder}"
@@ -36,7 +36,7 @@
             {
                 "label": "SDL2_SuikaGame x64 Release Build",
                 "type": "shell",
-                "command": "${workspaceFolder}/Build/BatchFiles/Build.bat",
+                "command": "${workspaceFolder}/Scripts/BuildScript.bat",
                 "args": ["-config", "Release", "-platform", "x64"],
                 "options": {
                     "cwd": "${workspaceFolder}"
@@ -49,7 +49,7 @@
             {
                 "label": "SDL2_SuikaGame x86 Debug Build",
                 "type": "shell",
-                "command": "${workspaceFolder}/Build/BatchFiles/Build.bat",
+                "command": "${workspaceFolder}/Scripts/BuildScript.bat",
                 "args": ["-config", "Debug", "-platform", "x86"],
                 "options": {
                     "cwd": "${workspaceFolder}"
@@ -62,7 +62,7 @@
             {
                 "label": "SDL2_SuikaGame x86 Release Build",
                 "type": "shell",
-                "command": "${workspaceFolder}/Build/BatchFiles/Build.bat",
+                "command": "${workspaceFolder}/Scripts/BuildScript.bat",
                 "args": ["-config", "Release", "-platform", "x86"],
                 "options": {
                     "cwd": "${workspaceFolder}"
