@@ -92,17 +92,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;$(SolutionDir)ThirdParty/SDL2_image/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Engine;$(SolutionDir)ThirdParty/SDL2/include;$(SolutionDir)ThirdParty/SDL2_image/include;$(SolutionDir)ThirdParty/SDL2_mixer/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"</Command>
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget)\SDL2_mixer.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -113,19 +114,20 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_imag
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;$(SolutionDir)ThirdParty/SDL2_image/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Engine;$(SolutionDir)ThirdParty/SDL2/include;$(SolutionDir)ThirdParty/SDL2_image/include;$(SolutionDir)ThirdParty/SDL2_mixer/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"</Command>
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget)\SDL2_mixer.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -134,17 +136,18 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_imag
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;$(SolutionDir)ThirdParty/SDL2_image/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Engine;$(SolutionDir)ThirdParty/SDL2/include;$(SolutionDir)ThirdParty/SDL2_image/include;$(SolutionDir)ThirdParty/SDL2_mixer/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"</Command>
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget)\SDL2_mixer.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -155,19 +158,20 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_imag
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/SDL2/include;$(ProjectDir)Source\Engine;$(ProjectDir)Source;$(SolutionDir)ThirdParty/SDL2_image/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Engine;$(SolutionDir)ThirdParty/SDL2/include;$(SolutionDir)ThirdParty/SDL2_image/include;$(SolutionDir)ThirdParty/SDL2_mixer/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"</Command>
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"
+xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget)\SDL2_mixer.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
