@@ -2,6 +2,7 @@
 .vs/
 Intermediate/
 Binaries/
+Contents/Textures/original/
 
 *.zip
 *.log
