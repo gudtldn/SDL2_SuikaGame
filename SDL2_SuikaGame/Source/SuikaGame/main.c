@@ -40,7 +40,6 @@ int main(int argc, char* args[])
     if (bgm == NULL)
     {
         LOG_ERROR(LogGame, "Failed to load bgm! SDL_mixer Error: %s", Mix_GetError());
-        return -1;
     }
 
     // Screen Size 가져오기
@@ -69,7 +68,6 @@ int main(int argc, char* args[])
     if (Mix_PlayMusic(bgm, -1) == -1)
     {
         LOG_ERROR(LogGame, "Failed to play bgm! SDL_mixer Error: %s", Mix_GetError());
-        return -1;
     }
 
     // 프로그램 루프
@@ -91,6 +89,8 @@ int main(int argc, char* args[])
     // SDL 종료
     IMG_Quit();
     TTF_Quit();
+    if (bgm != NULL)
+        Mix_FreeMusic(bgm);
     CloseWindow(&view);
 
     return 0;
