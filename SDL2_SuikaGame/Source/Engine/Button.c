@@ -1,7 +1,7 @@
 #include "Button.h"
 #include "Window.h"
 
-Button CreateButton(SDL_Rect rect, SDL_Texture* texture)
+Button CreateButton(SDL_FRect rect, SDL_Texture* texture)
 {
     return (Button) {
         .rect = rect,
@@ -33,7 +33,7 @@ void UpdateHandleButton(View* view, Button* button, void (*callback)(View*))
 void RenderButton(SDL_Renderer* renderer, Button* button)
 {
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
-    SDL_RenderCopy(renderer, button->texture, NULL, &button->rect);
+    SDL_RenderCopyF(renderer, button->texture, NULL, &button->rect);
 }
 
 void DestroyButton(Button* button)
