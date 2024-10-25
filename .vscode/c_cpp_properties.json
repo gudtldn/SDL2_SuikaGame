@@ -6,6 +6,7 @@
             "${workspaceFolder}/ThirdParty/SDL2_image/include",
             "${workspaceFolder}/ThirdParty/SDL2_mixer/include",
             "${workspaceFolder}/ThirdParty/SDL2_ttf/include",
+            "${workspaceFolder}/ThirdParty/box2d/include",
             "${workspaceFolder}/SDL2_SuikaGame/Source",
             "${workspaceFolder}/SDL2_SuikaGame/Source/Engine"
         ],
