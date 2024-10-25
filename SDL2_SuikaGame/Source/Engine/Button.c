@@ -1,4 +1,5 @@
 #include "Button.h"
+#include "Window.h"
 
 Button CreateButton(SDL_Rect rect, SDL_Texture* texture)
 {
@@ -10,7 +11,7 @@ Button CreateButton(SDL_Rect rect, SDL_Texture* texture)
     };
 }
 
-void UpdateHandleButton(Button* button, void (*callback)())
+void UpdateHandleButton(View* view, Button* button, void (*callback)(View*))
 {
     int mouse_x, mouse_y;
     Uint32 state = SDL_GetMouseState(&mouse_x, &mouse_y);
@@ -21,7 +22,7 @@ void UpdateHandleButton(Button* button, void (*callback)())
     if (button->is_hovered && state & SDL_BUTTON(SDL_BUTTON_LEFT))
     {
         button->is_clicked = true;
-        callback();
+        callback(view);
     }
     else
     {
