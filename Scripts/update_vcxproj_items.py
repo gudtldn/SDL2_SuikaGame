@@ -14,7 +14,7 @@ def find_source_files(directory: str) -> IncludeFiles:
     for root, dirs, files in os.walk(directory):
         root = "/".join(root.replace("\\", "/").split("/")[2:])
         for file in files:
-            if file.endswith(".c"):
+            if file.endswith(".c") or file.endswith(".cpp"):
                 include_files['c'].append(f"{root}/{file}")
             elif file.endswith(".h"):
                 include_files['h'].append(f"{root}/{file}")

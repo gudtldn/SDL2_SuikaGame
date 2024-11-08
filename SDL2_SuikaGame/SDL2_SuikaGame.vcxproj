@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -93,6 +93,10 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Engine;$(SolutionDir)ThirdParty/SDL2/include;$(SolutionDir)ThirdParty/SDL2_image/include;$(SolutionDir)ThirdParty/SDL2_mixer/include;$(SolutionDir)ThirdParty/SDL2_ttf/include;$(SolutionDir)ThirdParty/box2d/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <BuildStlModules>false</BuildStlModules>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,6 +121,10 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Engine;$(SolutionDir)ThirdParty/SDL2/include;$(SolutionDir)ThirdParty/SDL2_image/include;$(SolutionDir)ThirdParty/SDL2_mixer/include;$(SolutionDir)ThirdParty/SDL2_ttf/include;$(SolutionDir)ThirdParty/box2d/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <BuildStlModules>false</BuildStlModules>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -141,6 +149,10 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Engine;$(SolutionDir)ThirdParty/SDL2/include;$(SolutionDir)ThirdParty/SDL2_image/include;$(SolutionDir)ThirdParty/SDL2_mixer/include;$(SolutionDir)ThirdParty/SDL2_ttf/include;$(SolutionDir)ThirdParty/box2d/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <BuildStlModules>false</BuildStlModules>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -165,6 +177,10 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Source\Engine;$(SolutionDir)ThirdParty/SDL2/include;$(SolutionDir)ThirdParty/SDL2_image/include;$(SolutionDir)ThirdParty/SDL2_mixer/include;$(SolutionDir)ThirdParty/SDL2_ttf/include;$(SolutionDir)ThirdParty/box2d/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <BuildStlModules>false</BuildStlModules>
+      <EnableModules>false</EnableModules>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -182,10 +198,21 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
 </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup><ClCompile Include="Source/Engine/Button.c" /><ClCompile Include="Source/Engine/Core.c" /><ClCompile Include="Source/Engine/LogSystem.c" /><ClCompile Include="Source/Engine/MathUtils.c" /><ClCompile Include="Source/Engine/Window.c" /><ClCompile Include="Source/SuikaGame/GameState.c" /><ClCompile Include="Source/SuikaGame/main.c" /><ClCompile Include="Source/SuikaGame/SuikaGame.c" /><ClCompile Include="Source/SuikaGame/Game/Game.c" /><ClCompile Include="Source/SuikaGame/Menu/MainMenu.c" /></ItemGroup><ItemGroup><ClInclude Include="Source/Engine/Button.h" /><ClInclude Include="Source/Engine/Core.h" /><ClInclude Include="Source/Engine/GlobalMacro.h" /><ClInclude Include="Source/Engine/LogSystem.h" /><ClInclude Include="Source/Engine/MathUtils.h" /><ClInclude Include="Source/Engine/Window.h" /><ClInclude Include="Source/SuikaGame/GameState.h" /><ClInclude Include="Source/SuikaGame/SuikaGame.h" /><ClInclude Include="Source/SuikaGame/Game/Game.h" /><ClInclude Include="Source/SuikaGame/Menu/MainMenu.h" /></ItemGroup><ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ClInclude Include="Source/Engine/Core.h" />
+    <ClInclude Include="Source/Engine/GlobalMacro.h" />
+    <ClInclude Include="Source/SuikaGame/SuikaGame.h" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include=".editorconfig" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="Source/Engine/Core.cpp" />
+    <ClCompile Include="Source/SuikaGame/main.cpp" />
+    <ClCompile Include="Source/SuikaGame/SuikaGame.cpp" />
+  </ItemGroup>
 </Project>
