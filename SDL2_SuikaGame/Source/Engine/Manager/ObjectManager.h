@@ -7,8 +7,8 @@
 // forward declaration
 class GameEngine;
 class GameObject;
-class IEventObserver;
 struct SDL_Renderer;
+union SDL_Event;
 
 
 /// @brief 게임 오브젝트를 관리하는 매니저 클래스
@@ -23,10 +23,7 @@ protected:
     std::unordered_set<std::shared_ptr<GameObject>> game_objects;
 
     /// @brief 새로운 게임 오브젝트의 벡터
-    std::vector<std::shared_ptr<GameObject>> new_game_objects;
-
-    /// @brief 이벤트 옵저버 목록
-    std::vector<std::shared_ptr<IEventObserver>> new_event_observers;
+    std::vector<GameObject*> new_game_objects;
 
 
 public:
@@ -34,6 +31,10 @@ public:
         : engine(engine) {};
 
     ~ObjectManager() = default;
+
+    /// @brief SDL 이벤트 발생 시 호출됩니다.
+    /// @param event SDL 이벤트
+    virtual void HandleEvent(const SDL_Event& event);
 
     /// @brief 게임 오브젝트를 업데이트합니다.
     /// @param delta_time Delta time
@@ -66,12 +67,6 @@ public:
 
     /// @brief 새롭게 추가된 게임 오브젝트 목록을 제거합니다.
     void ClearNewGameObjects() { new_game_objects.clear(); }
-
-    /// @brief 새롭게 추가된 이벤트 옵저버 목록을 가져옵니다.
-    auto& GetNewEventObservers() const { return new_event_observers; }
-
-    /// @brief 새롭게 추가된 이벤트 옵저버 목록을 제거합니다.
-    void ClearNewEventObservers() { new_event_observers.clear(); }
 };
 
 
@@ -80,14 +75,11 @@ template <typename Obj>
 Obj* ObjectManager::CreateGameObject()
 {
     auto object = std::make_shared<Obj>(engine);
+    Obj* raw_pointer = object.get();
 
     // 게임 오브젝트를 관리하는 컨테이너에 추가
     game_objects.insert(object);
-    new_game_objects.push_back(object);
+    new_game_objects.push_back(raw_pointer);
 
-    // 이벤트 옵저버가 구현되어 있는 경우 추가
-    if constexpr (std::is_base_of_v<IEventObserver, Obj>)
-    {
-        new_event_observers.push_back(object);
-    }
+    return raw_pointer;
 }

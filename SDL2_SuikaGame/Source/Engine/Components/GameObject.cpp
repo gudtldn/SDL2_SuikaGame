@@ -16,6 +16,7 @@ void GameObject::Render(SDL_Renderer* renderer)
 }
 
 void GameObject::OnDestory()
+void GameObject::OnEvent(const SDL_Event& event)
 {
 }
 

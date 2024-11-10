@@ -2,6 +2,14 @@
 #include "Components/GameObject.h"
 
 
+void ObjectManager::HandleEvent(const SDL_Event& event)
+{
+    for (auto& object : game_objects)
+    {
+        object->OnEvent(event);
+    }
+}
+
 void ObjectManager::Update(double delta_time)
 {
     for (auto& object : game_objects)
