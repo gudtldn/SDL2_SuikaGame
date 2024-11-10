@@ -54,7 +54,7 @@ public:
     virtual void DestroyGameObject(std::shared_ptr<GameObject> object);
 
     /// @brief 모든 게임 오브젝트를 제거합니다.
-    virtual void Clear();
+    virtual void RemoveAllGameObjects();
 
 
     /****** Getter & Setter ******/
