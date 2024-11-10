@@ -34,7 +34,7 @@ void ObjectManager::DestroyGameObject(std::shared_ptr<GameObject> object)
     game_objects.erase(object);
 }
 
-void ObjectManager::Clear()
+void ObjectManager::RemoveAllGameObjects()
 {
     game_objects.clear();
 }
