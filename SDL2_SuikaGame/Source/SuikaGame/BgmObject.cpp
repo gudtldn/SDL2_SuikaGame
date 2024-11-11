@@ -9,7 +9,7 @@ BgmObject::BgmObject(GameEngine* engine)
 void BgmObject::BeginPlay()
 {
     // BGM 로드
-    LOG_INFO("Loading bgm...");
+    LOG_DEBUG("Loading bgm...");
     bgm.reset(Mix_LoadMUS("Contents/Sounds/suika_game_bgm.mp3"));
     if (!bgm)
     {
@@ -32,7 +32,7 @@ void BgmObject::OnEvent(const SDL_Event& event)
         if (event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED)
         {
             // BGM 재생
-            LOG_INFO("Resuming bgm...");
+            LOG_DEBUG("Resuming bgm...");
             Mix_ResumeMusic();
         }
 
@@ -40,7 +40,7 @@ void BgmObject::OnEvent(const SDL_Event& event)
         else if (event.window.event == SDL_WINDOWEVENT_FOCUS_LOST)
         {
             // BGM 일시정지
-            LOG_INFO("Pausing bgm...");
+            LOG_DEBUG("Pausing bgm...");
             Mix_PauseMusic();
         }
     }
