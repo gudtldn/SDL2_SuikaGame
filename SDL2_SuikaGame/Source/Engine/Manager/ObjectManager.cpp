@@ -23,6 +23,9 @@ void ObjectManager::Update(double delta_time)
 
 void ObjectManager::DestroyGameObject(std::shared_ptr<GameObject> object)
 {
+    // object가 존재하지 않으면 return
+    if (!object) return;
+
     game_objects.erase(object);
 }
 
