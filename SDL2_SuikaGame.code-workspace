@@ -78,7 +78,18 @@
             "xtree": "cpp",
             "xutility": "cpp",
             "typeindex": "cpp",
-            "numbers": "cpp"
+            "numbers": "cpp",
+            "cstdarg": "cpp",
+            "cwctype": "cpp",
+            "deque": "cpp",
+            "functional": "cpp",
+            "numeric": "cpp",
+            "queue": "cpp",
+            "random": "cpp",
+            "ranges": "cpp",
+            "semaphore": "cpp",
+            "span": "cpp",
+            "variant": "cpp"
         }
     },
 	"extensions": {
