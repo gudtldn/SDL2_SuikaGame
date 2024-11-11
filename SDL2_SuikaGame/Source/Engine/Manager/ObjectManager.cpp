@@ -19,7 +19,9 @@ void ObjectManager::Update(double delta_time)
 }
 
 // CreateGameObject는 template함수로 .h 파일에 정의되어 있습니다.
-// Obj* ObjectManager::CreateGameObject()
+// template <typename Obj>
+//     requires std::derived_from<Obj, GameObject>
+// Obj* ObjectManager::CreateGameObject() {}
 
 void ObjectManager::DestroyGameObject(std::shared_ptr<GameObject> object)
 {
