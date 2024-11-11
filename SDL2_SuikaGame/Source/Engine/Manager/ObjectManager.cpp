@@ -18,14 +18,6 @@ void ObjectManager::Update(double delta_time)
     }
 }
 
-// void ObjectManager::Render(SDL_Renderer* renderer)
-// {
-//     for (auto& object : game_objects)
-//     {
-//         object->Render(renderer);
-//     }
-// }
-
 // CreateGameObject는 template함수로 .h 파일에 정의되어 있습니다.
 // Obj* ObjectManager::CreateGameObject()
 
