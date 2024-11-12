@@ -32,7 +32,7 @@ echo Building %ProjectName% (%Configuration% %Platform%)
 
 rem ## Build the project
 echo Running MSBuild...
-%MSBuildPath% %SolutionFile% /t:Build /p:Configuration=%Configuration% /p:Platform=%Platform% /p:AdditionalOptions=/wd4026
+%MSBuildPath% %SolutionFile% /t:Build /p:Configuration=%Configuration% /p:Platform=%Platform%
 
 if errorlevel 1 (
     echo ERROR: Build failed.
