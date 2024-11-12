@@ -14,7 +14,7 @@ private:
 
 private:
     // 가이드 선 크기
-    static constexpr double GUIDE_LINE_WIDTH = 4.0;
+    static constexpr double GUIDE_LINE_WIDTH = 3.0;
     static constexpr double GUIDE_LINE_HEIGHT = 585.0;
 
     // Player line

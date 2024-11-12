@@ -76,8 +76,10 @@ void PlayerObject::Update(float delta_time)
 
     // 플레이어 위치 적용
     SetPlayerPosition(new_x);
+
+    double clamped_x = Math::Clamp(new_x, min_player_x, max_player_x);
     guide_line.SetPosition(Vector2D(
-        new_x + PLAYER_SIZE / 2.0 - GUIDE_LINE_WIDTH / 2.0,
+        clamped_x + PLAYER_SIZE / 2.0 - GUIDE_LINE_WIDTH / 2.0,
         player_line_y
     ));
 }
