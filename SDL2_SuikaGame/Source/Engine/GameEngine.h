@@ -1,15 +1,13 @@
 #pragma once
 #include <memory>
 #include <type_traits>
+#include <SDL.h>
 
 #include "Engine/Components/Stage.h"
 #include "Engine/Manager/ObjectManager.h"
 #include "Engine/Utils/Math.h"
 
 // foward declaration
-struct SDL_Window;
-struct SDL_Renderer;
-
 class Stage;
 class GameObject;
 
@@ -23,6 +21,9 @@ private:
 
     /// @brief SDL 렌더러
     SDL_Renderer* renderer;
+
+    /// @brief 게임 컨트롤러
+    SDL_GameController* controller;
 
 private:
     /// @brief 현재 스테이지
@@ -71,6 +72,9 @@ public:
 
     /// @brief SDL 렌더러를 가져옵니다.
     SDL_Renderer* GetRenderer() const { return renderer; }
+
+    /// @brief 게임 컨트롤러를 가져옵니다.
+    SDL_GameController* GetController() const { return controller; }
 
     /// @brief 게임 오브젝트 관리자를 가져옵니다.
     ObjectManager& GetObjectManager() { return object_manager; }

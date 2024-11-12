@@ -7,8 +7,6 @@
 #include <algorithm>
 #include <stdexcept>
 
-#include <SDL.h>
-
 
 GameEngine::GameEngine(
     const char* title_name,
@@ -20,6 +18,7 @@ GameEngine::GameEngine(
     : is_running(false)
     , window(nullptr)
     , renderer(nullptr)
+    , controller(nullptr)
     , object_manager(this)
 {
     // SDL 미 초기화 시 예외 처리
@@ -46,6 +45,12 @@ GameEngine::GameEngine(
     {
         throw std::runtime_error("Failed to create renderer.");
     }
+
+    // SDL GameController 가져오기
+    if (SDL_NumJoysticks() > 0)
+    {
+        controller = SDL_GameControllerOpen(0);
+    }
 }
 
 GameEngine::~GameEngine()
@@ -60,6 +65,12 @@ GameEngine::~GameEngine()
     if (window)
     {
         SDL_DestroyWindow(window);
+    }
+
+    // SDL GameController 해제
+    if (controller)
+    {
+        SDL_GameControllerClose(controller);
     }
 }
 

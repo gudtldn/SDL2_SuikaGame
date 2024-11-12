@@ -21,7 +21,7 @@ SDLManager::SDLManager()
 {
     // SDL 초기화
     CHECK_AND_LOG_ERROR(
-        SDL_Init(SDL_INIT_VIDEO) < 0,
+        SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER) < 0,
         "SDL could not initialize! SDL_Error: {}", SDL_GetError()
     )
 
