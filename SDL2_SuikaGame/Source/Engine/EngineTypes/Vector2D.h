@@ -12,13 +12,13 @@ namespace std
 class Vector2D
 {
 public:
-    double X;
-    double Y;
+    float X;
+    float Y;
 
 public:
     Vector2D();
-    Vector2D(double value);
-    Vector2D(double x, double y);
+    Vector2D(float value);
+    Vector2D(float x, float y);
 
     /****** Static Methods ******/
 
@@ -29,31 +29,31 @@ public:
     static Vector2D One;
 
     /// @brief 두 벡터의 외적을 반환합니다.
-    static double DotProduct(const Vector2D& lhs, const Vector2D& rhs);
+    static float DotProduct(const Vector2D& lhs, const Vector2D& rhs);
 
     /// @brief 두 벡터의 내적을 반환합니다.
-    static double CrossProduct(const Vector2D& lhs, const Vector2D& rhs);
+    static float CrossProduct(const Vector2D& lhs, const Vector2D& rhs);
 
     /// @brief 두 벡터의 거리의 제곱을 반환합니다.
-    static double DistanceSquared(const Vector2D& lhs, const Vector2D& rhs);
+    static float DistanceSquared(const Vector2D& lhs, const Vector2D& rhs);
 
     /// @brief 두 벡터의 거리를 반환합니다.
-    static double Distance(const Vector2D& lhs, const Vector2D& rhs);
+    static float Distance(const Vector2D& lhs, const Vector2D& rhs);
 
     /// @brief 벡터를 최솟값과 최댓값 사이로 Clamp합니다.
     static Vector2D Clamp(const Vector2D& value, const Vector2D& min, const Vector2D& max);
-    static Vector2D Clamp(const Vector2D& value, double min, double max);
+    static Vector2D Clamp(const Vector2D& value, float min, float max);
 
 
     /****** Methods ******/
 
     /// @brief 벡터의 길이를 반환합니다.
     /// @return 벡터의 길이
-    double Length() const;
+    float Length() const;
 
     /// @brief 벡터의 길이의 제곱을 반환합니다.
     /// @return 벡터의 길이의 제곱
-    double LengthSquared() const;
+    float LengthSquared() const;
 
     /// @brief 벡터를 정규화합니다.
     /// @return 정규화된 벡터
@@ -62,17 +62,17 @@ public:
     /// @brief 벡터의 내적을 반환합니다.
     /// @param rhs 내적을 계산할 벡터
     /// @return 내적
-    double Dot(const Vector2D& rhs) const;
+    float Dot(const Vector2D& rhs) const;
 
     /// @brief 벡터의 외적을 반환합니다.
     /// @param rhs 외적을 계산할 벡터
     /// @return 외적
-    double Cross(const Vector2D& rhs) const;
+    float Cross(const Vector2D& rhs) const;
 
     /// @brief 벡터가 거의 0 벡터인지 확인합니다.
     /// @param tolerance 허용 오차 default: 1.e-4
     /// @return 거의 0 벡터이면 true, 아니면 false
-    bool IsNearlyZero(double tolerance = KINDA_SMALL_NUMBER_DOUBLE) const;
+    bool IsNearlyZero(float tolerance = KINDA_SMALL_NUMBER) const;
 
     /// @brief 벡터가 0 벡터인지 확인합니다.
     /// @return 0 벡터이면 true, 아니면 false
@@ -82,31 +82,31 @@ public:
     /// @param rhs 비교할 벡터
     /// @param tolerance 허용 오차 default: 1.e-4
     /// @return 거의 같으면 true, 아니면 false
-    bool Equals(const Vector2D& rhs, double tolerance = KINDA_SMALL_NUMBER_DOUBLE) const;
+    bool Equals(const Vector2D& rhs, float tolerance = KINDA_SMALL_NUMBER) const;
 
 
     /****** Operator Overloading ******/
 
     // 사칙연산
     Vector2D operator+(const Vector2D& rhs) const;
-    Vector2D operator+(double value) const;
+    Vector2D operator+(float value) const;
     Vector2D& operator+=(const Vector2D& rhs);
-    Vector2D& operator+=(double value);
+    Vector2D& operator+=(float value);
 
     Vector2D operator-(const Vector2D& rhs) const;
-    Vector2D operator-(double value) const;
+    Vector2D operator-(float value) const;
     Vector2D& operator-=(const Vector2D& rhs);
-    Vector2D& operator-=(double value);
+    Vector2D& operator-=(float value);
 
     Vector2D operator*(const Vector2D& rhs) const;
-    Vector2D operator*(double value) const;
+    Vector2D operator*(float value) const;
     Vector2D& operator*=(const Vector2D& rhs);
-    Vector2D& operator*=(double value);
+    Vector2D& operator*=(float value);
 
     Vector2D operator/(const Vector2D& rhs) const;
-    Vector2D operator/(double value) const;
+    Vector2D operator/(float value) const;
     Vector2D& operator/=(const Vector2D& rhs);
-    Vector2D& operator/=(double value);
+    Vector2D& operator/=(float value);
 
     // 비교 연산
     bool operator==(const Vector2D& rhs) const;
@@ -117,8 +117,8 @@ public:
     Vector2D operator-() const;
 
     // Dot Product
-    double operator|(const Vector2D& rhs) const;
+    float operator|(const Vector2D& rhs) const;
 
     // Cross Product
-    double operator^(const Vector2D& rhs) const;
+    float operator^(const Vector2D& rhs) const;
 };

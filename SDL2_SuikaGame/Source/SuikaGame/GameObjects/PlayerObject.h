@@ -14,19 +14,19 @@ private:
 
 private:
     // 가이드 선 크기
-    static constexpr double GUIDE_LINE_WIDTH = 3.0;
-    static constexpr double GUIDE_LINE_HEIGHT = 585.0;
+    static constexpr float GUIDE_LINE_WIDTH = 3.0;
+    static constexpr float GUIDE_LINE_HEIGHT = 585.0;
 
     // Player line
-    static constexpr double PLAYER_LINE_WIDTH = 448.0;
+    static constexpr float PLAYER_LINE_WIDTH = 448.0;
 
     // Player
-    static constexpr double PLAYER_SIZE = 48;
-    static constexpr double PLAYER_SPEED = 600;
+    static constexpr float PLAYER_SIZE = 48;
+    static constexpr float PLAYER_SPEED = 600;
 
-    double min_player_x;
-    double max_player_x;
-    double player_line_y;
+    float min_player_x;
+    float max_player_x;
+    float player_line_y;
 
 public:
     PlayerObject(GameEngine* engine);
@@ -40,5 +40,5 @@ protected:
 private:
     /// @brief 플레이어 위치 설정
     /// @param new_x 새로운 x 위치
-    inline void SetPlayerPosition(double new_x);
+    inline void SetPlayerPosition(float new_x);
 };

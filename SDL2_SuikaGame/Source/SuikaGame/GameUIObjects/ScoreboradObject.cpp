@@ -23,10 +23,13 @@ ScoreboradObject::ScoreboradObject(GameEngine* engine)
     bubble_texture = std::make_unique<Texture2D>(
         raw_bubble_texture,
         Vector2D(
-            static_cast<int>((SCREEN_WIDTH - bubble_width) * 0.075f),
-            static_cast<int>((SCREEN_HEIGHT - bubble_height) * 0.1f)
+            static_cast<float>((SCREEN_WIDTH - bubble_width) * 0.075f),
+            static_cast<float>((SCREEN_HEIGHT - bubble_height) * 0.1f)
         ),
-        Vector2D(bubble_width, bubble_height)
+        Vector2D(
+            static_cast<float>(bubble_width),
+            static_cast<float>(bubble_height)
+        )
     );
 }
 

@@ -20,10 +20,13 @@ StartButtonObject::StartButtonObject(GameEngine* engine)
     button = std::make_unique<FTexture2D>(
         raw_button_texture,
         Vector2D(
-            SCREEN_WIDTH / 2 - button_width / 2,
-            (SCREEN_HEIGHT / 2 - button_height / 2) * 1.05
+            static_cast<float>((SCREEN_WIDTH - button_width) / 2),
+            static_cast<float>((SCREEN_HEIGHT - button_height) / 2) * 1.05f
         ),
-        Vector2D(button_width, button_height)
+        Vector2D(
+            static_cast<float>(button_width),
+            static_cast<float>(button_height)
+        )
     );
 }
 

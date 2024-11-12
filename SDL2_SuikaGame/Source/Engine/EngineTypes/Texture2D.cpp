@@ -10,7 +10,7 @@ Texture2D::Texture2D(
 {
     int w, h;
     SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
-    tex_size = { static_cast<double>(w), static_cast<double>(h) };
+    tex_size = { static_cast<float>(w), static_cast<float>(h) };
 }
 
 Texture2D::Texture2D(

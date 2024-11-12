@@ -22,10 +22,13 @@ BorderBackgroundObject::BorderBackgroundObject(GameEngine* engine)
     border_background_texture = std::make_unique<Texture2D>(
         raw_border_background_texture,
         Vector2D(
-            (SCREEN_WIDTH - border_bg_width) / 2,
-            (SCREEN_HEIGHT - border_bg_height) / 2
+            static_cast<float>((SCREEN_WIDTH - border_bg_width) / 2),
+            static_cast<float>((SCREEN_HEIGHT - border_bg_height) / 2)
         ),
-        Vector2D(border_bg_width, border_bg_height)
+        Vector2D(
+            static_cast<float>(border_bg_width),
+            static_cast<float>(border_bg_height)
+        )
     );
 }
 

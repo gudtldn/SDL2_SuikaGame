@@ -19,10 +19,13 @@ GameLogoObject::GameLogoObject(GameEngine* engine)
     logo_texture = std::make_unique<Texture2D>(
         raw_logo_texture,
         Vector2D(
-            SCREEN_WIDTH / 2 - logo_width / 2,
-            (SCREEN_HEIGHT / 2 - logo_height / 2) - SCREEN_HEIGHT / 4
+            static_cast<float>((SCREEN_WIDTH - logo_width) / 2),
+            static_cast<float>((SCREEN_HEIGHT - logo_height) / 2) * 0.4f
         ),
-        Vector2D(logo_width, logo_height)
+        Vector2D(
+            static_cast<float>(logo_width),
+            static_cast<float>(logo_height)
+        )
     );
 }
 
