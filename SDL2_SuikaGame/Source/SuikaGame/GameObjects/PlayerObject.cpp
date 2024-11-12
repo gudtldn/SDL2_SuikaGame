@@ -41,27 +41,38 @@ void PlayerObject::Update(float delta_time)
     bool dpad_left = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
     bool dpad_right = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
 
-
     // 플레이어 이동
     double new_x = player.GetPosition().X;
 
+
+    // 조이스틱 입력
     if (
-        key_states[SDL_SCANCODE_LEFT]          // 왼쪽 방향키
-        || key_states[SDL_SCANCODE_D]          // D 키
-        || left_stick_x < -JOYSTICK_DEAD_ZONE  // 왼쪽 스틱 왼쪽으로
-        || dpad_left                           // D-Pad 왼쪽
+        left_stick_x > JOYSTICK_DEAD_ZONE
+        || left_stick_x < -JOYSTICK_DEAD_ZONE
     ) {
-        new_x -= PLAYER_SPEED * delta_time;
+        new_x += PLAYER_SPEED * delta_time * (left_stick_x / 32767.0);
     }
 
-    if (
-        key_states[SDL_SCANCODE_RIGHT]         // 오른쪽 방향키
-        || key_states[SDL_SCANCODE_A]          // A 키
-        || left_stick_x > JOYSTICK_DEAD_ZONE   // 왼쪽 스틱 오른쪽으로
-        || dpad_right                          // D-Pad 오른쪽
-    ) {
-        new_x += PLAYER_SPEED * delta_time;
+    // 키보드 & D패드 입력
+    else
+    {
+        if (
+            key_states[SDL_SCANCODE_LEFT]          // 왼쪽 방향키
+            || key_states[SDL_SCANCODE_A]          // A 키
+            || dpad_left                           // D-Pad 왼쪽
+        ) {
+            new_x -= PLAYER_SPEED * delta_time;
+        }
+
+        if (
+            key_states[SDL_SCANCODE_RIGHT]         // 오른쪽 방향키
+            || key_states[SDL_SCANCODE_D]          // D 키
+            || dpad_right                          // D-Pad 오른쪽
+        ) {
+            new_x += PLAYER_SPEED * delta_time;
+        }
     }
+
 
     // 플레이어 위치 적용
     SetPlayerPosition(new_x);
