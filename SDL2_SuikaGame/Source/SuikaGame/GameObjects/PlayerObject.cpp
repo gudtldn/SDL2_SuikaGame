@@ -26,8 +26,6 @@ PlayerObject::PlayerObject(GameEngine* engine)
     ));
     player.SetSize(Vector2D(PLAYER_SIZE, PLAYER_SIZE));
     player.SetColor(255, 0, 0, 255);
-
-    // 가이드 선 설정
 }
 
 void PlayerObject::BeginPlay()
@@ -38,19 +36,35 @@ void PlayerObject::Update(float delta_time)
 {
     const Uint8* key_states = SDL_GetKeyboardState(nullptr);
 
+    SDL_GameController* gamecontroller = GetEngine()->GetController();
+    Sint16 left_stick_x = SDL_GameControllerGetAxis(gamecontroller, SDL_CONTROLLER_AXIS_LEFTX);
+    bool dpad_left = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+    bool dpad_right = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+
+
+    // 플레이어 이동
     double new_x = player.GetPosition().X;
 
-    if (key_states[SDL_SCANCODE_LEFT])
-    {
+    if (
+        key_states[SDL_SCANCODE_LEFT]          // 왼쪽 방향키
+        || key_states[SDL_SCANCODE_A]          // A 키
+        || left_stick_x < -JOYSTICK_DEAD_ZONE  // 왼쪽 스틱 왼쪽으로
+        || dpad_left                           // D-Pad 왼쪽
+    ) {
         new_x -= PLAYER_SPEED * delta_time;
     }
-    else if (key_states[SDL_SCANCODE_RIGHT])
-    {
+
+    if (
+        key_states[SDL_SCANCODE_RIGHT]         // 오른쪽 방향키
+        || key_states[SDL_SCANCODE_D]          // D 키
+        || left_stick_x > JOYSTICK_DEAD_ZONE   // 왼쪽 스틱 오른쪽으로
+        || dpad_right                          // D-Pad 오른쪽
+    ) {
         new_x += PLAYER_SPEED * delta_time;
     }
 
+    // 플레이어 위치 적용
     SetPlayerPosition(new_x);
-
     guide_line.SetPosition(Vector2D(
         new_x + PLAYER_SIZE / 2.0 - GUIDE_LINE_WIDTH / 2.0,
         player_line_y

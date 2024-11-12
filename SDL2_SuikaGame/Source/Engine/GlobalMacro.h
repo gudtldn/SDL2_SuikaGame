@@ -10,5 +10,7 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
+#define JOYSTICK_DEAD_ZONE 8000
+
 #define STRINGIFY(x) #x
 #define CLASS_NAME(x) STRINGIFY(x)
