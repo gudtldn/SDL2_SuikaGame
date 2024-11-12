@@ -110,12 +110,22 @@ struct Math
         return sin(value);
     }
 
+    [[nodiscard]] inline static float Sin(float value)
+    {
+        return sinf(value);
+    }
+
     /// @brief Cos 함수를 계산합니다.
     /// @param value 각도
     /// @return Cos 함수 값
     [[nodiscard]] inline static double Cos(double value)
     {
         return cos(value);
+    }
+
+    [[nodiscard]] inline static float Cos(float value)
+    {
+        return cosf(value);
     }
 
     /// @brief Tan 함수를 계산합니다.
@@ -126,12 +136,22 @@ struct Math
         return tan(value);
     }
 
+    [[nodiscard]] inline static float Tan(float value)
+    {
+        return tanf(value);
+    }
+
     /// @brief ArcSin 함수를 계산합니다.
     /// @param value 값
     /// @return ArcSin 함수 값
     [[nodiscard]] inline static double Asin(double value)
     {
         return asin(value < -1.0 ? -1.0 : (value < 1.0 ? value : 1.0));
+    }
+
+    [[nodiscard]] inline static float Asin(float value)
+    {
+        return asinf(value < -1.0f ? -1.0f : (value < 1.0f ? value : 1.0f));
     }
 
     /// @brief ArcCos 함수를 계산합니다.
@@ -143,12 +163,22 @@ struct Math
         return acos(value < -1.0 ? -1.0 : (value < 1.0 ? value : 1.0));
     }
 
+    [[nodiscard]] inline static float Acos(float value)
+    {
+        return acosf(value < -1.0f ? -1.0f : (value < 1.0f ? value : 1.0f));
+    }
+
     /// @brief ArcTan 함수를 계산합니다.
     /// @param value 값
     /// @return ArcTan 함수 값
     [[nodiscard]] inline static double Atan(double value)
     {
         return atan(value);
+    }
+
+    [[nodiscard]] inline static float Atan(float value)
+    {
+        return atanf(value);
     }
 
     /// @brief ArcTan2 함수를 계산합니다.
@@ -159,12 +189,22 @@ struct Math
         return atan2(y, x);
     }
 
+    [[nodiscard]] inline static float Atan2(float y, float x)
+    {
+        return atan2f(y, x);
+    }
+
     /// @brief 제곱근을 계산합니다.
     /// @param value 값
     /// @return 제곱근
     [[nodiscard]] inline static double Sqrt(double value)
     {
         return sqrt(value);
+    }
+
+    [[nodiscard]] inline static float Sqrt(float value)
+    {
+        return sqrtf(value);
     }
 
     /// @brief 제곱을 계산합니다.
