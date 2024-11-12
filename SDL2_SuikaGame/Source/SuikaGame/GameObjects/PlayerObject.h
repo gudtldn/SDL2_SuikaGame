@@ -7,7 +7,7 @@ class PlayerObject : public GameObject
 {
 private:
     /// @brief 플레이어
-    Rectangle player;
+    std::unique_ptr<Texture2D> player;
 
     /// @brief 가이드 선
     Rectangle guide_line;
@@ -21,7 +21,8 @@ private:
     static constexpr float PLAYER_LINE_WIDTH = 448.0;
 
     // Player
-    static constexpr float PLAYER_SIZE = 48;
+    static constexpr float PLAYER_WIDTH = 104;
+    static constexpr float PLAYER_HEIGHT = 64;
     static constexpr float PLAYER_SPEED = 600;
 
     float min_player_x;
