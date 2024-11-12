@@ -83,6 +83,18 @@ void StartButtonObject::OnEvent(const SDL_Event& event)
         if (is_clicked)
         {
             GetEngine()->SetStage<GameStage>();
+            return;
+        }
+    }
+
+
+    // 게임 컨트롤러 버튼 이벤트 처리
+    if (event.type == SDL_CONTROLLERBUTTONDOWN)
+    {
+        if (event.cbutton.button == SDL_CONTROLLER_BUTTON_A)
+        {
+            GetEngine()->SetStage<GameStage>();
+            return;
         }
     }
 }
