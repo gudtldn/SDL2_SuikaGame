@@ -7,7 +7,7 @@ StartButtonObject::StartButtonObject(GameEngine* engine)
     , button(nullptr)
 {
     // 버튼 텍스처 로드
-    SDL_Texture* raw_button_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/button.png");
+    SDL_Texture* raw_button_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/game_start_button.png");
     THROW_IF_FAILED(
         raw_button_texture,
         "Failed to load button texture! SDL Error: %s", SDL_GetError()
