@@ -47,7 +47,7 @@ void PlayerObject::Update(float delta_time)
 
     if (
         key_states[SDL_SCANCODE_LEFT]          // 왼쪽 방향키
-        || key_states[SDL_SCANCODE_A]          // A 키
+        || key_states[SDL_SCANCODE_D]          // D 키
         || left_stick_x < -JOYSTICK_DEAD_ZONE  // 왼쪽 스틱 왼쪽으로
         || dpad_left                           // D-Pad 왼쪽
     ) {
@@ -56,7 +56,7 @@ void PlayerObject::Update(float delta_time)
 
     if (
         key_states[SDL_SCANCODE_RIGHT]         // 오른쪽 방향키
-        || key_states[SDL_SCANCODE_D]          // D 키
+        || key_states[SDL_SCANCODE_A]          // A 키
         || left_stick_x > JOYSTICK_DEAD_ZONE   // 왼쪽 스틱 오른쪽으로
         || dpad_right                          // D-Pad 오른쪽
     ) {
