@@ -6,7 +6,7 @@
 class GameLogoObject : public GameObject
 {
 private:
-    std::unique_ptr<FTexture2D> logo_texture;
+    std::unique_ptr<Texture2D> logo_texture;
 
 public:
     GameLogoObject(GameEngine* engine);

@@ -16,7 +16,7 @@ GameLogoObject::GameLogoObject(GameEngine* engine)
     int logo_width, logo_height;
     SDL_QueryTexture(raw_logo_texture, nullptr, nullptr, &logo_width, &logo_height);
 
-    logo_texture = std::make_unique<FTexture2D>(
+    logo_texture = std::make_unique<Texture2D>(
         raw_logo_texture,
         Vector2D(
             SCREEN_WIDTH / 2 - logo_width / 2,
