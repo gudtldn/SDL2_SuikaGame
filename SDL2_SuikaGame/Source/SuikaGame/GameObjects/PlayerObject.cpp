@@ -17,7 +17,7 @@ PlayerObject::PlayerObject(GameEngine* engine)
     // 플레이어 움직임 제한 설정
     min_player_x = (SCREEN_WIDTH - PLAYER_LINE_WIDTH) / 2.0f;
     max_player_x = min_player_x + PLAYER_LINE_WIDTH - PLAYER_SIZE;
-    player_line_y = SCREEN_HEIGHT / 2.0f - 280.0f;
+    player_line_y = SCREEN_HEIGHT / 2.0f - 320.0f;
 
     // 플레이어 설정
     player.SetPosition(Vector2D(
