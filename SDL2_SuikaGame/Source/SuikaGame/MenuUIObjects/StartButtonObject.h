@@ -7,7 +7,7 @@ class StartButtonObject : public GameObject
 {
 private:
     // 버튼 텍스처
-    std::unique_ptr<Texture> button;
+    std::unique_ptr<FTexture2D> button;
 
     // 버튼 원래 위치
     Vector2D button_origin;

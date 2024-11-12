@@ -20,7 +20,7 @@ ScoreboradObject::ScoreboradObject(GameEngine* engine)
     int bubble_width, bubble_height;
     SDL_QueryTexture(raw_bubble_texture, NULL, NULL, &bubble_width, &bubble_height);
 
-    bubble_texture = std::make_unique<Texture>(
+    bubble_texture = std::make_unique<FTexture2D>(
         raw_bubble_texture,
         Vector2D(
             static_cast<int>((SCREEN_WIDTH - bubble_width) * 0.075f),

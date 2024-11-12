@@ -1,7 +1,7 @@
-#include "Texture.h"
+#include "FTexture2D.h"
 
 
-Texture::Texture(
+FTexture2D::FTexture2D(
     SDL_Texture* texture,
     const Vector2D& position
 )
@@ -13,7 +13,7 @@ Texture::Texture(
     tex_size = { static_cast<double>(w), static_cast<double>(h) };
 }
 
-Texture::Texture(
+FTexture2D::FTexture2D(
     SDL_Texture* texture,
     const Vector2D& position,
     const Vector2D& size
@@ -24,13 +24,13 @@ Texture::Texture(
 {
 }
 
-void Texture::Render(SDL_Renderer* renderer, const SDL_Rect* srcrect) const
+void FTexture2D::Render(SDL_Renderer* renderer, const SDL_Rect* srcrect) const
 {
     SDL_FRect dstrect = GetRect();
     SDL_RenderCopyF(renderer, texture.get(), srcrect, &dstrect);
 }
 
-SDL_FRect Texture::GetRect() const
+SDL_FRect FTexture2D::GetRect() const
 {
     return {
         .x = static_cast<float>(tex_position.X),

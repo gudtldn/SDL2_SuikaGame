@@ -28,7 +28,8 @@
 #include "Engine/Components/Stage.h"
 #include "Engine/Components/GameObject.h"
 
-#include "Engine/EngineTypes/Texture.h"
+#include "Engine/EngineTypes/Texture2D.h"
+#include "Engine/EngineTypes/FTexture2D.h"
 #include "Engine/EngineTypes/Rectangle.h"
 #include "Engine/EngineTypes/Vector2D.h"
 

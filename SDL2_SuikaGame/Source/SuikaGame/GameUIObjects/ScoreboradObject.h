@@ -7,7 +7,7 @@ class ScoreboradObject : public GameObject
 {
 private:
     /// @brief 스코어보드 배경 텍스처
-    std::unique_ptr<Texture> bubble_texture;
+    std::unique_ptr<FTexture2D> bubble_texture;
 
     /// @brief 스코어
     int score = 0;

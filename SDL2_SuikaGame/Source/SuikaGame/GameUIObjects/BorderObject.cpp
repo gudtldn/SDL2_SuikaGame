@@ -19,7 +19,7 @@ BorderObject::BorderObject(GameEngine* engine)
     int border_width, border_height;
     SDL_QueryTexture(raw_border_texture, NULL, NULL, &border_width, &border_height);
 
-    border_texture = std::make_unique<Texture>(
+    border_texture = std::make_unique<FTexture2D>(
         raw_border_texture,
         Vector2D(
             (SCREEN_WIDTH - border_width) / 2,

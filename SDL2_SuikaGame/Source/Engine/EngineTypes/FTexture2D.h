@@ -5,23 +5,23 @@
 #include <memory>
 
 
-/// @brief SDL_Texture Wrapper 클래스
-class Texture {
+/// @brief SDL_Texture Wrapper 클래스 (Float 버전)
+class FTexture2D {
 private:
     std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)> texture;
     Vector2D tex_position;
     Vector2D tex_size;
 
 public:
-    Texture(SDL_Texture* texture, const Vector2D& position);
-    Texture(SDL_Texture* texture, const Vector2D& position, const Vector2D& size);
-    ~Texture() = default;
+    FTexture2D(SDL_Texture* texture, const Vector2D& position);
+    FTexture2D(SDL_Texture* texture, const Vector2D& position, const Vector2D& size);
+    ~FTexture2D() = default;
 
     // 복사 & 대입 연산자 삭제
-    Texture(const Texture&) = delete;
-    Texture& operator=(const Texture&) = delete;
-    Texture(Texture&&) noexcept = default;
-    Texture& operator=(Texture&&) noexcept = default;
+    FTexture2D(const FTexture2D&) = delete;
+    FTexture2D& operator=(const FTexture2D&) = delete;
+    FTexture2D(FTexture2D&&) noexcept = default;
+    FTexture2D& operator=(FTexture2D&&) noexcept = default;
 
     /// @brief 텍스처를 렌더링합니다.
     /// @param renderer 렌더러

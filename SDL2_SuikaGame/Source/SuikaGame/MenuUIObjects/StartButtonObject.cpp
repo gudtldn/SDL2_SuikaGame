@@ -17,7 +17,7 @@ StartButtonObject::StartButtonObject(GameEngine* engine)
     int button_width, button_height;
     SDL_QueryTexture(raw_button_texture, nullptr, nullptr, &button_width, &button_height);
 
-    button = std::make_unique<Texture>(
+    button = std::make_unique<FTexture2D>(
         raw_button_texture,
         Vector2D(
             SCREEN_WIDTH / 2 - button_width / 2,

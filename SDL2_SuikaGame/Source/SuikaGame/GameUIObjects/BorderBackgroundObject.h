@@ -6,7 +6,7 @@
 class BorderBackgroundObject : public GameObject
 {
 private:
-    std::unique_ptr<Texture> border_background_texture;
+    std::unique_ptr<FTexture2D> border_background_texture;
 
 public:
     BorderBackgroundObject(GameEngine* engine);
