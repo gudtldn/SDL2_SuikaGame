@@ -1,8 +1,8 @@
 #pragma once
 #include <memory>
-#include <type_traits>
 #include <string>
 #include <vector>
+#include <concepts>
 #include <unordered_set>
 
 // forward declaration
@@ -27,10 +27,17 @@ private:
 
 public:
     ObjectManager(GameEngine* engine)
-        : engine(engine) {};
+        : engine(engine) {}
 
-    ~ObjectManager() = default;
+    virtual ~ObjectManager() = default;
 
+    // 복사 & 이동 생성자 제거
+    ObjectManager(const ObjectManager&) = delete;
+    ObjectManager& operator=(const ObjectManager&) = delete;
+    ObjectManager(ObjectManager&&) = delete;
+    ObjectManager& operator=(ObjectManager&&) = delete;
+
+    
     /// @brief SDL 이벤트 발생 시 호출됩니다.
     /// @param event SDL 이벤트
     virtual void HandleEvent(const SDL_Event& event);
