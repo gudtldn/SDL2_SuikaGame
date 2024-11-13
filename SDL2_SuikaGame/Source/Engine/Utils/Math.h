@@ -266,7 +266,7 @@ private:
         return static_cast<float>(rand() & RandMax) / static_cast<float>(RandMax);
     }
 
-    // @brief Helper function for rand implementations. Returns a random number in [0..A)
+    /// @brief Helper function for rand implementations. Returns a random number in [0..A)
 	[[nodiscard]] inline static int RandHelper(int A)
 	{
 		// Note that on some platforms RAND_MAX is a large number so we cannot do ((rand()/(RAND_MAX+1)) * A)
