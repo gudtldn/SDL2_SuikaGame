@@ -41,7 +41,7 @@ std::string GameObject::GetName() const
 
 void GameObject::Destroy()
 {
-    auto self = shared_from_this();
+    const auto self = shared_from_this();
 
     // 오브젝트 매니저에서 제거
     GetCurrentStage()->GetObjectManager().DestroyGameObject(self);

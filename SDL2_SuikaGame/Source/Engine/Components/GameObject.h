@@ -35,6 +35,12 @@ public:
 
     virtual ~GameObject() = default;
 
+    // 복사 & 이동 생성자 제거
+    GameObject(const GameObject&) = delete;
+    GameObject& operator=(const GameObject&) = delete;
+    GameObject(GameObject&&) = delete;
+    GameObject& operator=(GameObject&&) = delete;
+
 
     /****** Virtual Functions ******/
 
@@ -70,7 +76,7 @@ public:
     inline int GetZOrder() const { return z_order; }
 
     /// @brief z-order를 설정합니다.
-    inline void SetZOrder(int z_order) { this->z_order = z_order; }
+    inline void SetZOrder(int new_z_order) { z_order = new_z_order; }
 
     /// @brief 태그를 가져옵니다.
     inline const std::unordered_set<std::string>& GetTags() const { return tags; }

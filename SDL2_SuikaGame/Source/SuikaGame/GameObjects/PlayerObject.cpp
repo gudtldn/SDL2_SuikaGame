@@ -20,7 +20,7 @@ PlayerObject::PlayerObject(GameEngine* engine)
     THROW_IF_FAILED(
         raw_player_texture,
         "Failed to load player texture! SDL Error: {}", SDL_GetError()
-    );
+    )
 
     // 플레이어 움직임 제한 설정
     min_border_x = (SCREEN_WIDTH - BORDER_WIDTH) / 2.0f;
@@ -54,12 +54,12 @@ void PlayerObject::Update(float delta_time)
     bool dpad_left = false;
     bool dpad_right = false;
 
-    SDL_GameController* gamecontroller = GetEngine()->GetController();
-    if (gamecontroller != nullptr)
+    SDL_GameController* game_controller = GetEngine()->GetController();
+    if (game_controller != nullptr)
     {
-        left_stick_x = SDL_GameControllerGetAxis(gamecontroller, SDL_CONTROLLER_AXIS_LEFTX);
-        dpad_left = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
-        dpad_right = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+        left_stick_x = SDL_GameControllerGetAxis(game_controller, SDL_CONTROLLER_AXIS_LEFTX);
+        dpad_left = SDL_GameControllerGetButton(game_controller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        dpad_right = SDL_GameControllerGetButton(game_controller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
     }
 
     // 플레이어 이동
@@ -71,7 +71,7 @@ void PlayerObject::Update(float delta_time)
         left_stick_x > JOYSTICK_DEAD_ZONE
         || left_stick_x < -JOYSTICK_DEAD_ZONE
     ) {
-        new_x += PLAYER_SPEED * delta_time * (left_stick_x / 32767.0f);
+        new_x += PLAYER_SPEED * delta_time * (static_cast<float>(left_stick_x) / 32767.0f);
     }
 
     // 키보드 & D패드 입력
@@ -128,7 +128,7 @@ void PlayerObject::OnEvent(const SDL_Event& event)
 
 inline void PlayerObject::SetPlayerPosition(float new_x)
 {
-    float clamped_x = Math::Clamp(new_x, min_border_x, max_border_x);
+    const float clamped_x = Math::Clamp(new_x, min_border_x, max_border_x);
     player_guide_line.SetPosition(Vector2D(
         clamped_x,
         player_line_y

@@ -23,12 +23,17 @@ public:
     Stage(GameEngine* engine);
     virtual ~Stage() = default;
 
-
+    // 복사 & 이동 생성자 삭제
+    Stage(const Stage&) = delete;
+    Stage& operator=(const Stage&) = delete;
+    Stage(Stage&&) = delete;
+    Stage& operator=(Stage&&) = delete;
+    
     /*** Getter & Setter ***/
 
     /// @brief 게임 오브젝트 매니저를 가져옵니다.
     ObjectManager& GetObjectManager() { return object_manager; }
 
     /// @brief 게임 엔진을 가져옵니다.
-    GameEngine* GetEngine() { return engine; }
+    [[nodiscard]] GameEngine* GetEngine() const { return engine; }
 };
