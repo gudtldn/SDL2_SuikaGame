@@ -103,17 +103,17 @@ public:
 private:
     /// @brief 이벤트를 처리합니다.
     /// @param event SDL 이벤트
-    void HandleEvent(const SDL_Event& event);
+    inline void HandleEvent(const SDL_Event& event);
 
     /// @brief 게임 오브젝트를 업데이트합니다.
-    void Update(float delta_time);
+    inline void Update(float delta_time);
 
     /// @brief 게임 오브젝트를 렌더링합니다.
-    void Render();
+    inline void Render();
 
     /// @brief 누적 시간을 추가합니다.
     /// @param time 추가할 시간
-    void AddAccumulatedTime(float time);
+    inline void AddAccumulatedTime(float time);
 };
 
 

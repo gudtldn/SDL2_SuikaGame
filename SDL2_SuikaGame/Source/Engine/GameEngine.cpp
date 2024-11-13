@@ -136,7 +136,7 @@ void GameEngine::Run()
     }
 }
 
-void GameEngine::HandleEvent(const SDL_Event& event)
+inline void GameEngine::HandleEvent(const SDL_Event& event)
 {
     object_manager.HandleEvent(event);
 
@@ -146,7 +146,7 @@ void GameEngine::HandleEvent(const SDL_Event& event)
     }
 }
 
-void GameEngine::Update(float delta_time)
+inline void GameEngine::Update(float delta_time)
 {
     // 새로운 게임 오브젝트의 BeginPlay 호출
     const auto& new_game_objects = object_manager.GetNewGameObjects();
@@ -182,7 +182,7 @@ void GameEngine::Update(float delta_time)
     }
 }
 
-void GameEngine::Render()
+inline void GameEngine::Render()
 {
     auto& game_objects = object_manager.GetGameObjects();
 
@@ -227,7 +227,7 @@ void GameEngine::Render()
     }
 }
 
-void GameEngine::AddAccumulatedTime(float time)
+inline void GameEngine::AddAccumulatedTime(float time)
 {
     accumulated_time += time;
     if (accumulated_time >= RESET_THRESHOLD)
