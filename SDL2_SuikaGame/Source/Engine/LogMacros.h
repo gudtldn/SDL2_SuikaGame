@@ -10,6 +10,9 @@
 
 #else
 
+#include <format>
+#include <SDL_log.h>
+
 static consteval const char* filename(const char* path) {
     const char* file = path;
     while (*path) {
