@@ -19,25 +19,21 @@ int main(int argc, char* args[])
     try
     {
         // SDL Manager 초기화
-        std::unique_ptr<SDLManager> sdl_manager = std::make_unique<SDLManager>();
-
-        // Screen Size 가져오기
-        SDL_DisplayMode DM;
-        SDL_GetCurrentDisplayMode(0, &DM);
+        SDLManager sdl_manager = SDLManager{};
 
         // Engine 생성
-        std::unique_ptr<GameEngine> engine = std::make_unique<GameEngine>(
+        GameEngine engine = GameEngine{
             "Suika Game",
-            DM.w / 2 - SCREEN_WIDTH / 2,
-            DM.h / 2 - SCREEN_HEIGHT / 2,
+            SDL_WINDOWPOS_CENTERED,
+            SDL_WINDOWPOS_CENTERED,
             SCREEN_WIDTH, SCREEN_HEIGHT
-        );
+        };
 
         // Engine 실행
-        engine->SetStage<MenuStage>();
-        engine->GetObjectManager().CreateGameObject<BackgroundObject>();
-        engine->GetObjectManager().CreateGameObject<BgmObject>();
-        engine->Run();
+        engine.SetStage<MenuStage>();
+        engine.GetObjectManager().CreateGameObject<BackgroundObject>();
+        engine.GetObjectManager().CreateGameObject<BgmObject>();
+        engine.Run();
     }
     catch (const std::exception& e)
     {
