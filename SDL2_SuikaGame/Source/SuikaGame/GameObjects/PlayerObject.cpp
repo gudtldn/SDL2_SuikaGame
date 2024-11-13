@@ -22,16 +22,6 @@ PlayerObject::PlayerObject(GameEngine* engine)
         "Failed to load player texture! SDL Error: {}", SDL_GetError()
     );
 
-    // 플레이어 텍스처 생성
-    player_texture = std::make_unique<Texture2D>(
-        raw_player_texture,
-        Vector2D(
-            min_border_x + (BORDER_WIDTH - PLAYER_WIDTH) / 2.0f,
-            player_line_y - PLAYER_HEIGHT / 2.0f
-        ),
-        Vector2D(PLAYER_WIDTH, PLAYER_HEIGHT)
-    );
-
     // 플레이어 움직임 제한 설정
     min_border_x = (SCREEN_WIDTH - BORDER_WIDTH) / 2.0f;
     max_border_x = min_border_x + BORDER_WIDTH - GUIDE_LINE_WIDTH;
@@ -42,6 +32,17 @@ PlayerObject::PlayerObject(GameEngine* engine)
 
     // player_guide_line의 y 좌표 설정
     player_line_y = SCREEN_HEIGHT / 2.0f - 320.0f;
+
+
+    // 플레이어 텍스처 생성
+    player_texture = std::make_unique<Texture2D>(
+        raw_player_texture,
+        Vector2D(
+            min_border_x + (BORDER_WIDTH - PLAYER_WIDTH) / 2.0f,
+            player_line_y - PLAYER_HEIGHT / 2.0f
+        ),
+        Vector2D(PLAYER_WIDTH, PLAYER_HEIGHT)
+    );
 }
 
 void PlayerObject::Update(float delta_time)
