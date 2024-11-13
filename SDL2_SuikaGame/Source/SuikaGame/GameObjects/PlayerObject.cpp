@@ -1,6 +1,6 @@
 #include "PlayerObject.h"
 
-// TODO: 가이드라인이 메인이고, Player가 가이드라인을 따라다니는 형태로 구현해야 함
+
 PlayerObject::PlayerObject(GameEngine* engine)
     : GameObject(engine)
     , player_texture(nullptr)
@@ -117,6 +117,11 @@ void PlayerObject::OnEvent(const SDL_Event& event)
         SetPlayerPosition(
             static_cast<float>(event.motion.x)
         );
+    }
+
+    if (event.type == SDL_MOUSEBUTTONDOWN)
+    {
+        // TODO: 과일 생성
     }
 }
 
