@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <cstdlib>
 #include <type_traits>
 
 
@@ -228,4 +229,48 @@ struct Math
         return a + (b - a) * alpha;
     }
 
+
+    /// @brief 랜덤 함수를 초기화합니다.
+    inline static void RandInit(int seed)
+    {
+        srand(seed);
+    }
+
+    /// @brief min ~ max 사이의 랜덤 정수를 생성합니다.
+    [[nodiscard]] inline static int RandRange(int min, int max)
+    {
+        const int range = (max - min) + 1;
+		return min + RandHelper(range);
+    }
+
+    /// @brief min ~ max 사이의 랜덤 실수를 생성합니다.
+    [[nodiscard]] inline static float RandRange(float min, float max)
+    {
+        return min + (max - min) * FRand();
+    }
+
+private:
+    /// @brief 0 ~ RAND_MAX 사이의 랜덤 정수를 생성합니다.
+    /// @return 랜덤 정수
+    [[nodiscard]] inline static int Rand()
+    {
+        return rand();
+    }
+
+    /// @brief 0 ~ 1 사이의 랜덤 실수를 생성합니다.
+    /// @return 랜덤 실수
+    [[nodiscard]] inline static float FRand()
+    {
+        // FP32 mantissa can only represent 24 bits before losing precision
+        constexpr int RandMax = 0x00ffffff < RAND_MAX ? 0x00ffffff : RAND_MAX;
+        return static_cast<float>(rand() & RandMax) / static_cast<float>(RandMax);
+    }
+
+    // @brief Helper function for rand implementations. Returns a random number in [0..A)
+	[[nodiscard]] inline static int RandHelper(int A)
+	{
+		// Note that on some platforms RAND_MAX is a large number so we cannot do ((rand()/(RAND_MAX+1)) * A)
+		// or else we may include the upper bound results, which should be excluded.
+		return A > 0 ? Min(static_cast<int>(FRand() * (float)A), A - 1) : 0;
+	}
 }; // struct Math

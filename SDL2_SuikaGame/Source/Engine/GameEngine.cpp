@@ -2,7 +2,9 @@
 #include "Engine/GlobalMacro.h"
 #include "Engine/Components/Stage.h"
 #include "Engine/Components/GameObject.h"
+#include "Engine/Utils/Math.h"
 
+#include <ctime>
 #include <vector>
 #include <algorithm>
 #include <stdexcept>
@@ -77,6 +79,9 @@ GameEngine::~GameEngine()
 void GameEngine::Run()
 {
     is_running = true;
+
+    // 랜덤 시드 초기화
+    Math::RandInit(static_cast<int>(time(nullptr)));
 
     Uint64 now_time = SDL_GetPerformanceCounter();
     Uint64 last_time = 0;
