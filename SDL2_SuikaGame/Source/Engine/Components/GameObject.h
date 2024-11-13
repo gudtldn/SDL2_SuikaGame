@@ -48,7 +48,7 @@ public:
     virtual void Render(SDL_Renderer* renderer) const;
 
     /// @brief 게임 오브젝트가 파괴되기 직전에 호출됩니다.
-    virtual void OnDestory();
+    virtual void OnDestroy();
 
     /// @brief 이벤트가 발생했을 때 호출됩니다.
     virtual void OnEvent(const SDL_Event& event);

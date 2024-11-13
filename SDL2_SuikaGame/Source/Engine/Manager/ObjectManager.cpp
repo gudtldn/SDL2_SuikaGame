@@ -32,8 +32,8 @@ void ObjectManager::DestroyGameObject(std::shared_ptr<GameObject> object)
     // object가 존재하지 않으면 return
     if (!object) return;
 
-    // 완전히 삭제하기 전에 OnDestory()를 호출
-    object->OnDestory();
+    // 완전히 삭제하기 전에 OnDestroy()를 호출
+    object->OnDestroy();
 
     // TODO: 추후에 지연 삭제 기능 추가
     // https://www.perplexity.ai/search/igeon-jeogjeolhage-jal-sagjeha-hQZ4F0llSH.ZFqhWgJ..SQ

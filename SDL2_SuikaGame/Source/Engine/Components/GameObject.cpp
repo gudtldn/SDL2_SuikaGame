@@ -20,7 +20,7 @@ void GameObject::Render(SDL_Renderer* renderer) const
 {
 }
 
-void GameObject::OnDestory()
+void GameObject::OnDestroy()
 {
 }
 
