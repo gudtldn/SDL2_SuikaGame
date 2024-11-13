@@ -11,7 +11,7 @@ StartButtonObject::StartButtonObject(GameEngine* engine)
     THROW_IF_FAILED(
         raw_button_texture,
         "Failed to load button texture! SDL Error: {}", SDL_GetError()
-    );
+    )
 
     // 버튼 위치 설정
     int button_width, button_height;
@@ -54,8 +54,8 @@ void StartButtonObject::OnEvent(const SDL_Event& event)
     // TexturedButtonObject도 만들어서 버튼 관련 이벤트 처리를 간결하게 하면 좋을듯
 
     // 마우스 커서 위치
-    int mouse_x = event.motion.x;
-    int mouse_y = event.motion.y;
+    const int mouse_x = event.motion.x;
+    const int mouse_y = event.motion.y;
 
     // 버튼 정보
     SDL_FRect button_rect = button->GetRect();

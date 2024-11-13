@@ -1,7 +1,7 @@
-#include "ScoreboradObject.h"
+#include "ScoreboardObject.h"
 
 
-ScoreboradObject::ScoreboradObject(GameEngine* engine)
+ScoreboardObject::ScoreboardObject(GameEngine* engine)
     : GameObject(engine)
     , bubble_texture(nullptr)
     , score(0)
@@ -18,7 +18,7 @@ ScoreboradObject::ScoreboradObject(GameEngine* engine)
 
     // Border 배경 위치 설정
     int bubble_width, bubble_height;
-    SDL_QueryTexture(raw_bubble_texture, NULL, NULL, &bubble_width, &bubble_height);
+    SDL_QueryTexture(raw_bubble_texture, nullptr, nullptr, &bubble_width, &bubble_height);
 
     bubble_texture = std::make_unique<Texture2D>(
         raw_bubble_texture,
@@ -33,12 +33,12 @@ ScoreboradObject::ScoreboradObject(GameEngine* engine)
     );
 }
 
-void ScoreboradObject::Update(float delta_time)
+void ScoreboardObject::Update(float delta_time)
 {
     // LOG_INFO("Score: {}", score);
 }
 
-void ScoreboradObject::Render(SDL_Renderer* renderer) const
+void ScoreboardObject::Render(SDL_Renderer* renderer) const
 {
     bubble_texture->Render(renderer);
 }

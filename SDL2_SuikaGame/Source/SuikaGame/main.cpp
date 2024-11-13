@@ -1,6 +1,6 @@
 #include "EnginePCH.h"
 #include "Stages/MenuStage.h"
-#include "GameObjects/BackgoundObject.h"
+#include "GameObjects/BackgroundObject.h"
 #include "GameObjects/BgmObject.h"
 
 
@@ -35,7 +35,7 @@ int main(int argc, char* args[])
 
         // Engine 실행
         engine->SetStage<MenuStage>();
-        engine->GetObjectManager().CreateGameObject<BackgoundObject>();
+        engine->GetObjectManager().CreateGameObject<BackgroundObject>();
         engine->GetObjectManager().CreateGameObject<BgmObject>();
         engine->Run();
     }

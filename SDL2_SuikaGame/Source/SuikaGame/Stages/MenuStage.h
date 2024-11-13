@@ -7,5 +7,4 @@ class MenuStage : public Stage
 {
 public:
     MenuStage(GameEngine* engine);
-    virtual ~MenuStage() = default;
 };

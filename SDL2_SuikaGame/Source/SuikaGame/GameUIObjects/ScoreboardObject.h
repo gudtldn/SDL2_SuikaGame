@@ -3,7 +3,7 @@
 
 
 /// @brief 점수를 표시하는 게임 오브젝트
-class ScoreboradObject : public GameObject
+class ScoreboardObject : public GameObject
 {
 private:
     /// @brief 스코어보드 배경 텍스처
@@ -13,7 +13,7 @@ private:
     int score = 0;
 
 public:
-    ScoreboradObject(GameEngine* engine);
+    ScoreboardObject(GameEngine* engine);
 
 
     /****** Getter && Setter ******/

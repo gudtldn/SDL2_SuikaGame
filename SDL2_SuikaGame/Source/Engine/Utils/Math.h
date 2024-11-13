@@ -21,7 +21,7 @@ struct Math
     /// @param value 값
     /// @return 절대값
     template <typename T> requires std::is_arithmetic_v<T>
-    [[nodiscard]] inline static constexpr T Abs(T value)
+    [[nodiscard]] static constexpr T Abs(T value)
     {
         return value >= 0 ? value : -value;
     }
@@ -32,7 +32,7 @@ struct Math
     /// @param b 비교할 값
     /// @return 최솟값
     template <typename T> requires std::is_arithmetic_v<T>
-    [[nodiscard]] inline static constexpr T Min(T a, T b)
+    [[nodiscard]] static constexpr T Min(T a, T b)
     {
         return a < b ? a : b;
     }
@@ -43,7 +43,7 @@ struct Math
     /// @param b 비교할 값
     /// @return 최댓값
     template <typename T> requires std::is_arithmetic_v<T>
-    [[nodiscard]] inline static constexpr T Max(T a, T b)
+    [[nodiscard]] static constexpr T Max(T a, T b)
     {
         return a > b ? a : b;
     }
@@ -55,7 +55,7 @@ struct Math
     /// @param max 최댓값
     /// @return 최솟값과 최댓값 사이의 값
     template <typename T> requires std::is_arithmetic_v<T>
-    [[nodiscard]] inline static constexpr T Clamp(T value, T min, T max)
+    [[nodiscard]] static constexpr T Clamp(T value, T min, T max)
     {
         return Min(Max(value, min), max);
     }
@@ -67,7 +67,7 @@ struct Math
     /// @param tolerance 허용 오차
     /// @return 두 값이 거의 같은지 여부
     template <typename T> requires std::is_floating_point_v<T>
-    [[nodiscard]] inline static constexpr bool IsNearlyEqual(T a, T b, T tolerance = SMALL_NUMBER)
+    [[nodiscard]] static constexpr bool IsNearlyEqual(T a, T b, T tolerance = SMALL_NUMBER)
     {
         return Abs(a - b) <= tolerance;
     }
@@ -78,7 +78,7 @@ struct Math
     /// @param tolerance 허용 오차
     /// @return 값이 거의 0인지 여부
     template <typename T> requires std::is_floating_point_v<T>
-    [[nodiscard]] inline static constexpr bool IsNearlyZero(T value, T tolerance = SMALL_NUMBER)
+    [[nodiscard]] static constexpr bool IsNearlyZero(T value, T tolerance = SMALL_NUMBER)
     {
         return Abs(value) <= tolerance;
     }
@@ -88,7 +88,7 @@ struct Math
     /// @param value 값
     /// @return 값이 NaN인지 여부
     template <typename T> requires std::is_floating_point_v<T>
-    [[nodiscard]] inline static bool IsNaN(T value)
+    [[nodiscard]] static bool IsNaN(T value)
     {
         return isnan(value) != 0;
     }
@@ -98,7 +98,7 @@ struct Math
     /// @param value 값
     /// @return 값이 무한대인지 여부
     template <typename T> requires std::is_floating_point_v<T>
-    [[nodiscard]] inline static bool IsInfinite(T value)
+    [[nodiscard]] static bool IsInfinite(T value)
     {
         return isinf(value) != 0;
     }
@@ -106,12 +106,12 @@ struct Math
     /// @brief Sin 함수를 계산합니다.
     /// @param value 각도
     /// @return Sin 함수 값
-    [[nodiscard]] inline static double Sin(double value)
+    [[nodiscard]] static double Sin(double value)
     {
         return sin(value);
     }
 
-    [[nodiscard]] inline static float Sin(float value)
+    [[nodiscard]] static float Sin(float value)
     {
         return sinf(value);
     }
@@ -119,12 +119,12 @@ struct Math
     /// @brief Cos 함수를 계산합니다.
     /// @param value 각도
     /// @return Cos 함수 값
-    [[nodiscard]] inline static double Cos(double value)
+    [[nodiscard]] static double Cos(double value)
     {
         return cos(value);
     }
 
-    [[nodiscard]] inline static float Cos(float value)
+    [[nodiscard]] static float Cos(float value)
     {
         return cosf(value);
     }
@@ -132,12 +132,12 @@ struct Math
     /// @brief Tan 함수를 계산합니다.
     /// @param value 각도
     /// @return Tan 함수 값
-    [[nodiscard]] inline static double Tan(double value)
+    [[nodiscard]] static double Tan(double value)
     {
         return tan(value);
     }
 
-    [[nodiscard]] inline static float Tan(float value)
+    [[nodiscard]] static float Tan(float value)
     {
         return tanf(value);
     }
@@ -145,12 +145,12 @@ struct Math
     /// @brief ArcSin 함수를 계산합니다.
     /// @param value 값
     /// @return ArcSin 함수 값
-    [[nodiscard]] inline static double Asin(double value)
+    [[nodiscard]] static double Asin(double value)
     {
         return asin(value < -1.0 ? -1.0 : (value < 1.0 ? value : 1.0));
     }
 
-    [[nodiscard]] inline static float Asin(float value)
+    [[nodiscard]] static float Asin(float value)
     {
         return asinf(value < -1.0f ? -1.0f : (value < 1.0f ? value : 1.0f));
     }
@@ -158,13 +158,13 @@ struct Math
     /// @brief ArcCos 함수를 계산합니다.
     /// @param value 값
     /// @return ArcCos 함수 값
-    [[nodiscard]] inline static double Acos(double value)
+    [[nodiscard]] static double Acos(double value)
     {
         // value가 -1.0보다 작으면 -1.0으로, 1.0보다 크면 1.0으로 설정합니다.
         return acos(value < -1.0 ? -1.0 : (value < 1.0 ? value : 1.0));
     }
 
-    [[nodiscard]] inline static float Acos(float value)
+    [[nodiscard]] static float Acos(float value)
     {
         return acosf(value < -1.0f ? -1.0f : (value < 1.0f ? value : 1.0f));
     }
@@ -172,12 +172,12 @@ struct Math
     /// @brief ArcTan 함수를 계산합니다.
     /// @param value 값
     /// @return ArcTan 함수 값
-    [[nodiscard]] inline static double Atan(double value)
+    [[nodiscard]] static double Atan(double value)
     {
         return atan(value);
     }
 
-    [[nodiscard]] inline static float Atan(float value)
+    [[nodiscard]] static float Atan(float value)
     {
         return atanf(value);
     }
@@ -185,12 +185,12 @@ struct Math
     /// @brief ArcTan2 함수를 계산합니다.
     /// @param y y 값
     /// @param x x 값
-    [[nodiscard]] inline static double Atan2(double y, double x)
+    [[nodiscard]] static double Atan2(double y, double x)
     {
         return atan2(y, x);
     }
 
-    [[nodiscard]] inline static float Atan2(float y, float x)
+    [[nodiscard]] static float Atan2(float y, float x)
     {
         return atan2f(y, x);
     }
@@ -198,12 +198,12 @@ struct Math
     /// @brief 제곱근을 계산합니다.
     /// @param value 값
     /// @return 제곱근
-    [[nodiscard]] inline static double Sqrt(double value)
+    [[nodiscard]] static double Sqrt(double value)
     {
         return sqrt(value);
     }
 
-    [[nodiscard]] inline static float Sqrt(float value)
+    [[nodiscard]] static float Sqrt(float value)
     {
         return sqrtf(value);
     }
@@ -212,7 +212,7 @@ struct Math
     /// @param value 값
     /// @return 제곱
     template <typename T> requires std::is_arithmetic_v<T>
-    [[nodiscard]] inline static constexpr T Square(T value)
+    [[nodiscard]] static constexpr T Square(T value)
     {
         return value * value;
     }
@@ -224,27 +224,27 @@ struct Math
     /// @param alpha 보간 계수
     /// @return 보간된 값
     template <typename T> requires std::is_arithmetic_v<T>
-    [[nodiscard]] inline static constexpr T Lerp(T a, T b, float alpha)
+    [[nodiscard]] static constexpr T Lerp(T a, T b, float alpha)
     {
         return a + (b - a) * alpha;
     }
 
 
     /// @brief 랜덤 함수를 초기화합니다.
-    inline static void RandInit(int seed)
+    static void RandInit(int seed)
     {
         srand(seed);
     }
 
     /// @brief min ~ max 사이의 랜덤 정수를 생성합니다.
-    [[nodiscard]] inline static int RandRange(int min, int max)
+    [[nodiscard]] static int RandRange(int min, int max)
     {
         const int range = (max - min) + 1;
 		return min + RandHelper(range);
     }
 
     /// @brief min ~ max 사이의 랜덤 실수를 생성합니다.
-    [[nodiscard]] inline static float RandRange(float min, float max)
+    [[nodiscard]] static float RandRange(float min, float max)
     {
         return min + (max - min) * FRand();
     }
@@ -252,14 +252,14 @@ struct Math
 private:
     /// @brief 0 ~ RAND_MAX 사이의 랜덤 정수를 생성합니다.
     /// @return 랜덤 정수
-    [[nodiscard]] inline static int Rand()
+    [[nodiscard]] static int Rand()
     {
         return rand();
     }
 
     /// @brief 0 ~ 1 사이의 랜덤 실수를 생성합니다.
     /// @return 랜덤 실수
-    [[nodiscard]] inline static float FRand()
+    [[nodiscard]] static float FRand()
     {
         // FP32 mantissa can only represent 24 bits before losing precision
         constexpr int RandMax = 0x00ffffff < RAND_MAX ? 0x00ffffff : RAND_MAX;
@@ -267,10 +267,10 @@ private:
     }
 
     /// @brief Helper function for rand implementations. Returns a random number in [0..A)
-	[[nodiscard]] inline static int RandHelper(int A)
+	[[nodiscard]] static int RandHelper(int A)
 	{
 		// Note that on some platforms RAND_MAX is a large number so we cannot do ((rand()/(RAND_MAX+1)) * A)
 		// or else we may include the upper bound results, which should be excluded.
-		return A > 0 ? Min(static_cast<int>(FRand() * (float)A), A - 1) : 0;
+		return A > 0 ? Min(static_cast<int>(FRand() * static_cast<float>(A)), A - 1) : 0;
 	}
 }; // struct Math

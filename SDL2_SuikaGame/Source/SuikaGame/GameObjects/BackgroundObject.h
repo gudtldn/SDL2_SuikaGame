@@ -3,7 +3,7 @@
 
 
 /// @brief 배경 오브젝트
-class BackgoundObject : public GameObject
+class BackgroundObject : public GameObject
 {
 private:
     /// @brief 배경 색상
@@ -17,7 +17,7 @@ private:
     SDL_Color second_background_color;
 
 public:
-    BackgoundObject(GameEngine* engine);
+    BackgroundObject(GameEngine* engine);
 
 protected:
     virtual void Render(SDL_Renderer* renderer) const override;

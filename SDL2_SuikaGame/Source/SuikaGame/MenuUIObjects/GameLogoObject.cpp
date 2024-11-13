@@ -10,7 +10,7 @@ GameLogoObject::GameLogoObject(GameEngine* engine)
     THROW_IF_FAILED(
         raw_logo_texture,
         "Failed to load logo texture! SDL Error: {}", SDL_GetError()
-    );
+    )
 
     // 로고 위치 설정
     int logo_width, logo_height;
