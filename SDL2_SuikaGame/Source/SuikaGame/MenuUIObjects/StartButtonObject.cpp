@@ -10,7 +10,7 @@ StartButtonObject::StartButtonObject(GameEngine* engine)
     SDL_Texture* raw_button_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/game_start_button.png");
     THROW_IF_FAILED(
         raw_button_texture,
-        "Failed to load button texture! SDL Error: %s", SDL_GetError()
+        "Failed to load button texture! SDL Error: {}", SDL_GetError()
     );
 
     // 버튼 위치 설정

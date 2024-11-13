@@ -12,7 +12,7 @@ BorderBackgroundObject::BorderBackgroundObject(GameEngine* engine)
     SDL_Texture* raw_border_background_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/border_bg.png");
     THROW_IF_FAILED(
         raw_border_background_texture,
-        "Failed to load border background texture! SDL Error: %s", SDL_GetError()
+        "Failed to load border background texture! SDL Error: {}", SDL_GetError()
     );
 
     // Border 배경 위치 설정

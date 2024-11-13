@@ -13,7 +13,7 @@ ScoreboradObject::ScoreboradObject(GameEngine* engine)
     SDL_Texture* raw_bubble_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/bubble.png");
     THROW_IF_FAILED(
         raw_bubble_texture,
-        "Failed to load bubble texture! SDL Error: %s", SDL_GetError()
+        "Failed to load bubble texture! SDL Error: {}", SDL_GetError()
     );
 
     // Border 배경 위치 설정

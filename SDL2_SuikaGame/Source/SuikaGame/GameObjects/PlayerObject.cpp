@@ -19,7 +19,7 @@ PlayerObject::PlayerObject(GameEngine* engine)
     SDL_Texture* raw_player_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/player.png");
     THROW_IF_FAILED(
         raw_player_texture,
-        "Failed to load player texture! SDL Error: %s", SDL_GetError()
+        "Failed to load player texture! SDL Error: {}", SDL_GetError()
     );
 
     // 플레이어 움직임 제한 설정

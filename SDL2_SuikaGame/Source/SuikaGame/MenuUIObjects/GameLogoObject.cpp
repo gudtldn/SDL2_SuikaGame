@@ -9,7 +9,7 @@ GameLogoObject::GameLogoObject(GameEngine* engine)
     SDL_Texture* raw_logo_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/suika_game_logo.png");
     THROW_IF_FAILED(
         raw_logo_texture,
-        "Failed to load logo texture! SDL Error: %s", SDL_GetError()
+        "Failed to load logo texture! SDL Error: {}", SDL_GetError()
     );
 
     // 로고 위치 설정
