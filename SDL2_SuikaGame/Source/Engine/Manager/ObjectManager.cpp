@@ -6,7 +6,7 @@
 
 void ObjectManager::HandleEvent(const SDL_Event& event)
 {
-    auto copy_game_objects = game_objects;
+    const auto copy_game_objects = game_objects;
     for (auto& object : copy_game_objects)
     {
         object->OnEvent(event);
@@ -15,7 +15,7 @@ void ObjectManager::HandleEvent(const SDL_Event& event)
 
 void ObjectManager::HandleUpdate(float delta_time)
 {
-    auto copy_game_objects = game_objects;
+    const auto copy_game_objects = game_objects;
     for (auto& object : copy_game_objects)
     {
         object->Update(delta_time);
@@ -63,10 +63,7 @@ void ObjectManager::GetGameObjectsByTags(
     for (const auto& object : game_objects)
     {
         const auto& object_tags = object->GetTags();
-        if (std::includes(
-            object_tags.begin(), object_tags.end(),
-            tags.begin(), tags.end()
-        ))
+        if (std::ranges::includes(object_tags, tags))
         {
             out_objects.push_back(object.get());
         }
