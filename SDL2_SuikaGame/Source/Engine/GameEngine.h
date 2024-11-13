@@ -109,7 +109,7 @@ private:
     inline void Update(float delta_time);
 
     /// @brief 게임 오브젝트를 렌더링합니다.
-    inline void Render();
+    inline void Render() const;
 
     /// @brief 누적 시간을 추가합니다.
     /// @param time 추가할 시간

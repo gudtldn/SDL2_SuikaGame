@@ -1,5 +1,4 @@
 #include "GameEngine.h"
-#include "Engine/GlobalMacro.h"
 #include "Engine/Components/Stage.h"
 #include "Engine/Components/GameObject.h"
 #include "Engine/Utils/Math.h"
@@ -17,11 +16,12 @@ GameEngine::GameEngine(
     int screen_width,
     int screen_height
 )
-    : is_running(false)
-    , window(nullptr)
+    : window(nullptr)
     , renderer(nullptr)
     , controller(nullptr)
     , object_manager(this)
+    , is_running(false)
+    , accumulated_time(0.0f)
 {
     // SDL 미 초기화 시 예외 처리
     if (SDL_WasInit(SDL_INIT_VIDEO) == 0)
@@ -84,16 +84,15 @@ void GameEngine::Run()
     Math::RandInit(static_cast<int>(time(nullptr)));
 
     Uint64 now_time = SDL_GetPerformanceCounter();
-    Uint64 last_time = 0;
-    float delta_time_sec = 0.0;
 
     while (is_running)
     {
         // delta_time 계산
-        last_time = now_time;
+        const Uint64 last_time = now_time;
         now_time = SDL_GetPerformanceCounter();
 
-        delta_time_sec = (float)((now_time - last_time) / (float)SDL_GetPerformanceFrequency());
+        const float delta_time_sec =
+            static_cast<float>(now_time - last_time) / static_cast<float>(SDL_GetPerformanceFrequency());
 
 
         // 누적 시간 추가
@@ -187,7 +186,7 @@ inline void GameEngine::Update(float delta_time)
     }
 }
 
-inline void GameEngine::Render()
+inline void GameEngine::Render() const
 {
     auto& game_objects = object_manager.GetGameObjects();
 
@@ -216,14 +215,10 @@ inline void GameEngine::Render()
     }
 
     // Z-Order로 정렬
-    std::sort(
-        render_queue.begin(),
-        render_queue.end(),
-        [](const auto& lhs, const auto& rhs)
-        {
-            return lhs->GetZOrder() < rhs->GetZOrder();
-        }
-    );
+    std::ranges::sort(render_queue, [](const auto& lhs, const auto& rhs)
+    {
+        return lhs->GetZOrder() < rhs->GetZOrder();
+    });
 
     // 렌더링
     for (auto& game_object : render_queue)
