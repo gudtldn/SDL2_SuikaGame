@@ -6,34 +6,34 @@
 class PlayerObject : public GameObject
 {
 private:
-    /// @brief 플레이어
-    std::unique_ptr<Texture2D> player;
+    /// @brief 플레이어 텍스처
+    std::unique_ptr<Texture2D> player_texture;
 
-    /// @brief 가이드 선
-    Rectangle guide_line;
+    /// @brief 플레이어 가이드 선
+    Rectangle player_guide_line;
 
 private:
-    // 가이드 선 크기
-    static constexpr float GUIDE_LINE_WIDTH = 3.0;
-    static constexpr float GUIDE_LINE_HEIGHT = 625.0;
+    // Guide Line
+    static constexpr float GUIDE_LINE_WIDTH = 3.0f;
+    static constexpr float GUIDE_LINE_HEIGHT = 625.0f;
 
-    // Player line
-    static constexpr float PLAYER_LINE_WIDTH = 448.0;
+    // Border
+    static constexpr float BORDER_WIDTH = 448.0f;
+    static constexpr float BORDER_MARGIN = 25.0f;
 
     // Player
-    static constexpr float PLAYER_WIDTH = 104;
-    static constexpr float PLAYER_HEIGHT = 64;
-    static constexpr float PLAYER_SPEED = 600;
+    static constexpr float PLAYER_WIDTH = 104.0f;
+    static constexpr float PLAYER_HEIGHT = 64.0f;
+    static constexpr float PLAYER_SPEED = 600.0f;
 
-    float min_player_x;
-    float max_player_x;
+    float min_border_x;
+    float max_border_x;
     float player_line_y;
 
 public:
     PlayerObject(GameEngine* engine);
 
 protected:
-    virtual void BeginPlay() override;
     virtual void Update(float delta_time) override;
     virtual void Render(SDL_Renderer* renderer) const override;
     virtual void OnEvent(const SDL_Event& event) override;

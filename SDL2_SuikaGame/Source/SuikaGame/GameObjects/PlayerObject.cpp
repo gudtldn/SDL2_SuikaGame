@@ -3,14 +3,14 @@
 // TODO: 가이드라인이 메인이고, Player가 가이드라인을 따라다니는 형태로 구현해야 함
 PlayerObject::PlayerObject(GameEngine* engine)
     : GameObject(engine)
-    , guide_line(
+    , player_texture(nullptr)
+    , player_guide_line(
         Vector2D::Zero,
         Vector2D(
             GUIDE_LINE_WIDTH,
             GUIDE_LINE_HEIGHT
         )
     )
-    , player(nullptr)
 {
     // z-order 설정
     z_order = -1;
@@ -22,37 +22,47 @@ PlayerObject::PlayerObject(GameEngine* engine)
         "Failed to load player texture! SDL Error: {}", SDL_GetError()
     );
 
-    // 플레이어 움직임 제한 설정
-    min_player_x = (SCREEN_WIDTH - PLAYER_LINE_WIDTH) / 2.0f;
-    max_player_x = min_player_x + PLAYER_LINE_WIDTH - PLAYER_WIDTH;
-    player_line_y = SCREEN_HEIGHT / 2.0f - 320.0f;
-
-    // 플레이어 설정
-    player = std::make_unique<Texture2D>(
+    // 플레이어 텍스처 생성
+    player_texture = std::make_unique<Texture2D>(
         raw_player_texture,
         Vector2D(
-            min_player_x + (PLAYER_LINE_WIDTH - PLAYER_WIDTH) / 2.0f,
+            min_border_x + (BORDER_WIDTH - PLAYER_WIDTH) / 2.0f,
             player_line_y - PLAYER_HEIGHT / 2.0f
         ),
         Vector2D(PLAYER_WIDTH, PLAYER_HEIGHT)
     );
-}
 
-void PlayerObject::BeginPlay()
-{
+    // 플레이어 움직임 제한 설정
+    min_border_x = (SCREEN_WIDTH - BORDER_WIDTH) / 2.0f;
+    max_border_x = min_border_x + BORDER_WIDTH - GUIDE_LINE_WIDTH;
+
+    // margin 적용
+    min_border_x += BORDER_MARGIN;
+    max_border_x -= BORDER_MARGIN;
+
+    // player_guide_line의 y 좌표 설정
+    player_line_y = SCREEN_HEIGHT / 2.0f - 320.0f;
 }
 
 void PlayerObject::Update(float delta_time)
 {
     const Uint8* key_states = SDL_GetKeyboardState(nullptr);
 
+    // 조이스틱 입력
+    Sint16 left_stick_x = 0;
+    bool dpad_left = false;
+    bool dpad_right = false;
+
     SDL_GameController* gamecontroller = GetEngine()->GetController();
-    Sint16 left_stick_x = SDL_GameControllerGetAxis(gamecontroller, SDL_CONTROLLER_AXIS_LEFTX);
-    bool dpad_left = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
-    bool dpad_right = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    if (gamecontroller != nullptr)
+    {
+        left_stick_x = SDL_GameControllerGetAxis(gamecontroller, SDL_CONTROLLER_AXIS_LEFTX);
+        dpad_left = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        dpad_right = SDL_GameControllerGetButton(gamecontroller, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+    }
 
     // 플레이어 이동
-    float new_x = player->GetPosition().X;
+    float new_x = player_guide_line.GetPosition().X;
 
 
     // 조이스틱 입력
@@ -67,17 +77,17 @@ void PlayerObject::Update(float delta_time)
     else
     {
         if (
-            key_states[SDL_SCANCODE_LEFT]          // 왼쪽 방향키
-            || key_states[SDL_SCANCODE_A]          // A 키
-            || dpad_left                           // D-Pad 왼쪽
+            key_states[SDL_SCANCODE_LEFT]        // 왼쪽 방향키
+            || key_states[SDL_SCANCODE_A]        // A 키
+            || dpad_left                         // D-Pad 왼쪽
         ) {
             new_x -= PLAYER_SPEED * delta_time;
         }
 
         if (
-            key_states[SDL_SCANCODE_RIGHT]         // 오른쪽 방향키
-            || key_states[SDL_SCANCODE_D]          // D 키
-            || dpad_right                          // D-Pad 오른쪽
+            key_states[SDL_SCANCODE_RIGHT]       // 오른쪽 방향키
+            || key_states[SDL_SCANCODE_D]        // D 키
+            || dpad_right                        // D-Pad 오른쪽
         ) {
             new_x += PLAYER_SPEED * delta_time;
         }
@@ -87,29 +97,34 @@ void PlayerObject::Update(float delta_time)
     // 플레이어 위치 적용
     SetPlayerPosition(new_x);
 
-    float clamped_x = Math::Clamp(new_x, min_player_x, max_player_x);
-    guide_line.SetPosition(Vector2D(
-        clamped_x + PLAYER_WIDTH / 2.0f - GUIDE_LINE_WIDTH / 2.0f,
-        player_line_y
+    // 플레이어 텍스처 위치 설정
+    player_texture->SetPosition(Vector2D(
+        player_guide_line.GetPosition().X - (PLAYER_WIDTH * 0.15f),
+        player_line_y - PLAYER_HEIGHT / 2.0f
     ));
 }
 
 void PlayerObject::Render(SDL_Renderer* renderer) const
 {
-    guide_line.Render(renderer);
-    player->Render(renderer);
+    player_guide_line.Render(renderer);
+    player_texture->Render(renderer);
 }
 
 void PlayerObject::OnEvent(const SDL_Event& event)
 {
     if (event.type == SDL_MOUSEMOTION)
     {
-        SetPlayerPosition(event.motion.x - PLAYER_WIDTH / 2.0f);
+        SetPlayerPosition(
+            static_cast<float>(event.motion.x)
+        );
     }
 }
 
-inline void PlayerObject::SetPlayerPosition(float x)
+inline void PlayerObject::SetPlayerPosition(float new_x)
 {
-    x = Math::Clamp(x, min_player_x, max_player_x);
-    player->SetPosition(Vector2D(x, player->GetPosition().Y));
+    float clamped_x = Math::Clamp(new_x, min_border_x, max_border_x);
+    player_guide_line.SetPosition(Vector2D(
+        clamped_x,
+        player_line_y
+    ));
 }
