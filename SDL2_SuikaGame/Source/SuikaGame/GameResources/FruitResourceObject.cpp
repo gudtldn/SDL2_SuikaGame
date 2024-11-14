@@ -27,6 +27,6 @@ FruitResourceObject::FruitResourceObject(GameEngine* engine)
             "Failed to load fruit texture! SDL Error: {}", SDL_GetError()
         )
 
-        fruit_textures[i] = std::make_unique<Texture2D>(raw_fruit_texture, Vector2D::Zero);
+        fruit_textures[i] = std::make_unique<Texture2D>(raw_fruit_texture);
     }
 }
