@@ -114,11 +114,20 @@ void PlayerObject::OnEvent(const SDL_Event& event)
         );
     }
 
-    if (event.type == SDL_MOUSEBUTTONDOWN)
-    {
-        // TODO: 과일 생성
-        FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
-        fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
+    if (
+        event.type == SDL_MOUSEBUTTONDOWN                       // 마우스 버튼을 누를 때
+        || event.type == SDL_KEYDOWN                            // 키보드 키를 누를 때
+        || event.type == SDL_CONTROLLERBUTTONDOWN               // 컨트롤러 버튼을 누를 때
+    ) {
+        if (
+            event.button.button == SDL_BUTTON_LEFT              // 마우스 왼쪽 버튼
+            || event.key.keysym.sym == SDLK_SPACE               // 키보드 스페이스바
+            || event.cbutton.button == SDL_CONTROLLER_BUTTON_A  // 컨트롤러 A 버튼
+        ) {
+            // TODO: 과일 생성
+            FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
+            fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
+        }
     }
 }
 
