@@ -81,6 +81,12 @@
     <ClCompile Include="Source\SuikaGame\GameUIObjects\ScoreboardObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameObjects\FruitObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameResources\FruitResourceObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source/Engine/EnginePCH.h">
@@ -156,6 +162,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Source\SuikaGame\GameUIObjects\ScoreboardObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameObjects\FruitObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameResources\FruitResourceObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

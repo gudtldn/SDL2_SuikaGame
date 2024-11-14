@@ -102,7 +102,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
@@ -132,8 +132,8 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
@@ -160,7 +160,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
@@ -190,8 +190,8 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
