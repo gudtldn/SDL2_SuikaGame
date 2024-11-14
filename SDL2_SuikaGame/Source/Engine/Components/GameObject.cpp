@@ -30,8 +30,7 @@ void GameObject::OnEvent(const SDL_Event& event)
 
 std::string GameObject::GetName() const
 {
-    std::string name = typeid(*this).name();
-
+    const std::string name = typeid(*this).name();
     return std::format(
         "{}_Inst_{}",
         name.substr(name.find_first_of(' ') + 1),
