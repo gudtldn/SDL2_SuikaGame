@@ -1,17 +1,20 @@
 #pragma once
+#include <format>
+#include <SDL_log.h>
+
+
 #ifdef NDEBUG
 
-#define LOG_INFO(fmt, ...)
-#define LOG_WARN(fmt, ...)
-#define LOG_ERROR(fmt, ...)
-#define LOG_CRITICAL(fmt, ...)
+#define __LOG__(func, fmt, ...)    func(SDL_LOG_CATEGORY_APPLICATION, std::format(fmt "\n", __VA_ARGS__).c_str())
+
+#define LOG_INFO(fmt, ...)         __LOG__(SDL_LogInfo, fmt, __VA_ARGS__)      // 일반적인 정보
+#define LOG_WARN(fmt, ...)         __LOG__(SDL_LogWarn, fmt, __VA_ARGS__)      // 경고
+#define LOG_ERROR(fmt, ...)        __LOG__(SDL_LogError, fmt, __VA_ARGS__)     // 에러
+#define LOG_CRITICAL(fmt, ...)     __LOG__(SDL_LogCritical, fmt, __VA_ARGS__)  // 치명적인 에러
 #define LOG_DEBUG(fmt, ...)
 #define LOG_VERBOSE(fmt, ...)
 
 #else
-
-#include <format>
-#include <SDL_log.h>
 
 static consteval const char* filename(const char* path) {
     const char* file = path;
