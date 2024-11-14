@@ -1,5 +1,7 @@
 #pragma once
 #include"Engine/Utils/Math.h"
+#include <format>
+#include <string>
 
 // forward declaration
 namespace std
@@ -84,6 +86,9 @@ public:
     /// @return 거의 같으면 true, 아니면 false
     bool Equals(const Vector2D& rhs, float tolerance = KINDA_SMALL_NUMBER) const;
 
+    /// @brief 벡터를 문자열로 변환합니다.
+    /// @return 변환된 문자열
+    std::string ToString() const { return std::format("Vector2D({}, {})", X, Y); }
 
     /****** Operator Overloading ******/
 
