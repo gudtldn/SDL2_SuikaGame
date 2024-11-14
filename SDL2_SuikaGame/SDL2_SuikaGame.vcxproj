@@ -219,6 +219,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source/Engine/Utils/Math.h" />
     <ClInclude Include="Source/SuikaGame/SuikaGame.h" />
     <ClInclude Include="Source\Engine\Manager\Box2DManager.h" />
+    <ClInclude Include="Source\SuikaGame\FruitResourceObject.h" />
     <ClInclude Include="Source\SuikaGame\GameObjects\BackgroundObject.h" />
     <ClInclude Include="Source/SuikaGame/GameObjects/BgmObject.h" />
     <ClInclude Include="Source/SuikaGame/GameObjects/PlayerObject.h" />
@@ -247,6 +248,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClCompile Include="Source/SuikaGame/main.cpp" />
     <ClCompile Include="Source/SuikaGame/SuikaGame.cpp" />
     <ClCompile Include="Source\Engine\Manager\Box2DManager.cpp" />
+    <ClCompile Include="Source\SuikaGame\FruitResourceObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\BackgroundObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/BgmObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/PlayerObject.cpp" />
