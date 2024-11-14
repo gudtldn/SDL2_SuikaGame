@@ -61,7 +61,7 @@ void StartButtonObject::OnEvent(const SDL_Event& event)
     };
 
     // 마우스 motion 이벤트 처리
-    if (event.type == SDL_MOUSEMOTION)
+    if (event.type == SDL_MOUSEMOTION && event.motion.state == SDL_PRESSED)
     {
         if (is_clicked)
         {
@@ -74,14 +74,14 @@ void StartButtonObject::OnEvent(const SDL_Event& event)
     }
 
     // 마우스 down 이벤트 처리
-    if (event.type == SDL_MOUSEBUTTONDOWN)
+    if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT)
     {
         is_clicked = mouse_x >= button_rect.x && mouse_x <= button_rect.x + button_rect.w
             && mouse_y >= button_rect.y && mouse_y <= button_rect.y + button_rect.h;
     }
 
     // 마우스 up 이벤트 처리
-    if (event.type == SDL_MOUSEBUTTONUP)
+    if (event.type == SDL_MOUSEBUTTONUP && event.button.button == SDL_BUTTON_LEFT)
     {
         if (is_clicked)
         {
