@@ -2,22 +2,19 @@
 
 
 Rectangle::Rectangle()
-    : position()
-    , size()
-    , color({ 255, 255, 255, 255 })
+    : color{ 255, 255, 255, 255 }
 {
 }
 
-Rectangle::Rectangle(const Vector2D& position, const Vector2D& size)
-    : position(position)
-    , size(size)
-    , color({ 255, 255, 255, 255 })
+Rectangle::Rectangle(const Vector2D& size)
+    : size(size)
+    , color{ 255, 255, 255, 255 }
 {
 }
 
-void Rectangle::Render(SDL_Renderer* renderer) const
+void Rectangle::Render(SDL_Renderer* renderer, const Vector2D& position) const
 {
-    SDL_FRect rect = {
+    const SDL_FRect rect = {
         .x = static_cast<float>(position.X),
         .y = static_cast<float>(position.Y),
         .w = static_cast<float>(size.X),

@@ -13,24 +13,18 @@ GameLogoObject::GameLogoObject(GameEngine* engine)
     )
 
     // 로고 위치 설정
-    int logo_width, logo_height;
-    SDL_QueryTexture(raw_logo_texture, nullptr, nullptr, &logo_width, &logo_height);
-
-    logo_texture = std::make_unique<Texture2D>(
-        raw_logo_texture,
-        Vector2D(
-            static_cast<float>((SCREEN_WIDTH - logo_width) / 2),
-            static_cast<float>((SCREEN_HEIGHT - logo_height) / 2) * 0.4f
-        ),
-        Vector2D(
-            static_cast<float>(logo_width),
-            static_cast<float>(logo_height)
-        )
-    );
+    logo_texture = std::make_unique<Texture2D>(raw_logo_texture);
 }
 
 void GameLogoObject::Render(SDL_Renderer* renderer) const
 {
     // 로고 렌더링
-    logo_texture->Render(renderer);
+    const Vector2D logo_size = logo_texture->GetSize();
+    logo_texture->Render(
+        renderer,
+        Vector2D(
+            (SCREEN_WIDTH - logo_size.X) / 2,
+            (SCREEN_HEIGHT - logo_size.Y) / 2 * 0.4f
+        )
+    );
 }

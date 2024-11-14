@@ -5,7 +5,6 @@ PlayerObject::PlayerObject(GameEngine* engine)
     : GameObject(engine)
     , player_texture(nullptr)
     , player_guide_line(
-        Vector2D::Zero,
         Vector2D(
             GUIDE_LINE_WIDTH,
             GUIDE_LINE_HEIGHT
@@ -31,16 +30,12 @@ PlayerObject::PlayerObject(GameEngine* engine)
     max_border_x -= BORDER_MARGIN;
 
     // player_guide_line의 y 좌표 설정
-    player_line_y = SCREEN_HEIGHT / 2.0f - 320.0f;
+    player_position.Y = SCREEN_HEIGHT / 2.0f - 320.0f;
 
 
     // 플레이어 텍스처 생성
     player_texture = std::make_unique<Texture2D>(
         raw_player_texture,
-        Vector2D(
-            min_border_x + (BORDER_WIDTH - PLAYER_WIDTH) / 2.0f,
-            player_line_y - PLAYER_HEIGHT / 2.0f
-        ),
         Vector2D(PLAYER_WIDTH, PLAYER_HEIGHT)
     );
 }
@@ -63,8 +58,7 @@ void PlayerObject::Update(float delta_time)
     }
 
     // 플레이어 이동
-    float new_x = player_guide_line.GetPosition().X;
-
+    float new_x = player_position.X;
 
     // 조이스틱 입력
     if (
@@ -94,21 +88,20 @@ void PlayerObject::Update(float delta_time)
         }
     }
 
-
     // 플레이어 위치 적용
     SetPlayerPosition(new_x);
-
-    // 플레이어 텍스처 위치 설정
-    player_texture->SetPosition(Vector2D(
-        player_guide_line.GetPosition().X - (PLAYER_WIDTH * 0.15f),
-        player_line_y - PLAYER_HEIGHT / 2.0f
-    ));
 }
 
 void PlayerObject::Render(SDL_Renderer* renderer) const
 {
-    player_guide_line.Render(renderer);
-    player_texture->Render(renderer);
+    player_guide_line.Render(renderer, player_position);
+    player_texture->Render(
+        renderer,
+        Vector2D(
+            player_position.X - (PLAYER_WIDTH * 0.15f),
+            player_position.Y - PLAYER_HEIGHT / 2.0f
+        )
+    );
 }
 
 void PlayerObject::OnEvent(const SDL_Event& event)
@@ -126,11 +119,8 @@ void PlayerObject::OnEvent(const SDL_Event& event)
     }
 }
 
-inline void PlayerObject::SetPlayerPosition(float new_x)
+void PlayerObject::SetPlayerPosition(float new_x)
 {
-    const float clamped_x = Math::Clamp(new_x, min_border_x, max_border_x);
-    player_guide_line.SetPosition(Vector2D(
-        clamped_x,
-        player_line_y
-    ));
+    player_position.X = Math::Clamp(new_x, min_border_x, max_border_x);
 }
+

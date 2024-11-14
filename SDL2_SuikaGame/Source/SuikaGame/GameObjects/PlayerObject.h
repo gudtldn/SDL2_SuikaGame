@@ -12,8 +12,11 @@ private:
     /// @brief 플레이어 가이드 선
     Rectangle player_guide_line;
 
+    /// @brief 플레이어 위치
+    Vector2D player_position;
+
 private:
-    // Guide Line
+    // Guideline
     static constexpr float GUIDE_LINE_WIDTH = 3.0f;
     static constexpr float GUIDE_LINE_HEIGHT = 625.0f;
 
@@ -28,7 +31,6 @@ private:
 
     float min_border_x;
     float max_border_x;
-    float player_line_y;
 
 public:
     PlayerObject(GameEngine* engine);

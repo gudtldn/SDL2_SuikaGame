@@ -16,20 +16,7 @@ BorderObject::BorderObject(GameEngine* engine)
     )
 
     // Border 위치 설정
-    int border_width, border_height;
-    SDL_QueryTexture(raw_border_texture, nullptr, nullptr, &border_width, &border_height);
-
-    border_texture = std::make_unique<Texture2D>(
-        raw_border_texture,
-        Vector2D(
-            static_cast<float>((SCREEN_WIDTH - border_width) / 2),
-            static_cast<float>((SCREEN_HEIGHT - border_height) / 2)
-        ),
-        Vector2D(
-            static_cast<float>(border_width),
-            static_cast<float>(border_height)
-        )
-    );
+    border_texture = std::make_unique<Texture2D>(raw_border_texture);
 }
 
 void BorderObject::Update(float delta_time)
@@ -39,5 +26,12 @@ void BorderObject::Update(float delta_time)
 
 void BorderObject::Render(SDL_Renderer* renderer) const
 {
-    border_texture->Render(renderer);
+    const Vector2D border_size = border_texture->GetSize();
+    border_texture->Render(
+        renderer,
+        Vector2D(
+            (SCREEN_WIDTH - border_size.X) / 2,
+            (SCREEN_HEIGHT - border_size.Y) / 2
+        )
+    );
 }

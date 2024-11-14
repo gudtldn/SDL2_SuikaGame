@@ -5,6 +5,8 @@
   - [ ] Box2DManger 구현
     - [ ] 기본적인 World 생성 및 소멸
 - [ ] EnginePCH.h 간소화
+- [x] Texture2D, FTexture2D의 Render에 position받아서 그리기
+
 
 # 게임 기능 구현
 ## 메인 메뉴

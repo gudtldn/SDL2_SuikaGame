@@ -1,12 +1,8 @@
 #include "Texture2D.h"
 
 
-Texture2D::Texture2D(
-    SDL_Texture* texture,
-    const Vector2D& position
-)
+Texture2D::Texture2D(SDL_Texture* texture)
     : texture(texture, SDL_DestroyTexture)
-    , tex_position(position)
 {
     int w, h;
     SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
@@ -15,27 +11,20 @@ Texture2D::Texture2D(
 
 Texture2D::Texture2D(
     SDL_Texture* texture,
-    const Vector2D& position,
     const Vector2D& size
 )
     : texture(texture, SDL_DestroyTexture)
-    , tex_position(position)
     , tex_size(size)
 {
 }
 
-void Texture2D::Render(SDL_Renderer* renderer, const SDL_Rect* srcrect) const
+void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, const SDL_Rect* srcrect) const
 {
-    SDL_Rect dstrect = GetRect();
-    SDL_RenderCopy(renderer, texture.get(), srcrect, &dstrect);
-}
-
-SDL_Rect Texture2D::GetRect() const
-{
-    return {
-        .x = static_cast<int>(tex_position.X),
-        .y = static_cast<int>(tex_position.Y),
+    const SDL_Rect dstrect = {
+        .x = static_cast<int>(position.X),
+        .y = static_cast<int>(position.Y),
         .w = static_cast<int>(tex_size.X),
         .h = static_cast<int>(tex_size.Y),
     };
+    SDL_RenderCopy(renderer, texture.get(), srcrect, &dstrect);
 }

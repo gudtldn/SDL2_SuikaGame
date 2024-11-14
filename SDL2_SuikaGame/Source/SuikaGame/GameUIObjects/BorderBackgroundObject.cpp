@@ -16,24 +16,18 @@ BorderBackgroundObject::BorderBackgroundObject(GameEngine* engine)
     )
 
     // Border 배경 위치 설정
-    int border_bg_width, border_bg_height;
-    SDL_QueryTexture(raw_border_background_texture, nullptr, nullptr, &border_bg_width, &border_bg_height);
-
-    border_background_texture = std::make_unique<Texture2D>(
-        raw_border_background_texture,
-        Vector2D(
-            static_cast<float>((SCREEN_WIDTH - border_bg_width) / 2),
-            static_cast<float>((SCREEN_HEIGHT - border_bg_height) / 2)
-        ),
-        Vector2D(
-            static_cast<float>(border_bg_width),
-            static_cast<float>(border_bg_height)
-        )
-    );
+    border_background_texture = std::make_unique<Texture2D>(raw_border_background_texture);
 }
 
 void BorderBackgroundObject::Render(SDL_Renderer* renderer) const
 {
     // Border 배경 렌더링
-    border_background_texture->Render(renderer);
+    const Vector2D border_bg_size = border_background_texture->GetSize();
+    border_background_texture->Render(
+        renderer,
+        Vector2D(
+            (SCREEN_WIDTH - border_bg_size.X) / 2,
+            (SCREEN_HEIGHT - border_bg_size.Y) / 2
+        )
+    );
 }

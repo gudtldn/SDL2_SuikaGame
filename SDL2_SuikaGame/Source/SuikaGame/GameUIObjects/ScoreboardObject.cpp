@@ -14,23 +14,10 @@ ScoreboardObject::ScoreboardObject(GameEngine* engine)
     THROW_IF_FAILED(
         raw_bubble_texture,
         "Failed to load bubble texture! SDL Error: {}", SDL_GetError()
-    );
+    )
 
     // Border 배경 위치 설정
-    int bubble_width, bubble_height;
-    SDL_QueryTexture(raw_bubble_texture, nullptr, nullptr, &bubble_width, &bubble_height);
-
-    bubble_texture = std::make_unique<Texture2D>(
-        raw_bubble_texture,
-        Vector2D(
-            static_cast<float>((SCREEN_WIDTH - bubble_width) * 0.075f),
-            static_cast<float>((SCREEN_HEIGHT - bubble_height) * 0.1f)
-        ),
-        Vector2D(
-            static_cast<float>(bubble_width),
-            static_cast<float>(bubble_height)
-        )
-    );
+    bubble_texture = std::make_unique<Texture2D>(raw_bubble_texture);
 }
 
 void ScoreboardObject::Update(float delta_time)
@@ -40,5 +27,13 @@ void ScoreboardObject::Update(float delta_time)
 
 void ScoreboardObject::Render(SDL_Renderer* renderer) const
 {
-    bubble_texture->Render(renderer);
+    const Vector2D bubble_pos = bubble_texture->GetSize();
+    bubble_texture->Render(
+        renderer,
+        // FIXME: 값 비율이 뭔가 이상한거 같음
+        Vector2D(
+            (SCREEN_WIDTH - bubble_pos.X) * 0.075f,
+            (SCREEN_HEIGHT - bubble_pos.Y) * 0.1f
+        )
+    );
 }

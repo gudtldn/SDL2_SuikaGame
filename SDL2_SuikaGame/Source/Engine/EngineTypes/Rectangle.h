@@ -7,9 +7,6 @@
 class Rectangle
 {
 private:
-    /// @brief 위치
-    Vector2D position;
-
     /// @brief 크기
     Vector2D size;
 
@@ -18,29 +15,23 @@ private:
 
 public:
     Rectangle();
-    Rectangle(const Vector2D& position, const Vector2D& size);
+    Rectangle(const Vector2D& size);
     ~Rectangle() = default;
 
-    void Render(SDL_Renderer* renderer) const;
+    void Render(SDL_Renderer* renderer, const Vector2D& position) const;
 
 
     // Getter & Setter
 
-    /// @brief 위치를 반환합니다.
-    inline Vector2D GetPosition() const { return position; }
-
-    /// @brief 위치를 설정합니다.
-    inline void SetPosition(const Vector2D& new_position) { position = new_position; }
-
     /// @brief 크기를 반환합니다.
-    inline Vector2D GetSize() const { return size; }
+    [[nodiscard]] Vector2D GetSize() const { return size; }
 
     /// @brief 크기를 설정합니다.
-    inline void SetSize(const Vector2D& new_size) { size = new_size; }
+    void SetSize(const Vector2D& new_size) { size = new_size; }
 
     /// @brief 색상을 반환합니다.
-    inline SDL_Color GetColor() const { return color; }
+    [[nodiscard]] SDL_Color GetColor() const { return color; }
 
     /// @brief 색상을 설정합니다.
-    inline void SetColor(uint8_t R, uint8_t G, uint8_t B, uint8_t A) { color = { R, G, B, A }; }
+    void SetColor(uint8_t R, uint8_t G, uint8_t B, uint8_t A) { color = { .r= R, .g= G, .b= B, .a= A}; }
 };

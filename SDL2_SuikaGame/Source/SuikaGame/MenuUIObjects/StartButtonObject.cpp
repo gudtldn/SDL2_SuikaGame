@@ -4,7 +4,7 @@
 
 StartButtonObject::StartButtonObject(GameEngine* engine)
     : GameObject(engine)
-    , button(nullptr)
+    , button_texture(nullptr)
 {
     // 버튼 텍스처 로드
     SDL_Texture* raw_button_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/game_start_button.png");
@@ -13,39 +13,33 @@ StartButtonObject::StartButtonObject(GameEngine* engine)
         "Failed to load button texture! SDL Error: {}", SDL_GetError()
     )
 
-    // 버튼 위치 설정
-    int button_width, button_height;
-    SDL_QueryTexture(raw_button_texture, nullptr, nullptr, &button_width, &button_height);
+    // 버튼 텍스처 설절
+    button_texture = std::make_unique<FTexture2D>(raw_button_texture);
 
-    button = std::make_unique<FTexture2D>(
-        raw_button_texture,
-        Vector2D(
-            static_cast<float>((SCREEN_WIDTH - button_width) / 2),
-            static_cast<float>((SCREEN_HEIGHT - button_height) / 2) * 1.05f
-        ),
-        Vector2D(
-            static_cast<float>(button_width),
-            static_cast<float>(button_height)
-        )
+    // 버튼 초기 위치 설정
+    const Vector2D button_size = button_texture->GetSize();
+    button_origin = Vector2D(
+        (SCREEN_WIDTH - button_size.X) / 2,
+        (SCREEN_HEIGHT - button_size.Y) / 2 * 1.05f
     );
 }
 
 void StartButtonObject::BeginPlay()
 {
-    button_origin = button->GetPosition();
+    // 버튼의 현재위치 설정
+    current_button_position = button_origin;
 }
 
 void StartButtonObject::Update(float delta_time)
 {
     // 버튼 애니메이션
-    Vector2D new_position = button->GetPosition();
-    new_position.Y = button_origin.Y + (sin(GetEngine()->GetAccumulatedTime() * BUTTON_OSCILLATION_SPEED) * BUTTON_OSCILLATION_RANGE);
-    button->SetPosition(new_position);
+    current_button_position.Y =
+        button_origin.Y + (sin(GetEngine()->GetAccumulatedTime() * BUTTON_OSCILLATION_SPEED) * BUTTON_OSCILLATION_RANGE);
 }
 
 void StartButtonObject::Render(SDL_Renderer* renderer) const
 {
-    button->Render(renderer);
+    button_texture->Render(renderer, current_button_position);
 }
 
 void StartButtonObject::OnEvent(const SDL_Event& event)
@@ -58,7 +52,13 @@ void StartButtonObject::OnEvent(const SDL_Event& event)
     const int mouse_y = event.motion.y;
 
     // 버튼 정보
-    SDL_FRect button_rect = button->GetRect();
+    const Vector2D button_size = button_texture->GetSize();
+    const SDL_FRect button_rect = {
+        .x = current_button_position.X,
+        .y = current_button_position.Y,
+        .w = button_size.X,
+        .h = button_size.Y
+    };
 
     // 마우스 motion 이벤트 처리
     if (event.type == SDL_MOUSEMOTION)
