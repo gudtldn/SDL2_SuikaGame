@@ -10,8 +10,10 @@
 #include <box2d/box2d.h>
 
 // C++ Standard Library
+#include <vector>
+#include <string>
+#include <format>
 #include <memory>
-
 #include <optional>
 #include <expected>
 #include <stdexcept>
@@ -38,9 +40,11 @@
 
 
 // expr이 실패하면 throw std::runtime_error를 던집니다.
-#define THROW_IF_FAILED(expr, fmt, ...)                          \
-    if (!(expr))                                                 \
-    {                                                            \
-        LOG_ERROR(fmt, __VA_ARGS__);                             \
-        throw std::runtime_error("Failed to expr: '" #expr "'"); \
+#define THROW_IF_FAILED(expr, fmt, ...)                                   \
+    if (!(expr))                                                          \
+    {                                                                     \
+        LOG_ERROR(fmt, __VA_ARGS__);                                      \
+        throw std::runtime_error(                                         \
+            std::format("Failed to expr: '" #expr "'\n" fmt, __VA_ARGS__) \
+        );                                                                \
     }

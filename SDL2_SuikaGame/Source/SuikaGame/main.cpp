@@ -3,6 +3,8 @@
 #include "GameObjects/BackgroundObject.h"
 #include "GameObjects/BgmObject.h"
 
+#include <windows.h>
+
 
 // https://lazyfoo.net/tutorials/SDL/index.php
 // https://www.youtube.com/watch?v=BDqJUJ-jOSQ
@@ -38,6 +40,20 @@ int main(int argc, char* args[])
     catch (const std::exception& e)
     {
         LOG_ERROR("An error occurred: {}", e.what());
+
+        // WCHAR 배열을 위한 버퍼
+        WCHAR error_message[256];
+
+        // e.what()에서 반환된 ANSI 문자열을 WCHAR로 변환
+        MultiByteToWideChar(
+            CP_UTF8,
+            0,
+            std::format("An error occurred: {}", e.what()).c_str(),
+            -1,
+            error_message,
+            sizeof(error_message) / sizeof(WCHAR)
+        );
+        MessageBoxW(nullptr, error_message, L"Error", MB_OK | MB_ICONERROR);
         return -1;
     }
 
