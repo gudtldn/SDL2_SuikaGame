@@ -5,6 +5,8 @@
 FruitObject::FruitObject(GameEngine* engine)
     : GameObject(engine)
 {
+    z_order = 10;
+
     std::vector<FruitResourceObject*> fruit_resource;
     GetCurrentStage()->GetObjectManager().GetGameObjectsOfClass<FruitResourceObject>(fruit_resource);
 
@@ -13,19 +15,20 @@ FruitObject::FruitObject(GameEngine* engine)
         "Failed to find FruitResourceObject in the current stage"
     )
 
-    fruit_resource_object = fruit_resource.front();
-}
-
-void FruitObject::BeginPlay()
-{
     // 체리, 딸기, 포도, 오렌지
-    fruit_texture = fruit_resource_object->GetRandomFruitTexture(0, 3);
+    fruit_texture = fruit_resource.front()->GetRandomFruitTexture(0, 3);
 }
 
 void FruitObject::Update(float delta_time)
 {
+    fruit_position.Y += 300 * delta_time;
+    if (fruit_position.Y > SCREEN_HEIGHT)
+    {
+        Destroy();
+    }
 }
 
 void FruitObject::Render(SDL_Renderer* renderer) const
 {
+    fruit_texture->Render(renderer, fruit_position);
 }
