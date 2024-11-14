@@ -1,4 +1,5 @@
 #include "PlayerObject.h"
+#include "FruitObject.h"
 
 
 PlayerObject::PlayerObject(GameEngine* engine)
@@ -116,6 +117,8 @@ void PlayerObject::OnEvent(const SDL_Event& event)
     if (event.type == SDL_MOUSEBUTTONDOWN)
     {
         // TODO: 과일 생성
+        FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
+        fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
     }
 }
 
