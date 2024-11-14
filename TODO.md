@@ -4,7 +4,7 @@
 - [ ] Box2D 물리 엔진 연동
   - [ ] Box2DManger 구현
     - [ ] 기본적인 World 생성 및 소멸
-
+- [ ] EnginePCH.h 간소화
 
 # 게임 기능 구현
 ## 메인 메뉴
