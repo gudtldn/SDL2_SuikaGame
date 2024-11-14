@@ -19,6 +19,20 @@ FruitResourceObject::FruitResourceObject(GameEngine* engine)
         "Contents/Textures/fruits/fruit_10.png", // 수박
     };
 
+    constexpr float fruit_scales[] = {
+        0.175f,  // 체리
+        0.2f,    // 딸기
+        0.275f,  // 포도
+        0.3f,    // 오렌지
+        0.375f,  // 감
+        0.425f,  // 사과
+        0.55f,   // 자몽
+        0.65f,   // 복숭아
+        0.8f,    // 파인애플
+        0.875f,  // 멜론
+        1.0f,    // 수박
+    };
+
     for (size_t i = 0; i < fruit_textures.max_size(); ++i)
     {
         SDL_Texture* raw_fruit_texture = IMG_LoadTexture(engine->GetRenderer(), fruits_png[i]);
@@ -27,6 +41,15 @@ FruitResourceObject::FruitResourceObject(GameEngine* engine)
             "Failed to load fruit texture! SDL Error: {}", SDL_GetError()
         )
 
-        fruit_textures[i] = std::make_unique<Texture2D>(raw_fruit_texture);
+        int w, h;
+        SDL_QueryTexture(raw_fruit_texture, nullptr, nullptr, &w, &h);
+
+        fruit_textures[i] = std::make_unique<Texture2D>(
+            raw_fruit_texture,
+            Vector2D(
+                static_cast<float>(w) * fruit_scales[i],
+                static_cast<float>(h) * fruit_scales[i]
+            )
+        );
     }
 }
