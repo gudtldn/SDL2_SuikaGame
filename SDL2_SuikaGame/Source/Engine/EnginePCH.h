@@ -23,6 +23,7 @@
 #include "Engine/LogMacros.h"
 
 #include "Engine/Manager/SDLManager.h"
+#include "Engine/Manager/Box2DManager.h"
 #include "Engine/Manager/ObjectManager.h"
 
 #include "Engine/Components/Stage.h"
