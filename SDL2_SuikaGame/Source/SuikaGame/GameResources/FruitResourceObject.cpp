@@ -1,7 +1,5 @@
 ﻿#include "FruitResourceObject.h"
 
-#include <__msvc_filebuf.hpp>
-
 
 FruitResourceObject::FruitResourceObject(GameEngine* engine)
     : GameObject(engine)
