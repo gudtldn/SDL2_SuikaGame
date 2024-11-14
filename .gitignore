@@ -51,6 +51,8 @@ Contents/Textures/original/
 *.idb
 *.pdb
 
+!box2d.pdb
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
