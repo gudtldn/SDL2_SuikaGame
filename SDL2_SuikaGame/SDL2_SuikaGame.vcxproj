@@ -111,7 +111,7 @@
 xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget)\SDL2_mixer.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dll" "$(OutDir)"
-</Command>
+xcopy /y /d "$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)\box2d.pdb" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -172,7 +172,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
 xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget)\SDL2_image.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget)\SDL2_mixer.dll" "$(OutDir)"
 xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dll" "$(OutDir)"
-</Command>
+xcopy /y /d "$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)\box2d.pdb" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
