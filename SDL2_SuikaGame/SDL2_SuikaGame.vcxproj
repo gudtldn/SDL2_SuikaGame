@@ -116,7 +116,6 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source/Engine/EnginePCH.h" />
     <ClInclude Include="Source/Engine/GameEngine.h" />
     <ClInclude Include="Source/Engine/GlobalMacro.h" />
-    <ClInclude Include="Source/Engine/LogMacros.h" />
     <ClInclude Include="Source/Engine/Components/GameObject.h" />
     <ClInclude Include="Source/Engine/Components/Stage.h" />
     <ClInclude Include="Source/Engine/EngineTypes/FTexture2D.h" />
@@ -128,6 +127,9 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source/Engine/Utils/Math.h" />
     <ClInclude Include="Source/SuikaGame/SuikaGame.h" />
     <ClInclude Include="Source\Engine\Manager\Box2DManager.h" />
+    <ClInclude Include="Source\Engine\Utils\Delegate.h" />
+    <ClInclude Include="Source\Engine\Utils\DelegateCombination.h" />
+    <ClInclude Include="Source\Engine\Utils\LogMacros.h" />
     <ClInclude Include="Source\SuikaGame\GameObjects\BackgroundObject.h" />
     <ClInclude Include="Source/SuikaGame/GameObjects/BgmObject.h" />
     <ClInclude Include="Source/SuikaGame/GameObjects/PlayerObject.h" />

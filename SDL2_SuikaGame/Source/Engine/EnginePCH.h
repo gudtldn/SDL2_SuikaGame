@@ -22,7 +22,6 @@
 // Engine Headers
 #include "Engine/GameEngine.h"
 #include "Engine/GlobalMacro.h"
-#include "Engine/LogMacros.h"
 
 #include "Engine/Manager/SDLManager.h"
 #include "Engine/Manager/Box2DManager.h"
@@ -37,6 +36,8 @@
 #include "Engine/EngineTypes/Vector2D.h"
 
 #include "Engine/Utils/Math.h"
+#include "Engine/Utils/LogMacros.h"
+#include "Engine/Utils/DelegateCombination.h"
 
 
 // expr이 실패하면 throw std::runtime_error를 던집니다.

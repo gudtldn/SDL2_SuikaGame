@@ -6,42 +6,8 @@
 class FruitObject;
 
 // delegate
-struct FNextFruitDelegate
-{
-private:
-    std::function<void(FruitObject*)> func;
+DECLARE_DELEGATE_OneParam(FNextFruitDelegate, FruitObject*);
 
-public:
-    FNextFruitDelegate() = default;
-    ~FNextFruitDelegate() = default;
-
-    void BindFunction(const std::function<void(FruitObject*)>& in_func)
-    {
-        if (func != nullptr)
-        {
-            throw std::runtime_error("FNextFruitDelegate::BindFunction already bound");
-        }
-        func = in_func;
-    }
-
-    void UnBind()
-    {
-        func = nullptr;
-    }
-
-    [[nodiscard]] bool IsBound() const
-    {
-        return func != nullptr;
-    }
-
-    void Execute(FruitObject* obj) const
-    {
-        if (IsBound())
-        {
-            func(obj);
-        }
-    }
-};
 
 /// @brief 플레이어 오브젝트
 class PlayerObject : public GameObject
