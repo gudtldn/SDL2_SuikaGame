@@ -2,6 +2,7 @@
 #include "Engine/Components/Stage.h"
 #include "Engine/Components/GameObject.h"
 #include "Engine/Utils/Math.h"
+#include "GlobalMacro.h"
 
 #include <ctime>
 #include <vector>
