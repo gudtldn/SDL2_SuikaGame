@@ -185,6 +185,9 @@ inline void GameEngine::Update(float delta_time)
     {
         game_object->Update(delta_time);
     }
+
+    // 물리 시뮬레이션
+    box2d_manager.Step(delta_time * 4, 4);
 }
 
 inline void GameEngine::Render() const

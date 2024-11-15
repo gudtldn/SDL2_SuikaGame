@@ -19,6 +19,11 @@ public:
     /// @brief Box2D의 WorldID를 가져옵니다.
     [[nodiscard]] b2WorldId GetWorldID() const { return world_id; }
 
+    /// @brief World를 시뮬레이션합니다.
+    /// @param time_step 시뮬레이션할 시간, 보통은 1/60을 사용합니다.
+    /// @param sub_step_count 서브 스텝의 수, 서브 스텝의 수를 늘리면 정확도가 높아집니다. 일반적으로 4를 사용합니다.
+    void Step(float time_step, int sub_step_count) const;
+
     /// @brief 월드의 중력을 가져옵니다.
     [[nodiscard]] inline Vector2D GetGravity() const;
 
