@@ -6,7 +6,7 @@
     - [x] 기본적인 World 생성 및 소멸
 - [ ] EnginePCH.h 간소화
 - [x] Texture2D, FTexture2D의 Render에 position받아서 그리기
-- [ ] OnDestroy함수 두번 호출되는 문제 해결
+- [x] OnDestroy함수 두번 호출되는 문제 해결
 - [ ] AssetManager 구현
 
 # 게임 기능 구현
