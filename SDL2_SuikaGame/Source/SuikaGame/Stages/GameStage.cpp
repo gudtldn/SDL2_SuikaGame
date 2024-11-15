@@ -4,6 +4,7 @@
 #include "SuikaGame/GameUIObjects/BorderObject.h"
 #include "SuikaGame/GameUIObjects/BorderBackgroundObject.h"
 #include "SuikaGame/GameUIObjects/ScoreboardObject.h"
+#include "SuikaGame/GameUIObjects/NextFruitDisplayObject.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
 
 
@@ -23,6 +24,9 @@ GameStage::GameStage(GameEngine* engine)
 
     // ScoreboardObject 오브젝트 생성
     obj_manager.CreateGameObject<ScoreboardObject>();
+
+    // NextFruitDisplayObject 오브젝트 생성
+    obj_manager.CreateGameObject<NextFruitDisplayObject>();
 
     // PlayerObject 오브젝트 생성
     obj_manager.CreateGameObject<PlayerObject>();
