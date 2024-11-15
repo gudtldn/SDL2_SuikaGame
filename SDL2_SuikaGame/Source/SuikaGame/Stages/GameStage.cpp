@@ -1,7 +1,7 @@
 #include "GameStage.h"
 
 #include "SuikaGame/GameObjects/PlayerObject.h"
-#include "SuikaGame/GameUIObjects/BorderObject.h"
+#include "SuikaGame/GameObjects/BorderObject.h"
 #include "SuikaGame/GameUIObjects/BorderBackgroundObject.h"
 #include "SuikaGame/GameUIObjects/ScoreboardObject.h"
 #include "SuikaGame/GameUIObjects/NextFruitDisplayObject.h"
