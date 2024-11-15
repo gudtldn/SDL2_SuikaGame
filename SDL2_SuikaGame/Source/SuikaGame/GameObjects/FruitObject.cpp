@@ -26,6 +26,8 @@ FruitObject::FruitObject(GameEngine* engine)
 
 void FruitObject::Update(float delta_time)
 {
+    if (!fruit_active) return;
+
     fruit_position.Y += 300 * delta_time;
     if (fruit_position.Y > SCREEN_HEIGHT)
     {
