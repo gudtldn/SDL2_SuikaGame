@@ -122,6 +122,7 @@ void PlayerObject::OnEvent(const SDL_Event& event)
         if (
             event.button.button == SDL_BUTTON_LEFT              // 마우스 왼쪽 버튼
             || event.key.keysym.sym == SDLK_SPACE               // 키보드 스페이스바
+            || event.key.keysym.sym == SDLK_DOWN                // 키보드 방향키 아래
             || event.cbutton.button == SDL_CONTROLLER_BUTTON_A  // 컨트롤러 A 버튼
         ) {
             // TODO: 과일 생성
