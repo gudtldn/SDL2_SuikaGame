@@ -7,6 +7,11 @@ class BorderObject : public GameObject
 {
 private:
     std::unique_ptr<Texture2D> border_texture;
+    Vector2D texture_position;
+
+private:
+    b2BodyId bodies[3];
+    b2ShapeId shapes[3];
 
 public:
     BorderObject(GameEngine* engine);

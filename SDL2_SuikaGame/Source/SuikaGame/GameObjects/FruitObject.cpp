@@ -5,8 +5,10 @@
 FruitObject::FruitObject(GameEngine* engine)
     : GameObject(engine)
 {
+    // 렌더링 순서
     z_order = 10;
 
+    // fruit_texture 설정
     std::vector<FruitResourceObject*> fruit_resource;
     GetCurrentStage()->GetObjectManager().GetGameObjectsOfClass<FruitResourceObject>(fruit_resource);
 
@@ -22,13 +24,41 @@ FruitObject::FruitObject(GameEngine* engine)
     fruit_texture = fruit_resource_obj->GetFruitTexture(rand_idx);
     fruit_offset_position = fruit_resource_obj->GetFruitOffsetPosition(rand_idx);
     fruit_offset_size = fruit_resource_obj->GetFruitOffsetSize(rand_idx);
+
+    // Box2D Body 초기화
+    b2BodyDef body_def = b2DefaultBodyDef();
+    body_def.type = b2_dynamicBody;
+    fruit_body = b2CreateBody(
+        engine->GetBox2DManager().GetWorldID(),
+        &body_def
+    );
+    SetFruitActive(false);
+
+    b2Circle circle = {
+        .center = {
+            .x = fruit_position.X + fruit_offset_position.X,
+            .y = fruit_position.Y + fruit_offset_position.Y,
+        },
+        .radius = fruit_texture->GetSize().Y / 2 + fruit_offset_size
+    };
+
+    b2ShapeDef shape_def = b2DefaultShapeDef();
+    shape_def.density = 1.0f;
+    shape_def.friction = 0.3f;
+
+    b2CreateCircleShape(
+        fruit_body,
+        &shape_def,
+        &circle
+    );
 }
 
 void FruitObject::Update(float delta_time)
 {
-    if (!fruit_active) return;
+    const auto [x, y] = b2Body_GetPosition(fruit_body);
+    fruit_position.X = x;
+    fruit_position.Y = y;
 
-    fruit_position.Y += 300 * delta_time;
     if (fruit_position.Y > SCREEN_HEIGHT)
     {
         Destroy();
@@ -41,44 +71,4 @@ void FruitObject::Render(SDL_Renderer* renderer) const
         renderer,
         fruit_position - fruit_texture->GetSize() / 2
     );
-
-
-    // 과일 텍스쳐의 중심에 원을 그립니다. // TODO: 테스트
-    const int32_t radius = fruit_texture->GetSize().Y / 2 + fruit_offset_size;
-    const int32_t diameter = (radius * 2);
-
-    int32_t x = (radius - 1);
-    int32_t y = 0;
-    int32_t tx = 1;
-    int32_t ty = 1;
-    int32_t error = (tx - diameter);
-
-    while (x >= y)
-    {
-        const float pos_x = fruit_position.X + fruit_offset_position.X;
-        const float_t pos_y = fruit_position.Y + fruit_offset_position.Y;
-        //  Each of the following renders an octant of the circle
-        SDL_RenderDrawPoint(renderer, pos_x + x, pos_y - y);
-        SDL_RenderDrawPoint(renderer, pos_x + x, pos_y + y);
-        SDL_RenderDrawPoint(renderer, pos_x - x, pos_y - y);
-        SDL_RenderDrawPoint(renderer, pos_x - x, pos_y + y);
-        SDL_RenderDrawPoint(renderer, pos_x + y, pos_y - x);
-        SDL_RenderDrawPoint(renderer, pos_x + y, pos_y + x);
-        SDL_RenderDrawPoint(renderer, pos_x - y, pos_y - x);
-        SDL_RenderDrawPoint(renderer, pos_x - y, pos_y + x);
-
-        if (error <= 0)
-        {
-            ++y;
-            error += ty;
-            ty += 2;
-        }
-
-        if (error > 0)
-        {
-            --x;
-            tx += 2;
-            error += (tx - diameter);
-        }
-    }
 }

@@ -7,6 +7,7 @@ class FruitResourceObject;
 /// @brief 과일 오브젝트
 class FruitObject : public GameObject
 {
+private:
     /// @brief 과일 텍스처
     const Texture2D* fruit_texture;
 
@@ -22,6 +23,9 @@ class FruitObject : public GameObject
     /// @brief 오브젝트 활성화 여부
     bool fruit_active;
 
+private:
+    b2BodyId fruit_body;
+
 public:
     FruitObject(GameEngine* engine);
 
@@ -31,7 +35,18 @@ public:
 
     /// @brief 과일의 위치를 설정합니다.
     /// @param new_position 새로운 위치
-    void SetFruitPosition(Vector2D new_position) { fruit_position = new_position; }
+    void SetFruitPosition(Vector2D new_position)
+    {
+        fruit_position = new_position;
+        b2Body_SetTransform(
+            fruit_body,
+            {
+                new_position.X,
+                new_position.Y
+            },
+            b2Body_GetRotation(fruit_body)
+        );
+    }
 
     /// @brief 과일의 텍스처 크기를 반환합니다.
     Vector2D GetFruitSize() const { return fruit_texture->GetSize(); }
@@ -42,7 +57,18 @@ public:
 
     /// @brief 과일을 활성화합니다.
     /// @param new_value 새로운 활성화 여부
-    void SetFruitActive(bool new_value) { fruit_active = new_value; }
+    void SetFruitActive(bool new_value)
+    {
+        fruit_active = new_value;
+        if (new_value)
+        {
+            b2Body_Enable(fruit_body);
+        }
+        else
+        {
+            b2Body_Disable(fruit_body);
+        }
+    }
 
 protected:
     virtual void Update(float delta_time) override;
