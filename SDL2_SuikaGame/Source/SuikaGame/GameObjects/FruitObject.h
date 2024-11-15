@@ -9,6 +9,8 @@ class FruitObject : public GameObject
 {
     const Texture2D* fruit_texture;
     Vector2D fruit_position;
+    Vector2D fruit_offset_position;
+    float fruit_offset_size;
 
 public:
     FruitObject(GameEngine* engine);
