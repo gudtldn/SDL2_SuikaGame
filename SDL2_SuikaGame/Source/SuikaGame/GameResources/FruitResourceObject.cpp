@@ -7,7 +7,7 @@ FruitResourceObject::FruitResourceObject(GameEngine* engine)
     , fruits_offset_position {
         Vector2D(-1.0f, 4.5f),  // 체리
         Vector2D(-1.0f, 0.0f),  // 딸기
-        Vector2D(-2.0f, 0.0f),  // 포도
+        Vector2D(-1.0f, 0.0f),  // 포도
         Vector2D(-1.0f, 1.0f),  // 오렌지
         Vector2D(-1.0f, 4.0f),  // 감
         Vector2D(-1.0f, 1.0f),  // 사과
