@@ -54,7 +54,7 @@ public:
 
     /// @brief 게임 오브젝트를 제거합니다.
     /// @param object 제거할 게임 오브젝트
-    virtual void DestroyGameObject(std::shared_ptr<GameObject> object);
+    virtual void DestroyGameObject(const std::shared_ptr<GameObject>& object);
 
     /// @brief 모든 게임 오브젝트를 제거합니다.
     virtual void RemoveAllGameObjects();

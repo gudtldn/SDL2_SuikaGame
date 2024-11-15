@@ -27,7 +27,7 @@ void ObjectManager::HandleUpdate(float delta_time)
 //     requires std::derived_from<Obj, GameObject>
 // Obj* ObjectManager::CreateGameObject() {}
 
-void ObjectManager::DestroyGameObject(std::shared_ptr<GameObject> object)
+void ObjectManager::DestroyGameObject(const std::shared_ptr<GameObject>& object)
 {
     // object가 존재하지 않으면 return
     if (!object) return;
