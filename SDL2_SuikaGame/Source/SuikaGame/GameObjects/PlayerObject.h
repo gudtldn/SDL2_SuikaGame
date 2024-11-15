@@ -1,6 +1,44 @@
 #pragma once
 #include "EnginePCH.h"
+#include <functional>
 
+// delegate
+struct FNextFruitDelegate
+{
+private:
+    std::function<void(FruitObject*)> func;
+
+public:
+    FNextFruitDelegate() = default;
+    ~FNextFruitDelegate() = default;
+
+    void BindFunction(const std::function<void(FruitObject*)>& in_func)
+    {
+        if (func != nullptr)
+        {
+            throw std::runtime_error("FNextFruitDelegate::BindFunction already bound");
+        }
+        func = in_func;
+    }
+
+    void UnBind()
+    {
+        func = nullptr;
+    }
+
+    [[nodiscard]] bool IsBound() const
+    {
+        return func != nullptr;
+    }
+
+    void Execute(FruitObject* obj) const
+    {
+        if (IsBound())
+        {
+            func(obj);
+        }
+    }
+};
 
 /// @brief 플레이어 오브젝트
 class PlayerObject : public GameObject
@@ -31,6 +69,9 @@ private:
 
     float min_border_x;
     float max_border_x;
+
+public:
+    FNextFruitDelegate next_fruit_delegate;
 
 public:
     PlayerObject(GameEngine* engine);
