@@ -11,6 +11,8 @@ PlayerObject::PlayerObject(GameEngine* engine)
             GUIDE_LINE_HEIGHT
         )
     )
+    , current_fruit(nullptr)
+    , next_fruit(nullptr)
 {
     // z-order 설정
     z_order = -1;
@@ -39,6 +41,16 @@ PlayerObject::PlayerObject(GameEngine* engine)
         raw_player_texture,
         Vector2D(PLAYER_WIDTH, PLAYER_HEIGHT)
     );
+}
+
+void PlayerObject::BeginPlay()
+{
+    SetNextFruit();
+
+    FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
+    fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
+    fruit->SetFruitActive(false);
+    current_fruit = fruit;
 }
 
 void PlayerObject::Update(float delta_time)
@@ -91,6 +103,11 @@ void PlayerObject::Update(float delta_time)
 
     // 플레이어 위치 적용
     SetPlayerPosition(new_x);
+
+    if (current_fruit != nullptr && !current_fruit->GetFruitActive())
+    {
+        current_fruit->SetFruitPosition(player_position);
+    }
 }
 
 void PlayerObject::Render(SDL_Renderer* renderer) const
@@ -125,9 +142,8 @@ void PlayerObject::OnEvent(const SDL_Event& event)
             || event.key.keysym.sym == SDLK_DOWN                // 키보드 방향키 아래
             || event.cbutton.button == SDL_CONTROLLER_BUTTON_A  // 컨트롤러 A 버튼
         ) {
-            // TODO: 과일 생성
-            FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
-            fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
+            current_fruit->SetFruitActive(true);
+            SetNextFruit();
         }
     }
 }
@@ -137,3 +153,18 @@ void PlayerObject::SetPlayerPosition(float new_x)
     player_position.X = Math::Clamp(new_x, min_border_x, max_border_x);
 }
 
+void PlayerObject::SetNextFruit()
+{
+    current_fruit = next_fruit;
+    if (current_fruit != nullptr)
+    {
+        current_fruit->SetFruitPosition(player_position);
+    }
+
+    FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
+    fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
+    fruit->SetFruitActive(false);
+
+    next_fruit = fruit;
+    next_fruit_delegate.Execute(next_fruit);
+}

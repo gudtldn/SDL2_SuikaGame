@@ -2,6 +2,9 @@
 #include "EnginePCH.h"
 #include <functional>
 
+// forward declaration
+class FruitObject;
+
 // delegate
 struct FNextFruitDelegate
 {
@@ -53,6 +56,13 @@ private:
     /// @brief 플레이어 위치
     Vector2D player_position;
 
+
+    /// @brief 현재 과일
+    FruitObject* current_fruit;
+
+    /// @brief 다음 과일
+    FruitObject* next_fruit;
+
 private:
     // Guideline
     static constexpr float GUIDE_LINE_WIDTH = 3.0f;
@@ -77,6 +87,7 @@ public:
     PlayerObject(GameEngine* engine);
 
 protected:
+    virtual void BeginPlay() override;
     virtual void Update(float delta_time) override;
     virtual void Render(SDL_Renderer* renderer) const override;
     virtual void OnEvent(const SDL_Event& event) override;
@@ -85,4 +96,7 @@ private:
     /// @brief 플레이어 위치 설정
     /// @param new_x 새로운 x 위치
     inline void SetPlayerPosition(float new_x);
+
+    /// @brief 다음 과일 설정
+    void SetNextFruit();
 };
