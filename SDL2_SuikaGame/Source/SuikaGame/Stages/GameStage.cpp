@@ -1,27 +1,29 @@
 #include "GameStage.h"
 
+#include "SuikaGame/GameObjects/PlayerObject.h"
 #include "SuikaGame/GameUIObjects/BorderObject.h"
 #include "SuikaGame/GameUIObjects/BorderBackgroundObject.h"
 #include "SuikaGame/GameUIObjects/ScoreboardObject.h"
-#include "SuikaGame/GameObjects/PlayerObject.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
 
 
 GameStage::GameStage(GameEngine* engine)
     : Stage(engine)
 {
+    ObjectManager& obj_manager = GetObjectManager();
+
     // FruitsResourceObject 오브젝트 생성
-    GetObjectManager().CreateGameObject<FruitResourceObject>();
+    obj_manager.CreateGameObject<FruitResourceObject>();
 
     // BorderBackgroundObject 오브젝트 생성
-    GetObjectManager().CreateGameObject<BorderBackgroundObject>();
+    obj_manager.CreateGameObject<BorderBackgroundObject>();
 
     // BorderObject 오브젝트 생성
-    GetObjectManager().CreateGameObject<BorderObject>();
+    obj_manager.CreateGameObject<BorderObject>();
 
     // ScoreboardObject 오브젝트 생성
-    GetObjectManager().CreateGameObject<ScoreboardObject>();
+    obj_manager.CreateGameObject<ScoreboardObject>();
 
     // PlayerObject 오브젝트 생성
-    GetObjectManager().CreateGameObject<PlayerObject>();
+    obj_manager.CreateGameObject<PlayerObject>();
 }
