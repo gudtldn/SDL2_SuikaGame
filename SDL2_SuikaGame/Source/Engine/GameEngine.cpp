@@ -154,23 +154,19 @@ inline void GameEngine::HandleEvent(const SDL_Event& event)
 inline void GameEngine::Update(float delta_time)
 {
     // 새로운 게임 오브젝트의 BeginPlay 호출
-    const auto& new_game_objects = object_manager.GetNewGameObjects();
-    for (const auto& new_game_object : new_game_objects)
+    while (GameObject* new_obj = object_manager.PopNewGameObject())
     {
-        new_game_object->BeginPlay();
+        new_obj->BeginPlay();
     }
-    object_manager.ClearNewGameObjects();
 
     // 현재 스테이지의 새로운 게임 오브젝트의 BeginPlay 호출
     if (current_stage)
     {
-        auto& stage_obj_manager = current_stage->GetObjectManager();
-        const auto& new_stage_objects = stage_obj_manager.GetNewGameObjects();
-        for (const auto& new_game_object : new_stage_objects)
+        ObjectManager& stage_obj_manager = current_stage->GetObjectManager();
+        while (GameObject* new_obj = stage_obj_manager.PopNewGameObject())
         {
-            new_game_object->BeginPlay();
+            new_obj->BeginPlay();
         }
-        stage_obj_manager.ClearNewGameObjects();
     }
 
 

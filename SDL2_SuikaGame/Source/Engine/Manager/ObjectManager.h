@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <string>
+#include <queue>
 #include <vector>
 #include <concepts>
 #include <unordered_set>
@@ -23,7 +24,7 @@ private:
     std::unordered_set<std::shared_ptr<GameObject>> game_objects;
 
     /// @brief 새로운 게임 오브젝트의 벡터
-    std::vector<GameObject*> new_game_objects;
+    std::queue<GameObject*> new_game_objects;
 
 public:
     ObjectManager(GameEngine* engine)
@@ -47,7 +48,7 @@ public:
     virtual void HandleUpdate(float delta_time);
 
     /// @brief 게임 오브젝트를 추가합니다.
-    /// @tparam GameObject를 상속받은 클래스
+    /// @tparam Obj GameObject를 상속받은 클래스
     template <typename Obj>
         requires std::derived_from<Obj, GameObject>
     Obj* CreateGameObject();
@@ -79,13 +80,19 @@ public:
     /****** Getter & Setter ******/
 
     /// @brief 게임 오브젝트를 가져옵니다.
-    auto& GetGameObjects() const { return game_objects; }
+    [[nodiscard]] const auto& GetGameObjects() const { return game_objects; }
 
-    /// @brief 새롭게 추가된 게임 오브젝트 목록을 가져옵니다.
-    std::vector<GameObject*> GetNewGameObjects() const { return new_game_objects; }
-
-    /// @brief 새롭게 추가된 게임 오브젝트 목록을 제거합니다.
-    void ClearNewGameObjects() { new_game_objects.clear(); }
+    /// @brief 새롭게 추가된 게임 오브젝트를 뒤에서부터 하나씩 가져옵니다.
+    GameObject* PopNewGameObject()
+    {
+        if (new_game_objects.empty())
+        {
+            return nullptr;
+        }
+        GameObject* obj = new_game_objects.front();
+        new_game_objects.pop();
+        return obj;
+    }
 };
 
 
@@ -98,7 +105,7 @@ Obj* ObjectManager::CreateGameObject()
 
     // 게임 오브젝트를 관리하는 컨테이너에 추가
     game_objects.insert(object);
-    new_game_objects.push_back(raw_pointer);
+    new_game_objects.push(raw_pointer);
 
     return raw_pointer;
 }
