@@ -49,7 +49,6 @@ void PlayerObject::BeginPlay()
 
     FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
     fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
-    fruit->SetFruitActive(false);
     current_fruit = fruit;
 }
 
@@ -156,14 +155,13 @@ void PlayerObject::SetPlayerPosition(float new_x)
 void PlayerObject::SetNextFruit()
 {
     current_fruit = next_fruit;
-    if (current_fruit != nullptr)
+    if (current_fruit)
     {
         current_fruit->SetFruitPosition(player_position);
     }
 
     FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
     fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
-    fruit->SetFruitActive(false);
 
     next_fruit = fruit;
     next_fruit_delegate.Execute(next_fruit);
