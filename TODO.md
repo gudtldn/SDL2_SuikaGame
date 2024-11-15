@@ -1,13 +1,13 @@
 # 엔진 기능 구현
 - [ ] TimerManager 구현
 - [ ] IButton 인터페이스 구현
-- [ ] Box2D 물리 엔진 연동
-  - [ ] Box2DManger 구현
-    - [ ] 기본적인 World 생성 및 소멸
+- [x] Box2D 물리 엔진 연동
+  - [x] Box2DManger 구현
+    - [x] 기본적인 World 생성 및 소멸
 - [ ] EnginePCH.h 간소화
 - [x] Texture2D, FTexture2D의 Render에 position받아서 그리기
 - [ ] OnDestroy함수 두번 호출되는 문제 해결
-
+- [ ] AssetManager 구현
 
 # 게임 기능 구현
 ## 메인 메뉴
