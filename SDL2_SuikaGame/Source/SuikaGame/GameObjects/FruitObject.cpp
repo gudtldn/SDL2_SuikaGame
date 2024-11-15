@@ -28,6 +28,9 @@ FruitObject::FruitObject(GameEngine* engine)
     // Box2D Body 초기화
     b2BodyDef body_def = b2DefaultBodyDef();
     body_def.type = b2_dynamicBody;
+    body_def.linearDamping = 0.0f;
+    body_def.angularDamping = 0.1f;
+
     fruit_body = b2CreateBody(
         engine->GetBox2DManager().GetWorldID(),
         &body_def
@@ -46,11 +49,7 @@ FruitObject::FruitObject(GameEngine* engine)
     shape_def.density = 1.0f;
     shape_def.friction = 0.3f;
 
-    b2CreateCircleShape(
-        fruit_body,
-        &shape_def,
-        &circle
-    );
+    b2CreateCircleShape(fruit_body, &shape_def, &circle);
 }
 
 void FruitObject::Update(float delta_time)

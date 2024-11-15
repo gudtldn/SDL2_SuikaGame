@@ -58,6 +58,7 @@ BorderObject::BorderObject(GameEngine* engine)
     for (const auto [idx, rect] : body_rect | std::views::enumerate)
     {
         b2BodyDef body_def = b2DefaultBodyDef();
+        body_def.type = b2_staticBody;
         body_def.position = {
             .x = texture_position.X + rect.x,
             .y = texture_position.Y + rect.y
