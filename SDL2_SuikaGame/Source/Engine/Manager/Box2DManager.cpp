@@ -23,8 +23,8 @@ void Box2DManager::Step(float time_step, int sub_step_count) const
 
 inline Vector2D Box2DManager::GetGravity() const
 {
-    b2Vec2 gravity = b2World_GetGravity(world_id);
-    return { gravity.x, gravity.y };
+    auto [x, y] = b2World_GetGravity(world_id);
+    return { x, y };
 }
 
 inline void Box2DManager::SetGravity(Vector2D gravity) const

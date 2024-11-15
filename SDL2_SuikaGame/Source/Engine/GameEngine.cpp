@@ -225,7 +225,7 @@ inline void GameEngine::Render() const
     });
 
     // 렌더링
-    for (auto& game_object : render_queue)
+    for (const auto& game_object : render_queue)
     {
         game_object->Render(GetRenderer());
     }
