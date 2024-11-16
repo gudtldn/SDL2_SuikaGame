@@ -65,6 +65,7 @@ public:
         funcs.push_back(in_func);
     }
 
+    // TODO: 나중에 핸들과 함께 구현하기
     // void Remove(Handle...);
 
     void Clear()
