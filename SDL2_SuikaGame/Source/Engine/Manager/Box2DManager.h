@@ -1,6 +1,29 @@
 ﻿#pragma once
 #include "Engine/EngineTypes/Vector2D.h"
+#include "Engine/Utils/DelegateCombination.h"
 #include <box2d/box2d.h>
+
+// forward declaration
+class GameObject;
+
+// delegate declaration
+DECLARE_MULTICAST_DELEGATE_TwoParams(
+    FBeginOverlapDelegate,
+    GameObject* a,
+    GameObject* b
+)
+
+DECLARE_MULTICAST_DELEGATE_TwoParams(
+    FEndOverlapDelegate,
+    GameObject* a,
+    GameObject* b
+)
+
+DECLARE_MULTICAST_DELEGATE_TwoParams(
+    FOnHitDelegate,
+    GameObject* a,
+    GameObject* b
+)
 
 
 /// @brief Box2D manager
@@ -12,6 +35,12 @@ private:
 public:
     Box2DManager();
     ~Box2DManager();
+
+
+    /****** Delegate ******/
+    FBeginOverlapDelegate OnBeginOverlap;
+    FEndOverlapDelegate OnEndOverlap;
+    FOnHitDelegate OnHit;
 
 
     /****** Getter && Setter ******/

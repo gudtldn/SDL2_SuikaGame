@@ -205,6 +205,40 @@ inline void GameEngine::FixedUpdate(float fixed_time)
         game_object->FixedUpdate(fixed_time);
     }
 
+
+    // Box2D Event
+    const b2ContactEvents contact_events = b2World_GetContactEvents(GetBox2DManager().GetWorldID());
+
+    // BeginOverlap Event
+    for (int i = 0; i < contact_events.beginCount; ++i)
+    {
+        const b2ContactBeginTouchEvent* begin_event = contact_events.beginEvents + i;
+        box2d_manager.OnBeginOverlap.Broadcast(
+            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(begin_event->shapeIdA))),
+            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(begin_event->shapeIdB)))
+        );
+    }
+
+    // EndOverlap Event
+    for (int i = 0; i < contact_events.endCount; ++i)
+    {
+        const b2ContactEndTouchEvent* end_event = contact_events.endEvents + i;
+        box2d_manager.OnEndOverlap.Broadcast(
+            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(end_event->shapeIdA))),
+            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(end_event->shapeIdB)))
+        );
+    }
+
+    // Hit Event
+    for (int i = 0; i < contact_events.hitCount; ++i)
+    {
+        const b2ContactHitEvent* hit_event = contact_events.hitEvents + i;
+        box2d_manager.OnBeginOverlap.Broadcast(
+            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(hit_event->shapeIdA))),
+            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(hit_event->shapeIdB)))
+        );
+    }
+
     // 물리 시뮬레이션
     box2d_manager.Step(fixed_time * 4, 8);
 }
