@@ -16,14 +16,15 @@ FruitObject::FruitObject(GameEngine* engine)
         !fruit_resource.empty(),
         "Failed to find FruitResourceObject in the current stage"
     )
-
     const FruitResourceObject* fruit_resource_obj = fruit_resource.front();
 
     // 체리, 딸기, 포도, 오렌지
-    const int rand_idx = Math::RandRange(0, 4);
-    fruit_texture = fruit_resource_obj->GetFruitTexture(rand_idx);
-    fruit_offset_position = fruit_resource_obj->GetFruitOffsetPosition(rand_idx);
-    fruit_offset_size = fruit_resource_obj->GetFruitOffsetSize(rand_idx);
+    fruit_resource_obj->GetFruit(
+        idx,
+        fruit_texture,
+        fruit_offset_position,
+        fruit_offset_size
+    );
 
     // Box2D Body 초기화
     b2BodyDef body_def = b2DefaultBodyDef();
