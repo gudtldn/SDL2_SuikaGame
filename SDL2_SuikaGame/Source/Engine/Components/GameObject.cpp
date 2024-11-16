@@ -6,8 +6,6 @@
 #include <format>
 
 
-std::unordered_map<std::string, int> GameObject::instance_id;
-
 void GameObject::BeginPlay()
 {
 }
@@ -30,16 +28,6 @@ void GameObject::OnDestroy()
 
 void GameObject::OnEvent(const SDL_Event& event)
 {
-}
-
-std::string GameObject::GetName() const
-{
-    const std::string name = typeid(*this).name();
-    return std::format(
-        "{}_Inst_{}",
-        name.substr(name.find_first_of(' ') + 1),
-        instance_id[name]++
-    );
 }
 
 void GameObject::Destroy()

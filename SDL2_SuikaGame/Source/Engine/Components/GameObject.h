@@ -2,7 +2,6 @@
 #include <memory>
 
 #include <string>
-#include <unordered_map>
 #include <unordered_set>
 
 // forward declaration
@@ -19,9 +18,6 @@ private:
     /// @brief 게임 엔진
     GameEngine* engine;
 
-    /// @brief 인스턴스 카운트
-    static std::unordered_map<std::string, int> instance_id;
-
 protected:
     /// @brief 게임 오브젝트의 z-order
     int z_order = 0;
@@ -31,7 +27,7 @@ protected:
 
 public:
     GameObject(GameEngine* engine)
-        : engine(engine) { instance_id[typeid(*this).raw_name()]++; }
+        : engine(engine) {}
 
     virtual ~GameObject() = default;
 
@@ -61,10 +57,6 @@ public:
 
     /// @brief 이벤트가 발생했을 때 호출됩니다.
     virtual void OnEvent(const SDL_Event& event);
-
-    /// @brief 게임 오브젝트의 이름을 가져옵니다.
-    /// @return 게임 오브젝트의 이름
-    virtual std::string GetName() const;
 
 
     /****** Methods ******/
