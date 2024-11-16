@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "EnginePCH.h"
 
 class FruitResourceObject;
@@ -85,4 +85,5 @@ protected:
     virtual void BeginPlay() override;
     virtual void Update(float delta_time) override;
     virtual void Render(SDL_Renderer* renderer) const override;
+    virtual void OnDestroy() override;
 };

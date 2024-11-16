@@ -104,3 +104,12 @@ void FruitObject::Render(SDL_Renderer* renderer) const
         fruit_position - fruit_texture->GetSize() / 2
     );
 }
+
+void FruitObject::OnDestroy()
+{
+    b2DestroyShape(fruit_shape);
+    b2DestroyBody(fruit_body);
+    
+    fruit_shape = b2_nullShapeId;
+    fruit_body = b2_nullBodyId;
+}
