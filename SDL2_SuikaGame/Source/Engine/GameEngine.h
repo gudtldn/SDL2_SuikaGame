@@ -33,9 +33,6 @@ private:
     /// @brief 게임 오브젝트 관리자
     ObjectManager object_manager;
 
-    /// @brief 물리 엔진 관리자
-    Box2DManager box2d_manager;
-
     /// @brief 게임이 실행 중인지 여부
     bool is_running;
 
@@ -85,9 +82,6 @@ public:
 
     /// @brief 게임 오브젝트 관리자를 가져옵니다.
     ObjectManager& GetObjectManager() { return object_manager; }
-
-    /// @brief 물리 엔진 관리자를 가져옵니다.
-    Box2DManager& GetBox2DManager() { return box2d_manager; }
 
     /// @brief 현재 스테이지를 가져옵니다.
     Stage* GetCurrentStage() const { return current_stage.get(); }
@@ -144,4 +138,5 @@ void GameEngine::SetStage()
 {
     // 새로운 스테이지 생성
     current_stage = std::make_unique<S>(this);
+    current_stage->InitializeObjects();
 }

@@ -1,5 +1,6 @@
 ﻿#include "BorderBottomCollisionObject.h"
-#include "BorderObject.h"
+#include "SuikaGame/Stages/GameStage.h"
+#include "SuikaGame/GameObjects/BorderObject.h"
 
 
 BorderBottomCollisionObject::BorderBottomCollisionObject(GameEngine* engine)
@@ -28,7 +29,10 @@ BorderBottomCollisionObject::BorderBottomCollisionObject(GameEngine* engine)
         .x = texture_position.X + bottom_offset.x,
         .y = texture_position.Y + bottom_offset.y
     };
-    border_bottom_body = b2CreateBody(GetEngine()->GetBox2DManager().GetWorldID(), &body_def);
+    border_bottom_body = b2CreateBody(
+        dynamic_cast<GameStage*>(GetCurrentStage())->GetBox2DManager().GetWorldID(),
+        &body_def
+    );
     b2Body_SetUserData(border_bottom_body, this);
 
     b2Polygon border_polygon = b2MakeBox(bottom_offset.w, bottom_offset.h);

@@ -7,6 +7,12 @@
 MenuStage::MenuStage(GameEngine* engine)
     : Stage(engine)
 {
+}
+
+void MenuStage::InitializeObjects()
+{
+    Stage::InitializeObjects();
+
     // 게임 로고 오브젝트 생성
     GetObjectManager().CreateGameObject<GameLogoObject>();
 

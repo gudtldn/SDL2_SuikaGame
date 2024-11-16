@@ -7,4 +7,7 @@ class MenuStage : public Stage
 {
 public:
     MenuStage(GameEngine* engine);
+
+protected:
+    virtual void InitializeObjects() override;
 };

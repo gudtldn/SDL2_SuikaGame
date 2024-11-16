@@ -1,4 +1,5 @@
 ﻿#include "FruitObject.h"
+#include "SuikaGame/Stages/GameStage.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
 #include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
 #include <limits>
@@ -46,7 +47,7 @@ void FruitObject::InitFruit(size_t idx)
     body_def.angularDamping = 0.1f;
 
     fruit_body = b2CreateBody(
-        GetEngine()->GetBox2DManager().GetWorldID(),
+        dynamic_cast<GameStage*>(GetCurrentStage())->GetBox2DManager().GetWorldID(),
         &body_def
     );
     b2Body_SetUserData(fruit_body, this);
@@ -86,7 +87,8 @@ void FruitObject::BeginPlay()
     )
 
     // Delegate Bind
-    GetEngine()->GetBox2DManager().OnBeginOverlap.AddFunction([this](GameObject* a, const GameObject* b)
+    dynamic_cast<GameStage*>(GetCurrentStage())->GetBox2DManager()
+        .OnBeginOverlap.AddFunction([this](GameObject* a, const GameObject* b)
     {
         // 과일이 비활성화 되어있거나, 자신하고 발생한 이벤트가 아닐 경우 리턴
         if (!GetFruitActive() || b != this) return;
