@@ -1,13 +1,24 @@
 #include "FruitObject.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
+#include <limits>
 
 
 FruitObject::FruitObject(GameEngine* engine)
     : GameObject(engine)
+    , fruit_texture(nullptr)
+    , fruit_offset_position(std::numeric_limits<float>::infinity())
+    , fruit_offset_size(std::numeric_limits<float>::infinity())
+    , fruit_active(false)
+    , is_init(false)
+    , fruit_body()
+    , fruit_shape()
 {
     // 렌더링 순서
     z_order = 10;
+}
 
+void FruitObject::InitFruit(size_t idx)
+{
     // fruit_texture 설정
     std::vector<FruitResourceObject*> fruit_resource;
     GetCurrentStage()->GetObjectManager().GetGameObjectsOfClass<FruitResourceObject>(fruit_resource);
@@ -33,13 +44,16 @@ FruitObject::FruitObject(GameEngine* engine)
     body_def.angularDamping = 0.1f;
 
     fruit_body = b2CreateBody(
-        engine->GetBox2DManager().GetWorldID(),
+        GetEngine()->GetBox2DManager().GetWorldID(),
         &body_def
     );
     b2Body_SetUserData(fruit_body, this);
-    SetFruitActive(false);
 
-    b2Circle circle = {
+    // 초기에는 비활성화
+    b2Body_Disable(fruit_body);
+    fruit_active = false;
+
+    const b2Circle circle = {
         .center = {
             .x = fruit_position.X + fruit_offset_position.X,
             .y = fruit_position.Y + fruit_offset_position.Y,
@@ -51,7 +65,24 @@ FruitObject::FruitObject(GameEngine* engine)
     shape_def.density = 1.0f;
     shape_def.friction = 0.3f;
 
-    b2CreateCircleShape(fruit_body, &shape_def, &circle);
+    fruit_shape = b2CreateCircleShape(fruit_body, &shape_def, &circle);
+
+    // 초기화 성공
+    is_init = true;
+}
+
+void FruitObject::InitRandomFruit()
+{
+    InitFruit(Math::RandRange(0, 4));
+}
+
+void FruitObject::BeginPlay()
+{
+    THROW_IF_FAILED(
+        is_init,
+        "FruitObject is not initialized please call InitFruit or InitRandomFruit"
+    )
+
 }
 
 void FruitObject::Update(float delta_time)

@@ -48,7 +48,8 @@ void PlayerObject::BeginPlay()
     SetNextFruit();
 
     FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
-    fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
+    fruit->InitRandomFruit();
+    fruit->SetFruitPosition(player_position);
     current_fruit = fruit;
 }
 
@@ -161,8 +162,10 @@ void PlayerObject::SetNextFruit()
     }
 
     FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
-    fruit->SetFruitPosition(player_position - (fruit->GetFruitSize() / 2.0f));
+    fruit->InitRandomFruit();
 
     next_fruit = fruit;
+
+    // NextFruitDisplayObject::BeginPlay에 델리게이트 함수가 바인딩되어 있음
     next_fruit_delegate.Execute(next_fruit);
 }
