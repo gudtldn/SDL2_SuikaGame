@@ -47,6 +47,10 @@ public:
     /// @param delta_time Delta time
     virtual void HandleUpdate(float delta_time);
 
+    /// @brief 고정된 시간만큼 게임 오브젝트를 업데이트합니다.
+    /// @param fixed_time 고정된 시간
+    virtual void HandleFixedUpdate(float fixed_time);
+
     /// @brief 게임 오브젝트를 추가합니다.
     /// @tparam Obj GameObject를 상속받은 클래스
     template <typename Obj>

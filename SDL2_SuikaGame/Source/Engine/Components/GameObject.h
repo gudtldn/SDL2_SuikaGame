@@ -50,6 +50,9 @@ public:
     /// @brief 매 프레임마다 호출됩니다.
     virtual void Update(float delta_time);
 
+    /// @brief 고정된 시간마다 호출됩니다.
+    virtual void FixedUpdate(float fixed_time);
+
     /// @brief 게임 오브젝트가 렌더링될 때 호출됩니다.
     virtual void Render(SDL_Renderer* renderer) const;
 

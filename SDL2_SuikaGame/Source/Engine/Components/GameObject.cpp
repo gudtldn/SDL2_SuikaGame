@@ -16,6 +16,10 @@ void GameObject::Update(float delta_time)
 {
 }
 
+void GameObject::FixedUpdate(float fixed_time)
+{
+}
+
 void GameObject::Render(SDL_Renderer* renderer) const
 {
 }

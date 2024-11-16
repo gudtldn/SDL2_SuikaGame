@@ -22,6 +22,15 @@ void ObjectManager::HandleUpdate(float delta_time)
     }
 }
 
+void ObjectManager::HandleFixedUpdate(float fixed_time)
+{
+    const auto copy_game_objects = game_objects;
+    for (auto& object : copy_game_objects)
+    {
+        object->FixedUpdate(fixed_time);
+    }
+}
+
 // CreateGameObject는 template함수로 .h 파일에 정의되어 있습니다.
 // template <typename Obj>
 //     requires std::derived_from<Obj, GameObject>

@@ -42,6 +42,9 @@ private:
     /// @brief 누적 시간
     float accumulated_time;
 
+    /// @brief 고정된 시간
+    float fixed_time;
+
     /// @brief 누적 시간 초기화 간격
     static constexpr float RESET_THRESHOLD = 2 * PI;
 
@@ -95,6 +98,13 @@ public:
     /// @brief 누적 시간을 가져옵니다. (sin주기에 따라 초기화됨 0 ~ 2 * PI)
     float GetAccumulatedTime() const { return accumulated_time; }
 
+    /// @brief 고정된 시간을 가져옵니다.
+    float GetFixedTime() const { return fixed_time; }
+
+    /// @brief 고정된 시간을 설정합니다.
+    /// @param time 고정된 시간
+    void SetFixedTime(float time) { fixed_time = time; }
+
 
     /****** Method ******/
 
@@ -114,6 +124,10 @@ private:
 
     /// @brief 게임 오브젝트를 업데이트합니다.
     inline void Update(float delta_time);
+
+    /// @brief 고정된 시간만큼 게임 오브젝트를 업데이트합니다.
+    /// @param fixed_time 고정된 시간
+    inline void FixedUpdate(float fixed_time);
 
     /// @brief 게임 오브젝트를 렌더링합니다.
     inline void Render() const;

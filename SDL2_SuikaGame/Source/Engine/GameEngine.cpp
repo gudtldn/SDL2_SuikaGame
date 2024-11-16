@@ -23,6 +23,7 @@ GameEngine::GameEngine(
     , object_manager(this)
     , is_running(false)
     , accumulated_time(0.0f)
+    , fixed_time(1.0f / TARGET_FPS)
 {
     // SDL 미 초기화 시 예외 처리
     if (SDL_WasInit(SDL_INIT_VIDEO) == 0)
@@ -85,6 +86,7 @@ void GameEngine::Run()
     Math::RandInit(static_cast<int>(time(nullptr)));
 
     Uint64 now_time = SDL_GetPerformanceCounter();
+    float lag = 0.0f;
 
     while (is_running)
     {
@@ -95,9 +97,9 @@ void GameEngine::Run()
         const float delta_time_sec =
             static_cast<float>(now_time - last_time) / static_cast<float>(SDL_GetPerformanceFrequency());
 
-
         // 누적 시간 추가
         AddAccumulatedTime(delta_time_sec);
+        lag += delta_time_sec;
 
 
         // 이벤트 처리
@@ -115,6 +117,14 @@ void GameEngine::Run()
 
         // 업데이트
         Update(delta_time_sec);
+
+
+        // 고정된 시간만큼 업데이트
+        while (lag >= fixed_time)
+        {
+            FixedUpdate(fixed_time);
+            lag -= fixed_time;
+        }
 
 
         // 화면 지우기
@@ -182,8 +192,20 @@ inline void GameEngine::Update(float delta_time)
         game_object->Update(delta_time);
     }
 
+inline void GameEngine::FixedUpdate(float fixed_time)
+{
+    if (current_stage)
+    {
+        current_stage->GetObjectManager().HandleFixedUpdate(fixed_time);
+    }
+
+    for (const auto& game_object : object_manager.GetGameObjects())
+    {
+        game_object->FixedUpdate(fixed_time);
+    }
+
     // 물리 시뮬레이션
-    box2d_manager.Step(delta_time * 4, 8);
+    box2d_manager.Step(fixed_time * 4, 8);
 }
 
 inline void GameEngine::Render() const
