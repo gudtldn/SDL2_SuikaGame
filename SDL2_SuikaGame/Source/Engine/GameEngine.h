@@ -127,7 +127,7 @@ private:
 
     /// @brief 고정된 시간만큼 게임 오브젝트를 업데이트합니다.
     /// @param fixed_time 고정된 시간
-    inline void FixedUpdate(float fixed_time) const;
+    inline void FixedUpdate(float fixed_time);
 
     /// @brief 게임 오브젝트를 렌더링합니다.
     inline void Render() const;

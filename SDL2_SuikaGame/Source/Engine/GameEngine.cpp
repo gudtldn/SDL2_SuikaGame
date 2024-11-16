@@ -191,8 +191,9 @@ inline void GameEngine::Update(float delta_time)
     {
         game_object->Update(delta_time);
     }
+}
 
-inline void GameEngine::FixedUpdate(float fixed_time) const
+inline void GameEngine::FixedUpdate(float fixed_time)
 {
     if (current_stage)
     {
