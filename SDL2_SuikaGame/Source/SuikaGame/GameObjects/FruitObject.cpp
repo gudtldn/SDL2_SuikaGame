@@ -1,4 +1,4 @@
-﻿#include "FruitObject.h"
+#include "FruitObject.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
 
 
@@ -35,6 +35,7 @@ FruitObject::FruitObject(GameEngine* engine)
         engine->GetBox2DManager().GetWorldID(),
         &body_def
     );
+    b2Body_SetUserData(fruit_body, this);
     SetFruitActive(false);
 
     b2Circle circle = {
