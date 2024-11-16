@@ -43,8 +43,14 @@ void GameObject::Destroy()
     const auto self = shared_from_this();
 
     // 오브젝트 매니저에서 제거
-    GetCurrentStage()->GetObjectManager().DestroyGameObject(self);
-    GetEngine()->GetObjectManager().DestroyGameObject(self);
+    if (GetCurrentStage()->GetObjectManager().GetGameObjects().contains(self))
+    {
+        GetCurrentStage()->GetObjectManager().DestroyGameObject(self);
+    }
+    else
+    {
+        GetEngine()->GetObjectManager().DestroyGameObject(self);
+    }
 }
 
 inline Stage* GameObject::GetCurrentStage() const
