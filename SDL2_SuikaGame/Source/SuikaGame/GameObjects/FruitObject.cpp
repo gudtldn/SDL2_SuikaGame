@@ -1,5 +1,6 @@
-#include "FruitObject.h"
+﻿#include "FruitObject.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
+#include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
 #include <limits>
 
 
@@ -9,6 +10,7 @@ FruitObject::FruitObject(GameEngine* engine)
     , fruit_offset_position(std::numeric_limits<float>::infinity())
     , fruit_offset_size(std::numeric_limits<float>::infinity())
     , fruit_active(false)
+    , is_first_landed(false)
     , is_init(false)
     , fruit_body()
     , fruit_shape()
@@ -83,6 +85,31 @@ void FruitObject::BeginPlay()
         "FruitObject is not initialized please call InitFruit or InitRandomFruit"
     )
 
+    // Delegate Bind
+    GetEngine()->GetBox2DManager().OnBeginOverlap.AddFunction([this](GameObject* a, const GameObject* b)
+    {
+        // 과일이 비활성화 되어있거나, 자신하고 발생한 이벤트가 아닐 경우 리턴
+        if (!GetFruitActive() || b != this) return;
+
+        // BorderBottomCollisionObject와 충돌했을 경우
+        if (dynamic_cast<BorderBottomCollisionObject*>(a) && !is_first_landed)
+        {
+            is_first_landed = true;
+            OnLandedBottomCollision.Execute();
+        }
+
+        // FruitObject와 충돌했을 경우
+        else if (FruitObject* fruit_obj = dynamic_cast<FruitObject*>(a))
+        {
+            if (!is_first_landed)
+            {
+                is_first_landed = true;
+                OnLandedBottomCollision.Execute();
+            }
+            
+            // TODO: 과일끼리 충돌했을 경우 Event발생
+        }
+    });
 }
 
 void FruitObject::Update(float delta_time)
@@ -93,6 +120,11 @@ void FruitObject::Update(float delta_time)
 
     if (fruit_position.Y > SCREEN_HEIGHT)
     {
+        if (!is_first_landed)
+        {
+            is_first_landed = true;
+            OnLandedBottomCollision.Execute();
+        }
         Destroy();
     }
 }

@@ -13,6 +13,7 @@ PlayerObject::PlayerObject(GameEngine* engine)
     )
     , current_fruit(nullptr)
     , next_fruit(nullptr)
+    , next_fruit_ready(false)
 {
     // z-order 설정
     z_order = -1;
@@ -33,6 +34,7 @@ PlayerObject::PlayerObject(GameEngine* engine)
     max_border_x -= BORDER_MARGIN;
 
     // player_guide_line의 y 좌표 설정
+    player_position.X = SCREEN_WIDTH / 2.0f;
     player_position.Y = SCREEN_HEIGHT / 2.0f - 320.0f;
 
 
@@ -45,12 +47,15 @@ PlayerObject::PlayerObject(GameEngine* engine)
 
 void PlayerObject::BeginPlay()
 {
-    SetNextFruit();
-
     FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
     fruit->InitRandomFruit();
-    fruit->SetFruitPosition(player_position);
-    current_fruit = fruit;
+    next_fruit = fruit;
+
+    // NextFruitDisplayObject::BeginPlay에 델리게이트 함수가 바인딩되어 있음
+    next_fruit_delegate.Execute(next_fruit);
+    next_fruit_ready = true;
+
+    SetNextFruit();
 }
 
 void PlayerObject::Update(float delta_time)
@@ -112,7 +117,11 @@ void PlayerObject::Update(float delta_time)
 
 void PlayerObject::Render(SDL_Renderer* renderer) const
 {
-    player_guide_line.Render(renderer, player_position);
+    if (next_fruit_ready)
+    {
+        player_guide_line.Render(renderer, player_position);
+    }
+
     player_texture->Render(
         renderer,
         Vector2D(
@@ -136,6 +145,9 @@ void PlayerObject::OnEvent(const SDL_Event& event)
         || event.type == SDL_KEYDOWN                            // 키보드 키를 누를 때
         || event.type == SDL_CONTROLLERBUTTONDOWN               // 컨트롤러 버튼을 누를 때
     ) {
+        // 다음 과일이 준비되지 않았다면 리턴
+        if (!next_fruit_ready) return;
+
         if (
             event.button.button == SDL_BUTTON_LEFT              // 마우스 왼쪽 버튼
             || event.key.keysym.sym == SDLK_SPACE               // 키보드 스페이스바
@@ -143,7 +155,7 @@ void PlayerObject::OnEvent(const SDL_Event& event)
             || event.cbutton.button == SDL_CONTROLLER_BUTTON_A  // 컨트롤러 A 버튼
         ) {
             current_fruit->SetFruitActive(true);
-            SetNextFruit();
+            next_fruit_ready = false;
         }
     }
 }
@@ -156,16 +168,17 @@ void PlayerObject::SetPlayerPosition(float new_x)
 void PlayerObject::SetNextFruit()
 {
     current_fruit = next_fruit;
-    if (current_fruit)
+    current_fruit->SetFruitPosition(player_position);
+    current_fruit->OnLandedBottomCollision.BindFunction([this]()
     {
-        current_fruit->SetFruitPosition(player_position);
-    }
+        SetNextFruit();
+    });
 
     FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
     fruit->InitRandomFruit();
-
     next_fruit = fruit;
 
     // NextFruitDisplayObject::BeginPlay에 델리게이트 함수가 바인딩되어 있음
     next_fruit_delegate.Execute(next_fruit);
+    next_fruit_ready = true;
 }

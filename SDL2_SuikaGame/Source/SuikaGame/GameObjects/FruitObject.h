@@ -1,7 +1,11 @@
 ﻿#pragma once
 #include "EnginePCH.h"
 
+// forward declaration
 class FruitResourceObject;
+
+// delegate declaration
+DECLARE_DELEGATE(FOnLandedBottomCollision);
 
 
 /// @brief 과일 오브젝트
@@ -23,12 +27,19 @@ private:
     /// @brief 오브젝트 활성화 여부
     bool fruit_active;
 
+    /// @brief 처음 땅에 닿았는지 여부
+    bool is_first_landed;
+
     /// @brief 초기화 여부
     bool is_init;
 
 private:
     b2BodyId fruit_body;
     b2ShapeId fruit_shape;
+
+public:
+    /// @brief 과일이 땅에 닿았을 때 발생하는 이벤트
+    FOnLandedBottomCollision OnLandedBottomCollision;
 
 public:
     FruitObject(GameEngine* engine);
@@ -48,7 +59,10 @@ public:
     /// @param new_position 새로운 위치
     void SetFruitPosition(Vector2D new_position)
     {
-        THROW_IF_FAILED(is_init);
+        THROW_IF_FAILED(
+            is_init,
+            "FruitObject is not initialized please call InitFruit or InitRandomFruit"
+        )
         fruit_position = new_position;
         b2Body_SetTransform(
             fruit_body,
@@ -68,7 +82,10 @@ public:
     /// @param new_value 새로운 활성화 여부
     void SetFruitActive(bool new_value)
     {
-        THROW_IF_FAILED(is_init);
+        THROW_IF_FAILED(
+            is_init,
+            "FruitObject is not initialized please call InitFruit or InitRandomFruit"
+        )
 
         fruit_active = new_value;
         if (new_value)

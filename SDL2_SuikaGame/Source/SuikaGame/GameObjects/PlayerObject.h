@@ -29,6 +29,9 @@ private:
     /// @brief 다음 과일
     FruitObject* next_fruit;
 
+    /// @brief 다음 과일이 준비되었는지 여부
+    bool next_fruit_ready;
+
 private:
     // Guideline
     static constexpr float GUIDE_LINE_WIDTH = 3.0f;
