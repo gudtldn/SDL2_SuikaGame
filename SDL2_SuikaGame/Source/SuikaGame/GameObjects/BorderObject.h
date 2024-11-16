@@ -19,4 +19,5 @@ public:
 protected:
     virtual void Update(float delta_time) override;
     virtual void Render(SDL_Renderer* renderer) const override;
+    virtual void OnDestroy() override;
 };

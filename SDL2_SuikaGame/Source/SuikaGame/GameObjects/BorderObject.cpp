@@ -84,3 +84,15 @@ void BorderObject::Render(SDL_Renderer* renderer) const
         texture_position - border_size / 2
     );
 }
+
+void BorderObject::OnDestroy()
+{
+    for (const auto [idx, body] : bodies | std::views::enumerate)
+    {
+        b2DestroyShape(shapes[idx]);
+        b2DestroyBody(body);
+
+        shapes[idx] = b2_nullShapeId;
+        body = b2_nullBodyId;
+    }
+}
