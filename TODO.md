@@ -1,6 +1,7 @@
 # 엔진 기능 구현
 - [ ] TimerManager 구현
 - [ ] IButton 인터페이스 구현
+- [ ] RenderingAnchor 구현
 - [x] Box2D 물리 엔진 연동
   - [x] Box2DManger 구현
     - [x] 기본적인 World 생성 및 소멸
