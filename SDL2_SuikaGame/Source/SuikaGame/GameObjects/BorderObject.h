@@ -10,14 +10,17 @@ private:
     Vector2D texture_position;
 
 private:
-    b2BodyId bodies[3];
-    b2ShapeId shapes[3];
+    b2BodyId bodies[2];
+    b2ShapeId shapes[2];
 
 public:
     BorderObject(GameEngine* engine);
 
+    /// @brief Border의 위치를 반환합니다.
+    Vector2D GetObjectPosition() const { return texture_position; }
+
 protected:
-    virtual void Update(float delta_time) override;
+    virtual void BeginPlay() override;
     virtual void Render(SDL_Renderer* renderer) const override;
     virtual void OnDestroy() override;
 };

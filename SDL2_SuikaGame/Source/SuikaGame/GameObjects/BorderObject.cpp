@@ -1,4 +1,5 @@
 #include "BorderObject.h"
+#include "BorderBottomCollisionObject.h"
 #include <ranges>
 
 
@@ -46,13 +47,8 @@ BorderObject::BorderObject(GameEngine* engine)
             .y = 0.0f,
             .w = 8.0f,
             .h = 280.0f
-        },
-        { // Bottom
-            .x = 0.0f,
-            .y = 312.0f,
-            .w = 224.0f,
-            .h = 8.0f
         }
+        // Bottom은 BorderBottomCollisionObject에 구현
     };
 
     for (const auto [idx, rect] : body_rect | std::views::enumerate)
@@ -68,13 +64,16 @@ BorderObject::BorderObject(GameEngine* engine)
 
         b2Polygon border_polygon = b2MakeBox(rect.w, rect.h);
         b2ShapeDef border_shape_def = b2DefaultShapeDef();
+        border_shape_def.enableContactEvents = false;
+        border_shape_def.enableHitEvents = false;
         shapes[idx] = b2CreatePolygonShape(bodies[idx], &border_shape_def, &border_polygon);
     }
 }
 
-void BorderObject::Update(float delta_time)
+void BorderObject::BeginPlay()
 {
-    // TODO: Implement Update
+    // BorderObject의 Bottom 부분 CollisionObject
+    GetCurrentStage()->GetObjectManager().CreateGameObject<BorderBottomCollisionObject>();
 }
 
 void BorderObject::Render(SDL_Renderer* renderer) const
