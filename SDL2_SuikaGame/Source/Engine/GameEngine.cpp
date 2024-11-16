@@ -23,7 +23,7 @@ GameEngine::GameEngine(
     , object_manager(this)
     , is_running(false)
     , accumulated_time(0.0f)
-    , fixed_time(1.0f / TARGET_FPS)
+    , fixed_time_v(1.0f / TARGET_FPS)
 {
     // SDL 미 초기화 시 예외 처리
     if (SDL_WasInit(SDL_INIT_VIDEO) == 0)
@@ -120,10 +120,10 @@ void GameEngine::Run()
 
 
         // 고정된 시간만큼 업데이트
-        while (lag >= fixed_time)
+        while (lag >= fixed_time_v)
         {
-            FixedUpdate(fixed_time);
-            lag -= fixed_time;
+            FixedUpdate(fixed_time_v);
+            lag -= fixed_time_v;
         }
 
 
@@ -192,7 +192,7 @@ inline void GameEngine::Update(float delta_time)
         game_object->Update(delta_time);
     }
 
-inline void GameEngine::FixedUpdate(float fixed_time)
+inline void GameEngine::FixedUpdate(float fixed_time) const
 {
     if (current_stage)
     {

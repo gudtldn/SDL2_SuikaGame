@@ -43,7 +43,7 @@ private:
     float accumulated_time;
 
     /// @brief 고정된 시간
-    float fixed_time;
+    float fixed_time_v;
 
     /// @brief 누적 시간 초기화 간격
     static constexpr float RESET_THRESHOLD = 2 * PI;
@@ -99,11 +99,11 @@ public:
     float GetAccumulatedTime() const { return accumulated_time; }
 
     /// @brief 고정된 시간을 가져옵니다.
-    float GetFixedTime() const { return fixed_time; }
+    float GetFixedTime() const { return fixed_time_v; }
 
     /// @brief 고정된 시간을 설정합니다.
     /// @param time 고정된 시간
-    void SetFixedTime(float time) { fixed_time = time; }
+    void SetFixedTime(float time) { fixed_time_v = time; }
 
 
     /****** Method ******/
@@ -127,7 +127,7 @@ private:
 
     /// @brief 고정된 시간만큼 게임 오브젝트를 업데이트합니다.
     /// @param fixed_time 고정된 시간
-    inline void FixedUpdate(float fixed_time);
+    inline void FixedUpdate(float fixed_time) const;
 
     /// @brief 게임 오브젝트를 렌더링합니다.
     inline void Render() const;
