@@ -103,6 +103,22 @@ struct Math
         return isinf(value) != 0;
     }
 
+    /// @brief Radian 값을 Degree로 변환합니다.
+    /// @param radian 라디안 값
+    /// @return degree 값
+    [[nodiscard]] static float RadianToDegree(float radian)
+    {
+        return radian * 180.0f / PI;
+    }
+
+    /// @brief Degree 값을 Radian으로 변환합니다.
+    /// @param degree degree 값
+    /// @return 라디안 값
+    [[nodiscard]] static float DegreeToRadian(float degree)
+    {
+        return degree * PI / 180.0f;
+    }
+
     /// @brief Sin 함수를 계산합니다.
     /// @param value 각도
     /// @return Sin 함수 값
@@ -254,7 +270,7 @@ private:
     /// @return 랜덤 정수
     [[nodiscard]] static int Rand()
     {
-        return rand();
+        return rand();  // NOLINT(concurrency-mt-unsafe)
     }
 
     /// @brief 0 ~ 1 사이의 랜덤 실수를 생성합니다.
@@ -263,7 +279,7 @@ private:
     {
         // FP32 mantissa can only represent 24 bits before losing precision
         constexpr int RandMax = 0x00ffffff < RAND_MAX ? 0x00ffffff : RAND_MAX;
-        return static_cast<float>(rand() & RandMax) / static_cast<float>(RandMax);
+        return static_cast<float>(rand() & RandMax) / static_cast<float>(RandMax);  // NOLINT(concurrency-mt-unsafe)
     }
 
     /// @brief Helper function for rand implementations. Returns a random number in [0..A)
