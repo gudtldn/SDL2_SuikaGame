@@ -18,9 +18,9 @@ BorderTopSensorObject::BorderTopSensorObject(GameEngine* engine)
 
     SDL_FRect top_offset = {
         .x = 0.0f,
-        .y = -272.0f,
+        .y = -300.0f,
         .w = 224.0f,
-        .h = 8.0f
+        .h = 16.0f
     };
 
     b2BodyDef body_def = b2DefaultBodyDef();
