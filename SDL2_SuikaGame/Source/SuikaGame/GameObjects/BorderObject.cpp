@@ -71,6 +71,7 @@ BorderObject::BorderObject(GameEngine* engine)
         b2ShapeDef border_shape_def = b2DefaultShapeDef();
         border_shape_def.enableContactEvents = false;
         border_shape_def.enableHitEvents = false;
+        border_shape_def.userData = this;
         shapes[idx] = b2CreatePolygonShape(bodies[idx], &border_shape_def, &border_polygon);
     }
 }

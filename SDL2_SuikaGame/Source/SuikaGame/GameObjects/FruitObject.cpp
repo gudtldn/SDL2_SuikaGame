@@ -67,6 +67,7 @@ void FruitObject::InitFruit(size_t idx)
     b2ShapeDef shape_def = b2DefaultShapeDef();
     shape_def.density = 1.0f;
     shape_def.friction = 0.3f;
+    shape_def.userData = this;
 
     fruit_shape = b2CreateCircleShape(fruit_body, &shape_def, &circle);
 

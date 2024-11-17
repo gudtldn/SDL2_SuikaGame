@@ -37,6 +37,7 @@ BorderBottomCollisionObject::BorderBottomCollisionObject(GameEngine* engine)
 
     b2Polygon border_polygon = b2MakeBox(bottom_offset.w, bottom_offset.h);
     b2ShapeDef border_shape_def = b2DefaultShapeDef();
+    border_shape_def.userData = this;
     border_bottom_shape = b2CreatePolygonShape(border_bottom_body, &border_shape_def, &border_polygon);
 }
 

@@ -41,7 +41,7 @@ void GameStage::HandleFixedUpdate(float fixed_time)
 {
     Stage::HandleFixedUpdate(fixed_time);
 
-    // Box2D Event
+    // Box2D Contact Event
     const b2ContactEvents contact_events = b2World_GetContactEvents(box2d_manager.GetWorldID());
 
     // BeginOverlap Event
@@ -49,8 +49,8 @@ void GameStage::HandleFixedUpdate(float fixed_time)
     {
         const b2ContactBeginTouchEvent* begin_event = contact_events.beginEvents + i;
         box2d_manager.OnBeginOverlap.Broadcast(
-            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(begin_event->shapeIdA))),
-            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(begin_event->shapeIdB)))
+            static_cast<GameObject*>(b2Shape_GetUserData(begin_event->shapeIdA)),
+            static_cast<GameObject*>(b2Shape_GetUserData(begin_event->shapeIdB))
         );
     }
 
@@ -59,8 +59,8 @@ void GameStage::HandleFixedUpdate(float fixed_time)
     {
         const b2ContactEndTouchEvent* end_event = contact_events.endEvents + i;
         box2d_manager.OnEndOverlap.Broadcast(
-            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(end_event->shapeIdA))),
-            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(end_event->shapeIdB)))
+            static_cast<GameObject*>(b2Shape_GetUserData(end_event->shapeIdA)),
+            static_cast<GameObject*>(b2Shape_GetUserData(end_event->shapeIdB))
         );
     }
 
@@ -69,8 +69,8 @@ void GameStage::HandleFixedUpdate(float fixed_time)
     {
         const b2ContactHitEvent* hit_event = contact_events.hitEvents + i;
         box2d_manager.OnBeginOverlap.Broadcast(
-            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(hit_event->shapeIdA))),
-            static_cast<GameObject*>(b2Body_GetUserData(b2Shape_GetBody(hit_event->shapeIdB)))
+            static_cast<GameObject*>(b2Shape_GetUserData(hit_event->shapeIdA)),
+            static_cast<GameObject*>(b2Shape_GetUserData(hit_event->shapeIdB))
         );
     }
 
