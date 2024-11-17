@@ -40,15 +40,15 @@ BorderObject::BorderObject(GameEngine* engine)
     constexpr SDL_FRect body_rect[] = {
         { // Left
             .x = -6.0f - 224.0f,
-            .y = 0.0f,
+            .y = -280.0f,
             .w = 8.0f,
-            .h = 280.0f
+            .h = 560.0f
         },
         { // Right
             .x = 6.0f + 224.0f,
-            .y = 0.0f,
+            .y = -280.0f,
             .w = 8.0f,
-            .h = 280.0f
+            .h = 560.0f
         }
         // Bottom은 BorderBottomCollisionObject에 구현
     };
