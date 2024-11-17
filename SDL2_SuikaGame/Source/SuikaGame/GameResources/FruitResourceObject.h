@@ -10,7 +10,11 @@ private:
     static constexpr size_t FRUIT_COUNT = 11;
 
     std::array<std::unique_ptr<Texture2D>, FRUIT_COUNT> fruit_textures;
+
+    /// @brief 물리엔진에 사용될 오프셋 위치
     std::array<Vector2D, FRUIT_COUNT> fruits_offset_position;
+
+    /// @brief 물리엔진에 사용될 오프셋 사이즈
     std::array<float, FRUIT_COUNT> fruits_offset_size;
 
 public:

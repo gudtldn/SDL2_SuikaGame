@@ -18,10 +18,10 @@ private:
     /// @brief 과일 위치
     Vector2D fruit_position;
 
-    /// @brief 과일 오프셋 위치
+    /// @brief 과일 오프셋 위치 (원래 위치와 과육 부분 위치의 차)
     Vector2D fruit_offset_position;
 
-    /// @brief 과일 오프셋 크기
+    /// @brief 과일 오프셋 크기 (꼭지 부분을 제외한, 실제 과육의 크기 오프셋)
     float fruit_offset_size;
 
     /// @brief 오브젝트 활성화 여부

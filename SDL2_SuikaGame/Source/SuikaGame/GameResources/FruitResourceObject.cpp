@@ -32,6 +32,7 @@ FruitResourceObject::FruitResourceObject(GameEngine* engine)
     }
 {
     // TODO: 나중에 스프라이트 시트로 변경
+    // 과일 이미지 Path
     constexpr std::array fruits_png = {
         "Contents/Textures/fruits/fruit_0.png",  // 체리
         "Contents/Textures/fruits/fruit_1.png",  // 딸기
@@ -46,6 +47,7 @@ FruitResourceObject::FruitResourceObject(GameEngine* engine)
         "Contents/Textures/fruits/fruit_10.png", // 수박
     };
 
+    // 과일 이미지 스케일
     constexpr std::array fruits_scale = {
         0.175f,  // 체리
         0.2f,    // 딸기
