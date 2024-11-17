@@ -146,8 +146,15 @@ void PlayerObject::OnEvent(const SDL_Event& event)
         || event.type == SDL_KEYDOWN                            // 키보드 키를 누를 때
         || event.type == SDL_CONTROLLERBUTTONDOWN               // 컨트롤러 버튼을 누를 때
     ) {
+        // 컨트롤러 이벤트가 아니면 cbutton을 -1로 설정
+        // event.cbutton.button의 기본값이 0이라서, 마우스의 아무 버튼을 클릭을 하면 그냥 인식이 됨
+        if (event.type != SDL_CONTROLLERBUTTONDOWN)
+        {
+            const_cast<SDL_Event&>(event).cbutton.button = SDL_CONTROLLER_BUTTON_INVALID;
+        }
+
         // 다음 과일이 준비되지 않았다면 리턴
-        GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
+        const GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
         if (game_stage && game_stage->IsGameOver()) return;
         if (!next_fruit_ready) return;
 
