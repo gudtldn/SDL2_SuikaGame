@@ -41,6 +41,28 @@ void GameStage::HandleFixedUpdate(float fixed_time)
 {
     Stage::HandleFixedUpdate(fixed_time);
 
+    // Box2D Sensor Event
+    const b2SensorEvents sensor_events = b2World_GetSensorEvents(box2d_manager.GetWorldID());
+
+    // BeginSensorOverlap Event
+    for (int i = 0; i < sensor_events.beginCount; ++i)
+    {
+        const b2SensorBeginTouchEvent* begin_touch = sensor_events.beginEvents + i;
+        box2d_manager.OnBeginSensorOverlap.Broadcast(
+            static_cast<GameObject*>(b2Shape_GetUserData(begin_touch->visitorShapeId))
+        );
+    }
+
+    // EndSensorOverlap Event
+    for (int i = 0; i < sensor_events.endCount; ++i)
+    {
+        const b2SensorEndTouchEvent* end_touch = sensor_events.endEvents + i;
+        box2d_manager.OnEndSensorOverlap.Broadcast(
+            static_cast<GameObject*>(b2Shape_GetUserData(end_touch->visitorShapeId))
+        );
+    }
+
+
     // Box2D Contact Event
     const b2ContactEvents contact_events = b2World_GetContactEvents(box2d_manager.GetWorldID());
 

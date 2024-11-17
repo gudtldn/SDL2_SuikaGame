@@ -25,6 +25,16 @@ DECLARE_MULTICAST_DELEGATE_TwoParams(
     GameObject* b
 )
 
+DECLARE_MULTICAST_DELEGATE_OneParam(
+    FBeginSensorOverlapDelegate,
+    GameObject* visitor
+)
+
+DECLARE_MULTICAST_DELEGATE_OneParam(
+    FEndSensorOverlapDelegate,
+    GameObject* visitor
+)
+
 
 /// @brief Box2D manager
 class Box2DManager
@@ -41,6 +51,9 @@ public:
     FBeginOverlapDelegate OnBeginOverlap;
     FEndOverlapDelegate OnEndOverlap;
     FOnHitDelegate OnHit;
+
+    FBeginSensorOverlapDelegate OnBeginSensorOverlap;
+    FEndSensorOverlapDelegate OnEndSensorOverlap;
 
 
     /****** Getter && Setter ******/

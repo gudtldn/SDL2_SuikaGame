@@ -1,6 +1,7 @@
 #include "BorderObject.h"
 #include "SuikaGame/Stages/GameStage.h"
 #include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
+#include "SuikaGame/GameObjects/BorderTopSensorObject.h"
 #include <ranges>
 
 
@@ -80,6 +81,9 @@ void BorderObject::BeginPlay()
 {
     // BorderObject의 Bottom 부분 CollisionObject
     GetCurrentStage()->GetObjectManager().CreateGameObject<BorderBottomCollisionObject>();
+
+    // BorderObject의 Top 부분 SensorObject
+    GetCurrentStage()->GetObjectManager().CreateGameObject<BorderTopSensorObject>();
 }
 
 void BorderObject::Render(SDL_Renderer* renderer) const
