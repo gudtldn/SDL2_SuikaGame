@@ -11,5 +11,6 @@ public:
     BorderTopSensorObject(GameEngine* engine);
 
 protected:
+    virtual void BeginPlay() override;
     virtual void OnDestroy() override;
 };

@@ -1,6 +1,7 @@
 ﻿#include "BorderTopSensorObject.h"
 #include "SuikaGame/Stages/GameStage.h"
 #include "SuikaGame/GameObjects/BorderObject.h"
+#include "SuikaGame/GameObjects/FruitObject.h"
 
 
 BorderTopSensorObject::BorderTopSensorObject(GameEngine* engine)
@@ -40,6 +41,32 @@ BorderTopSensorObject::BorderTopSensorObject(GameEngine* engine)
 
     b2Polygon border_polygon = b2MakeBox(top_offset.w, top_offset.h);
     border_sensor_shape = b2CreatePolygonShape(border_sensor_body, &shape_def, &border_polygon);
+}
+
+void BorderTopSensorObject::BeginPlay()
+{
+    GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
+    game_stage->GetBox2DManager().OnBeginSensorOverlap.AddFunction([this, game_stage](GameObject* visitor)
+    {
+        if (
+            const FruitObject* fruit_obj = dynamic_cast<FruitObject*>(visitor);
+            fruit_obj && fruit_obj->IsFirstLanded()
+        ) {
+            game_stage->SetGameOver(true);
+            // TODO: 3초 타이머 작동 후, 아직도 Overlap되어있으면, 게임 오버
+        }
+    });
+
+    game_stage->GetBox2DManager().OnEndSensorOverlap.AddFunction([this, game_stage](GameObject* visitor)
+    {
+        if (
+            const FruitObject* fruit_obj = dynamic_cast<FruitObject*>(visitor);
+            fruit_obj && fruit_obj->IsFirstLanded()
+        ) {
+            // game_stage->SetGameOver(false);
+            // TODO: 3초 타이머 취소
+        }
+    });
 }
 
 void BorderTopSensorObject::OnDestroy()
