@@ -1,4 +1,5 @@
 #include "PlayerObject.h"
+#include "SuikaGame/Stages/GameStage.h"
 #include "SuikaGame/GameObjects/FruitObject.h"
 
 
@@ -146,6 +147,8 @@ void PlayerObject::OnEvent(const SDL_Event& event)
         || event.type == SDL_CONTROLLERBUTTONDOWN               // 컨트롤러 버튼을 누를 때
     ) {
         // 다음 과일이 준비되지 않았다면 리턴
+        GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
+        if (game_stage && game_stage->IsGameOver()) return;
         if (!next_fruit_ready) return;
 
         if (
