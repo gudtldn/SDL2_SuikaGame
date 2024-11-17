@@ -19,7 +19,6 @@ Texture2D::Texture2D(
 }
 
 void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, float angle) const
-
 {
     const SDL_Rect dstrect = {
         .x = static_cast<int>(position.X),
