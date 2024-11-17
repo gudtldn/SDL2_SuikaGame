@@ -98,6 +98,9 @@ public:
         }
     }
 
+    /// @brief 과일이 처음 땅에 닿았는지 여부를 반환합니다.
+    bool IsFirstLanded() const { return is_first_landed; }
+
 protected:
     virtual void BeginPlay() override;
     virtual void Update(float delta_time) override;
