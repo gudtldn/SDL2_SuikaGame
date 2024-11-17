@@ -1,5 +1,5 @@
 #include "PlayerObject.h"
-#include "FruitObject.h"
+#include "SuikaGame/GameObjects/FruitObject.h"
 
 
 PlayerObject::PlayerObject(GameEngine* engine)
