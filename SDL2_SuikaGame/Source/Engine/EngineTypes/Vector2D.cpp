@@ -76,6 +76,11 @@ Vector2D Vector2D::Normalize() const
     return Vector2D(X / length, Y / length);
 }
 
+float Vector2D::DistanceTo(const Vector2D& rhs) const
+{
+    return Distance(*this, rhs);
+}
+
 float Vector2D::Dot(const Vector2D& rhs) const
 {
     return *this | rhs;

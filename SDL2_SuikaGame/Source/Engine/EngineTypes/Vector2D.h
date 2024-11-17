@@ -61,6 +61,10 @@ public:
     /// @return 정규화된 벡터
     Vector2D Normalize() const;
 
+    /// @brief 벡터 사이의 거리를 반환합니다.
+    /// @param rhs 거리를 계산할 벡터
+    float DistanceTo(const Vector2D& rhs) const;
+
     /// @brief 벡터의 내적을 반환합니다.
     /// @param rhs 내적을 계산할 벡터
     /// @return 내적
