@@ -26,5 +26,6 @@ public:
 
 protected:
     virtual void InitializeObjects() override;
+    virtual void HandleUpdate(float delta_time) override;
     virtual void HandleFixedUpdate(float fixed_time) override;
 };

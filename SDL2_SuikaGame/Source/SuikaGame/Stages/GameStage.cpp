@@ -37,9 +37,16 @@ void GameStage::InitializeObjects()
     obj_manager.CreateGameObject<PlayerObject>();
 }
 
+void GameStage::HandleUpdate(float delta_time)
+{
+    Stage::HandleUpdate(delta_time);
+    // TODO: 게임 오버 처리
+}
+
 void GameStage::HandleFixedUpdate(float fixed_time)
 {
     Stage::HandleFixedUpdate(fixed_time);
+    if (is_game_over) return; // TODO: 게임 오버 처리
 
     // Box2D Sensor Event
     const b2SensorEvents sensor_events = b2World_GetSensorEvents(box2d_manager.GetWorldID());
