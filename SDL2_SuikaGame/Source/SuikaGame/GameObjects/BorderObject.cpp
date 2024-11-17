@@ -20,17 +20,8 @@ BorderObject::BorderObject(GameEngine* engine)
         "Failed to load border texture! SDL Error: {}", SDL_GetError()
     )
 
-    int w, h;
-    SDL_QueryTexture(raw_border_texture, nullptr, nullptr, &w, &h);
-
     // Border 위치 설정
-    border_texture = std::make_unique<Texture2D>(
-        raw_border_texture,
-        Vector2D(
-            static_cast<float>(w),
-            static_cast<float>(h)
-        )
-    );
+    border_texture = std::make_unique<Texture2D>(raw_border_texture);
     texture_position = Vector2D(
         SCREEN_WIDTH / 2,
         SCREEN_HEIGHT / 2
