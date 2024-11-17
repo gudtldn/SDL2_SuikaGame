@@ -18,7 +18,7 @@ FTexture2D::FTexture2D(
 {
 }
 
-void FTexture2D::Render(SDL_Renderer* renderer, const Vector2D& position, const SDL_Rect* srcrect) const
+void FTexture2D::Render(SDL_Renderer* renderer, const Vector2D& position, float angle) const
 {
     SDL_FRect dstrect = {
         .x = static_cast<float>(position.X),
@@ -26,5 +26,5 @@ void FTexture2D::Render(SDL_Renderer* renderer, const Vector2D& position, const 
         .w = static_cast<float>(tex_size.X),
         .h = static_cast<float>(tex_size.Y),
     };
-    SDL_RenderCopyF(renderer, texture.get(), srcrect, &dstrect);
+    SDL_RenderCopyExF(renderer, texture.get(), nullptr, &dstrect, angle, nullptr, SDL_FLIP_NONE);
 }

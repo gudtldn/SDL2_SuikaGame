@@ -18,7 +18,8 @@ Texture2D::Texture2D(
 {
 }
 
-void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, const SDL_Rect* srcrect) const
+void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, float angle) const
+
 {
     const SDL_Rect dstrect = {
         .x = static_cast<int>(position.X),
@@ -26,5 +27,5 @@ void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, const S
         .w = static_cast<int>(tex_size.X),
         .h = static_cast<int>(tex_size.Y),
     };
-    SDL_RenderCopy(renderer, texture.get(), srcrect, &dstrect);
+    SDL_RenderCopyEx(renderer, texture.get(), nullptr, &dstrect, angle, nullptr, SDL_FLIP_NONE);
 }

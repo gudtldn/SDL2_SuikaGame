@@ -25,8 +25,8 @@ public:
     /// @brief 텍스처를 렌더링합니다.
     /// @param renderer 렌더러
     /// @param position 렌더링할 위치
-    /// @param srcrect 렌더링할 영역 (nullptr일 경우 전체 영역)
-    void Render(SDL_Renderer* renderer, const Vector2D& position, const SDL_Rect* srcrect = nullptr) const;
+    /// @param angle 렌더링할 각도
+    void Render(SDL_Renderer* renderer, const Vector2D& position, float angle = 0.0f) const;
 
 
     /****** Getter & Setter ******/
