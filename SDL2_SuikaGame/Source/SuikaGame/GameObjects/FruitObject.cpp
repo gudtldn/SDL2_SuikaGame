@@ -45,12 +45,12 @@ void FruitObject::InitFruit(size_t idx)
     body_def.type = b2_dynamicBody;
     body_def.linearDamping = 0.0f;
     body_def.angularDamping = 0.1f;
+    body_def.userData = this;
 
     fruit_body = b2CreateBody(
         dynamic_cast<GameStage*>(GetCurrentStage())->GetBox2DManager().GetWorldID(),
         &body_def
     );
-    b2Body_SetUserData(fruit_body, this);
 
     // 초기에는 비활성화
     b2Body_Disable(fruit_body);

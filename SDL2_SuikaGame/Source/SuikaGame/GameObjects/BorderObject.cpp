@@ -61,11 +61,11 @@ BorderObject::BorderObject(GameEngine* engine)
             .x = texture_position.X + rect.x,
             .y = texture_position.Y + rect.y
         };
+        body_def.userData = this;
         bodies[idx] = b2CreateBody(
             dynamic_cast<GameStage*>(GetCurrentStage())->GetBox2DManager().GetWorldID(),
             &body_def
         );
-        b2Body_SetUserData(bodies[idx], this);
 
         b2Polygon border_polygon = b2MakeBox(rect.w, rect.h);
         b2ShapeDef border_shape_def = b2DefaultShapeDef();
