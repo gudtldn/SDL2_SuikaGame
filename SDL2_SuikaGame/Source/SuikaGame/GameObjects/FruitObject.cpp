@@ -43,8 +43,8 @@ void FruitObject::InitFruit(size_t idx)
     // Box2D Body 초기화
     b2BodyDef body_def = b2DefaultBodyDef();
     body_def.type = b2_dynamicBody;
-    body_def.linearDamping = 0.0f;
-    body_def.angularDamping = 0.1f;
+    body_def.linearDamping = 0.1f;
+    body_def.angularDamping = 0.4f;
     body_def.userData = this;
 
     fruit_body = b2CreateBody(
@@ -134,9 +134,11 @@ void FruitObject::Update(float delta_time)
 
 void FruitObject::Render(SDL_Renderer* renderer) const
 {
+    const auto [cos, sin] = b2Body_GetRotation(fruit_body);
     fruit_texture->Render(
         renderer,
-        fruit_position - fruit_texture->GetSize() / 2
+        fruit_position - fruit_texture->GetSize() / 2,
+        Math::RadianToDegree(Math::Atan2(sin, cos))
     );
 }
 
