@@ -169,10 +169,9 @@ void PlayerObject::SetNextFruit()
 {
     current_fruit = next_fruit;
     current_fruit->SetFruitPosition(player_position);
-    current_fruit->OnLandedBottomCollision.BindFunction([this]()
-    {
-        SetNextFruit();
-    });
+    current_fruit->OnLandedBottomCollision.BindFunction(
+        std::bind(&PlayerObject::SetNextFruit, this)
+    );
 
     FruitObject* fruit = GetCurrentStage()->GetObjectManager().CreateGameObject<FruitObject>();
     fruit->InitRandomFruit();
