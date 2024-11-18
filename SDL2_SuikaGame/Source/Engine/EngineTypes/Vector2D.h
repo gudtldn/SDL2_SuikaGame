@@ -2,12 +2,7 @@
 #include"Engine/Utils/Math.h"
 #include <format>
 #include <string>
-
-// forward declaration
-namespace std
-{
-    struct partial_ordering;
-}
+#include <compare>
 
 
 /// @brief 2차원 벡터 클래스
@@ -21,6 +16,7 @@ public:
     Vector2D();
     Vector2D(float value);
     Vector2D(float x, float y);
+
 
     /****** Static Methods ******/
 
@@ -93,6 +89,7 @@ public:
     /// @brief 벡터를 문자열로 변환합니다.
     /// @return 변환된 문자열
     std::string ToString() const { return std::format("Vector2D({}, {})", X, Y); }
+
 
     /****** Operator Overloading ******/
 
