@@ -47,14 +47,14 @@ void StartButtonObject::OnEvent(const SDL_Event& event)
     // TexturedButtonObject도 만들어서 버튼 관련 이벤트 처리를 간결하게 하면 좋을듯
 
     // 마우스 커서 위치
-    const int mouse_x = event.motion.x;
-    const int mouse_y = event.motion.y;
+    const float mouse_x = static_cast<float>(event.motion.x);
+    const float mouse_y = static_cast<float>(event.motion.y);
 
     // 버튼 정보
     const Vector2D button_size = button_texture->GetSize();
     const SDL_FRect button_rect = {
-        .x = current_button_position.X,
-        .y = current_button_position.Y,
+        .x = current_button_position.X - button_size.X / 2,
+        .y = current_button_position.Y - button_size.Y / 2,
         .w = button_size.X,
         .h = button_size.Y
     };
