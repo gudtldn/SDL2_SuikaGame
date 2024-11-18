@@ -6,9 +6,10 @@
 // TODO: 나중에 ResourceManager만들어서 관리
 class FruitResourceObject : public GameObject
 {
-private:
+public:
     static constexpr size_t FRUIT_COUNT = 11;
 
+private:
     std::array<std::unique_ptr<Texture2D>, FRUIT_COUNT> fruit_textures;
 
     /// @brief 물리엔진에 사용될 오프셋 위치
