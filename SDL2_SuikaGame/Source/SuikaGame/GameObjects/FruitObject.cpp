@@ -8,6 +8,7 @@
 FruitObject::FruitObject(GameEngine* engine)
     : GameObject(engine)
     , fruit_texture(nullptr)
+    , fruit_idx(std::numeric_limits<size_t>::max())
     , fruit_offset_position(std::numeric_limits<float>::infinity())
     , fruit_offset_size(std::numeric_limits<float>::infinity())
     , fruit_active(false)
@@ -33,6 +34,7 @@ void FruitObject::InitFruit(size_t idx)
     const FruitResourceObject* fruit_resource_obj = fruit_resource.front();
 
     // 체리, 딸기, 포도, 오렌지
+    fruit_idx = idx;
     fruit_resource_obj->GetFruit(
         idx,
         fruit_texture,
@@ -88,8 +90,9 @@ void FruitObject::BeginPlay()
     )
 
     // Delegate Bind
-    dynamic_cast<GameStage*>(GetCurrentStage())->GetBox2DManager()
-        .OnBeginOverlap.AddFunction([this](GameObject* a, const GameObject* b)
+    GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
+    on_begin_overlap_handle = game_stage->GetBox2DManager()
+        .OnBeginOverlap.AddFunction([this, game_stage](GameObject* a, const GameObject* b)
     {
         // 과일이 비활성화 되어있거나, 자신하고 발생한 이벤트가 아닐 경우 리턴
         if (!GetFruitActive() || b != this) return;
@@ -102,15 +105,37 @@ void FruitObject::BeginPlay()
         }
 
         // FruitObject와 충돌했을 경우
-        else if (FruitObject* fruit_obj = dynamic_cast<FruitObject*>(a))
+        else if (FruitObject* other_fruit_obj = dynamic_cast<FruitObject*>(a))
         {
             if (!is_first_landed)
             {
                 is_first_landed = true;
                 OnLandedBottomCollision.Execute();
             }
-            
-            // TODO: 과일끼리 충돌했을 경우 Event발생
+            else if (!other_fruit_obj->is_first_landed)
+            {
+                other_fruit_obj->is_first_landed = true;
+                other_fruit_obj->OnLandedBottomCollision.Execute();
+            }
+
+            // 같은 과일일 경우
+            if (fruit_idx == other_fruit_obj->fruit_idx)
+            {
+                if (fruit_idx < FruitResourceObject::FRUIT_COUNT)
+                {
+                    FruitObject* new_fruit = game_stage->GetObjectManager().CreateGameObject<FruitObject>();
+                    new_fruit->InitFruit(fruit_idx + 1);
+                    new_fruit->SetFruitPosition(
+                        (fruit_position + other_fruit_obj->GetFruitPosition()) / 2.0f
+                    );
+                    new_fruit->is_first_landed = true;
+                    new_fruit->SetFruitActive(true);
+
+                    // TODO: 합쳐지는 효과음 재생
+                }
+                other_fruit_obj->Destroy();
+                Destroy();
+            }
         }
     });
 }
@@ -145,6 +170,14 @@ void FruitObject::Render(SDL_Renderer* renderer) const
 
 void FruitObject::OnDestroy()
 {
+    dynamic_cast<GameStage*>(GetCurrentStage())->GetBox2DManager()
+        .OnBeginOverlap.Remove(on_begin_overlap_handle);
+
+    if (!is_first_landed)
+    {
+        OnLandedBottomCollision.Execute();
+    }
+
     b2DestroyShape(fruit_shape);
     b2DestroyBody(fruit_body);
     

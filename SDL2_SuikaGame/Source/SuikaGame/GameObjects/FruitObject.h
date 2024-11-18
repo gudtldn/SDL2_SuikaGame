@@ -15,6 +15,9 @@ private:
     /// @brief 과일 텍스처
     Texture2D* fruit_texture;
 
+    /// @brief 과일 텍스쳐의 인덱스
+    size_t fruit_idx;
+
     /// @brief 과일 위치
     Vector2D fruit_position;
 
@@ -32,6 +35,9 @@ private:
 
     /// @brief 초기화 여부
     bool is_init;
+
+    /// @brief BeginOverlap 이벤트 핸들
+    MulticastDelegateHandle on_begin_overlap_handle;
 
 private:
     b2BodyId fruit_body;
