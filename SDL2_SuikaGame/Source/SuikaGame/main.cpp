@@ -1,7 +1,7 @@
 #include "EnginePCH.h"
-#include "Stages/MenuStage.h"
-#include "GameObjects/BackgroundObject.h"
-#include "GameObjects/BgmObject.h"
+#include "SuikaGame/Stages/MenuStage.h"
+#include "SuikaGame/GameObjects/BackgroundObject.h"
+#include "SuikaGame/GameObjects/BgmObject.h"
 
 #include <windows.h>
 
