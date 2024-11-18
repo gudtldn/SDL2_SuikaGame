@@ -112,7 +112,10 @@ void PlayerObject::Update(float delta_time)
 
     if (current_fruit != nullptr && !current_fruit->GetFruitActive())
     {
-        current_fruit->SetFruitPosition(player_position);
+        current_fruit->SetFruitPosition({
+            player_position.X,
+            player_position.Y + 20.0f
+        });
     }
 }
 
@@ -126,7 +129,7 @@ void PlayerObject::Render(SDL_Renderer* renderer) const
     player_texture->Render(
         renderer,
         Vector2D(
-            player_position.X + (PLAYER_WIDTH * 0.3f),
+            player_position.X + (PLAYER_WIDTH * 0.4f),
             player_position.Y
         )
     );
