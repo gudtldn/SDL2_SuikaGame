@@ -31,8 +31,8 @@ public:
     virtual void Render(
         SDL_Renderer* renderer,
         const Vector2D& position,
-        float angle = 0.0f,
-        RenderAnchor anchor = RenderAnchor::Center
+        RenderAnchor anchor = RenderAnchor::Center,
+        float angle = 0.0f
     ) const override;
 
     /****** Getter & Setter ******/

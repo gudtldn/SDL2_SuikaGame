@@ -18,7 +18,7 @@ Texture2D::Texture2D(
 {
 }
 
-void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, float angle, RenderAnchor anchor) const
+void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, RenderAnchor anchor, float angle) const
 {
     const auto [cal_x, cal_y, cal_w, cal_h] = CalculateDestRect(position, tex_size, anchor);
     const SDL_Rect dst_rect = {

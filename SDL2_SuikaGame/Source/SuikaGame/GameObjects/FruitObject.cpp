@@ -138,6 +138,7 @@ void FruitObject::Render(SDL_Renderer* renderer) const
     fruit_texture->Render(
         renderer,
         fruit_position,
+        RenderAnchor::Center,
         Math::RadianToDegree(Math::Atan2(sin, cos))
     );
 }
