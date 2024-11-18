@@ -34,6 +34,7 @@
 #include "Engine/EngineTypes/FTexture2D.h"
 #include "Engine/EngineTypes/Rectangle.h"
 #include "Engine/EngineTypes/Vector2D.h"
+#include "Engine/EngineTypes/RenderAnchor.h"
 
 #include "Engine/Utils/Math.h"
 #include "Engine/Utils/LogMacros.h"

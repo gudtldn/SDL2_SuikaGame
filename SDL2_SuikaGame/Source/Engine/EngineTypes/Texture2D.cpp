@@ -18,13 +18,22 @@ Texture2D::Texture2D(
 {
 }
 
-void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, float angle) const
+void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, float angle, RenderAnchor anchor) const
 {
-    const SDL_Rect dstrect = {
-        .x = static_cast<int>(position.X),
-        .y = static_cast<int>(position.Y),
-        .w = static_cast<int>(tex_size.X),
-        .h = static_cast<int>(tex_size.Y),
+    const auto [cal_x, cal_y, cal_w, cal_h] = CalculateDestRect(position, tex_size, anchor);
+    const SDL_Rect dst_rect = {
+        .x = static_cast<int>(cal_x),
+        .y = static_cast<int>(cal_y),
+        .w = static_cast<int>(cal_w),
+        .h = static_cast<int>(cal_h),
     };
-    SDL_RenderCopyEx(renderer, texture.get(), nullptr, &dstrect, angle, nullptr, SDL_FLIP_NONE);
+    SDL_RenderCopyEx(
+        renderer,
+        texture.get(),
+        nullptr,
+        &dst_rect,
+        angle,
+        nullptr,
+        SDL_FLIP_NONE
+    );
 }

@@ -137,7 +137,7 @@ void FruitObject::Render(SDL_Renderer* renderer) const
     const auto [cos, sin] = b2Body_GetRotation(fruit_body);
     fruit_texture->Render(
         renderer,
-        fruit_position - fruit_texture->GetSize() / 2,
+        fruit_position,
         Math::RadianToDegree(Math::Atan2(sin, cos))
     );
 }

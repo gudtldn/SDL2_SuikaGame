@@ -4,7 +4,6 @@
 ScoreboardObject::ScoreboardObject(GameEngine* engine)
     : GameObject(engine)
     , bubble_texture(nullptr)
-    , score(0)
 {
     // z-order 설정
     z_order = 1;
@@ -27,13 +26,11 @@ void ScoreboardObject::Update(float delta_time)
 
 void ScoreboardObject::Render(SDL_Renderer* renderer) const
 {
-    const Vector2D bubble_pos = bubble_texture->GetSize();
     bubble_texture->Render(
         renderer,
-        // FIXME: 값 비율이 뭔가 이상한거 같음
         Vector2D(
-            (SCREEN_WIDTH - bubble_pos.X) * 0.075f,
-            (SCREEN_HEIGHT - bubble_pos.Y) * 0.1f
+            SCREEN_WIDTH / 2 * 0.3f,
+            SCREEN_HEIGHT / 2 * 0.5f
         )
     );
 }

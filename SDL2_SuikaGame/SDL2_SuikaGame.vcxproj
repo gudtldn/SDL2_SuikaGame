@@ -126,6 +126,8 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source/Engine/Manager/SDLManager.h" />
     <ClInclude Include="Source/Engine/Utils/Math.h" />
     <ClInclude Include="Source/SuikaGame/SuikaGame.h" />
+    <ClInclude Include="Source\Engine\AbstractClasses\Renderable.h" />
+    <ClInclude Include="Source\Engine\EngineTypes\RenderAnchor.h" />
     <ClInclude Include="Source\Engine\Manager\Box2DManager.h" />
     <ClInclude Include="Source\Engine\Utils\Delegate.h" />
     <ClInclude Include="Source\Engine\Utils\DelegateCombination.h" />
@@ -161,6 +163,83 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClCompile Include="Source/Engine/Manager/SDLManager.cpp" />
     <ClCompile Include="Source/SuikaGame/main.cpp" />
     <ClCompile Include="Source/SuikaGame/SuikaGame.cpp" />
+    <ClCompile Include="Source\Engine\AbstractClasses\Renderable.cpp">
+      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <Optimization>Disabled</Optimization>
+      <SupportJustMyCode>true</SupportJustMyCode>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+      <AssemblerListingLocation>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\</AssemblerListingLocation>
+      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
+      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformationFile>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\</BrowseInformationFile>
+      <CompileAs>Default</CompileAs>
+      <ConformanceMode>true</ConformanceMode>
+      <DiagnosticsFormat>Column</DiagnosticsFormat>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <ErrorReporting>Prompt</ErrorReporting>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <EnableASAN>false</EnableASAN>
+      <EnableFuzzer>false</EnableFuzzer>
+      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <GenerateModuleDependencies>false</GenerateModuleDependencies>
+      <GenerateSourceDependencies>false</GenerateSourceDependencies>
+      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild>false</MinimalRebuild>
+      <ModuleDependenciesFile>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\</ModuleDependenciesFile>
+      <ModuleOutputFile>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\</ModuleOutputFile>
+      <OmitDefaultLibName>false</OmitDefaultLibName>
+      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <ObjectFileName>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\</ObjectFileName>
+      <CallingConvention>Cdecl</CallingConvention>
+      <ProgramDataBaseFileName>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\vc143.pdb</ProgramDataBaseFileName>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\SDL2_SuikaGame.pch</PrecompiledHeaderOutputFile>
+      <PreprocessToFile>false</PreprocessToFile>
+      <PreprocessKeepComments>false</PreprocessKeepComments>
+      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+      <ShowIncludes>false</ShowIncludes>
+      <SourceDependenciesFile>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\</SourceDependenciesFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <SpectreMitigation>false</SpectreMitigation>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <TrackerLogDirectory>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\SDL2_SuikaGame.tlog\</TrackerLogDirectory>
+      <TranslateIncludes>false</TranslateIncludes>
+      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <UseFullPaths>true</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <XMLDocumentationFileName>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\Intermediate\Build\x64\Debug\</XMLDocumentationFileName>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <IntelJCCErratum>false</IntelJCCErratum>
+      <BuildStlModules>false</BuildStlModules>
+      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
+      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
+      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
+      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_UNICODE;UNICODE;</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\SDL2_SuikaGame\Source;C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\SDL2_SuikaGame\Source\Engine;C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\ThirdParty/SDL2/include;C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\ThirdParty/SDL2_image/include;C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\ThirdParty/SDL2_mixer/include;C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\ThirdParty/SDL2_ttf/include;C:\Users\gudtl\Desktop\Programming\c\SDL2_SuikaGame\ThirdParty/box2d/include;</AdditionalIncludeDirectories>
+      <EnableModules>false</EnableModules>
+      <AdditionalOptions>/utf-8 </AdditionalOptions>
+      <LinkCompiled>true</LinkCompiled>
+    </ClCompile>
     <ClCompile Include="Source\Engine\Manager\Box2DManager.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\BackgroundObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/BgmObject.cpp" />
@@ -253,5 +332,8 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClCompile Include="Source/SuikaGame/MenuUIObjects/StartButtonObject.cpp" />
     <ClCompile Include="Source/SuikaGame/Stages/GameStage.cpp" />
     <ClCompile Include="Source/SuikaGame/Stages/MenuStage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Source\Engine\Interfaces\" />
   </ItemGroup>
 </Project>

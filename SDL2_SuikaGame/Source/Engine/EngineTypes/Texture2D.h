@@ -1,12 +1,14 @@
 #pragma once
 #include "Engine/EngineTypes/Vector2D.h"
+#include "Engine/AbstractClasses/Renderable.h"
 
 #include <SDL.h>
 #include <memory>
 
 
 /// @brief SDL_Texture Wrapper 클래스
-class Texture2D {
+class Texture2D : public Renderable
+{
 private:
     std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)> texture;
     Vector2D tex_size;
@@ -14,7 +16,6 @@ private:
 public:
     Texture2D(SDL_Texture* texture);
     Texture2D(SDL_Texture* texture, const Vector2D& size);
-    ~Texture2D() = default;
 
     // 복사 & 대입 연산자 삭제
     Texture2D(const Texture2D&) = delete;
@@ -24,10 +25,15 @@ public:
 
     /// @brief 텍스처를 렌더링합니다.
     /// @param renderer 렌더러
-    /// @param position 렌더링할 위치
-    /// @param angle 렌더링할 각도
-    void Render(SDL_Renderer* renderer, const Vector2D& position, float angle = 0.0f) const;
-
+    /// @param position 위치
+    /// @param angle 각도
+    /// @param anchor 앵커
+    virtual void Render(
+        SDL_Renderer* renderer,
+        const Vector2D& position,
+        float angle = 0.0f,
+        RenderAnchor anchor = RenderAnchor::Center
+    ) const override;
 
     /****** Getter & Setter ******/
 

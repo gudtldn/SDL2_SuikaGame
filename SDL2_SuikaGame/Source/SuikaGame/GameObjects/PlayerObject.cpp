@@ -126,8 +126,8 @@ void PlayerObject::Render(SDL_Renderer* renderer) const
     player_texture->Render(
         renderer,
         Vector2D(
-            player_position.X - (PLAYER_WIDTH * 0.15f),
-            player_position.Y - PLAYER_HEIGHT / 2.0f
+            player_position.X + (PLAYER_WIDTH * 0.3f),
+            player_position.Y
         )
     );
 }

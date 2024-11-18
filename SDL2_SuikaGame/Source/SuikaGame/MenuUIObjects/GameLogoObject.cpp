@@ -23,8 +23,8 @@ void GameLogoObject::Render(SDL_Renderer* renderer) const
     logo_texture->Render(
         renderer,
         Vector2D(
-            (SCREEN_WIDTH - logo_size.X) / 2,
-            (SCREEN_HEIGHT - logo_size.Y) / 2 * 0.4f
+            SCREEN_WIDTH / 2,
+            SCREEN_HEIGHT / 2 * 0.6f
         )
     );
 }

@@ -22,12 +22,11 @@ BorderBackgroundObject::BorderBackgroundObject(GameEngine* engine)
 void BorderBackgroundObject::Render(SDL_Renderer* renderer) const
 {
     // Border 배경 렌더링
-    const Vector2D border_bg_size = border_background_texture->GetSize();
     border_background_texture->Render(
         renderer,
         Vector2D(
-            (SCREEN_WIDTH - border_bg_size.X) / 2,
-            (SCREEN_HEIGHT - border_bg_size.Y) / 2
+            SCREEN_WIDTH / 2,
+            SCREEN_HEIGHT / 2
         )
     );
 }

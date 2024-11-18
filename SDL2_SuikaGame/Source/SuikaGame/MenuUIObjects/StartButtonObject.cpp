@@ -17,10 +17,9 @@ StartButtonObject::StartButtonObject(GameEngine* engine)
     button_texture = std::make_unique<FTexture2D>(raw_button_texture);
 
     // 버튼 초기 위치 설정
-    const Vector2D button_size = button_texture->GetSize();
     button_origin = Vector2D(
-        (SCREEN_WIDTH - button_size.X) / 2,
-        (SCREEN_HEIGHT - button_size.Y) / 2 * 1.05f
+        SCREEN_WIDTH / 2,
+        SCREEN_HEIGHT / 2 * 1.05f
     );
 }
 

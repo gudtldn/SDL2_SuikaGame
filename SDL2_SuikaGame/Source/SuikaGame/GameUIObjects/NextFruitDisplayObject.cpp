@@ -47,9 +47,8 @@ void NextFruitDisplayObject::BeginPlay()
 
 void NextFruitDisplayObject::Render(SDL_Renderer* renderer) const
 {
-    const Vector2D bubble_size = bubble_texture->GetSize();
     bubble_texture->Render(
         renderer,
-        bubble_position - bubble_size / 2.0f
+        bubble_position
     );
 }
