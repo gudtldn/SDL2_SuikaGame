@@ -2,7 +2,7 @@
 - [ ] TimerManager 구현
 - [ ] IButton 인터페이스 구현
 - [ ] ICollider 인터페이스 구현 (충돌 처리, 충돌 이벤트)
-- [ ] RenderingAnchor 구현
+- [x] RenderingAnchor 구현
 - [x] Box2D 물리 엔진 연동
   - [x] Box2DManger 구현
     - [x] 기본적인 World 생성 및 소멸
