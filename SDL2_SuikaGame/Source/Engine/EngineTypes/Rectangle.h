@@ -1,10 +1,11 @@
 #pragma once
 #include "Engine/EngineTypes/Vector2D.h"
+#include "Engine/AbstractClasses/Renderable.h"
 #include <SDL.h>
 
 
 /// @brief 기본 사각형 클래스
-class Rectangle
+class Rectangle : public Renderable
 {
 private:
     /// @brief 크기
@@ -16,9 +17,13 @@ private:
 public:
     Rectangle();
     Rectangle(const Vector2D& size);
-    ~Rectangle() = default;
 
-    void Render(SDL_Renderer* renderer, const Vector2D& position) const;
+    virtual void Render(
+        SDL_Renderer* renderer,
+        const Vector2D& position,
+        RenderAnchor anchor = RenderAnchor::Center,
+        float angle = 0.0f
+    ) const override;
 
 
     // Getter & Setter

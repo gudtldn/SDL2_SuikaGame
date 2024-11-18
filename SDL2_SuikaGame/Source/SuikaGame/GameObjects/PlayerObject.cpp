@@ -123,7 +123,7 @@ void PlayerObject::Render(SDL_Renderer* renderer) const
 {
     if (next_fruit_ready)
     {
-        player_guide_line.Render(renderer, player_position);
+        player_guide_line.Render(renderer, player_position, RenderAnchor::TopCenter);
     }
 
     player_texture->Render(
