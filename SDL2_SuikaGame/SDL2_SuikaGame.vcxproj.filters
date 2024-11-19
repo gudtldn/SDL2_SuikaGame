@@ -57,9 +57,6 @@
     <ClCompile Include="Source/SuikaGame/GameUIObjects/BorderBackgroundObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Source/SuikaGame/GameUIObjects/BorderObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Source/SuikaGame/MenuUIObjects/GameLogoObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -87,6 +84,24 @@
     <ClCompile Include="Source\SuikaGame\GameResources\FruitResourceObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Engine\AbstractClasses\Renderable.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\EngineTypes\TextRender.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameObjects\BorderBottomCollisionObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameObjects\BorderObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameObjects\BorderTopSensorObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameUIObjects\NextFruitDisplayObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source/Engine/EnginePCH.h">
@@ -96,9 +111,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Source/Engine/GlobalMacro.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Source/Engine/LogMacros.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Source/Engine/Components/GameObject.h">
@@ -140,9 +152,6 @@
     <ClInclude Include="Source/SuikaGame/GameUIObjects/BorderBackgroundObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Source/SuikaGame/GameUIObjects/BorderObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Source/SuikaGame/MenuUIObjects/GameLogoObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -168,6 +177,36 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Source\SuikaGame\GameResources\FruitResourceObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\AbstractClasses\Renderable.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\EngineTypes\RenderAnchor.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\EngineTypes\TextRender.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Utils\Delegate.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Utils\DelegateCombination.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Utils\LogMacros.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameObjects\BorderBottomCollisionObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameObjects\BorderObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameObjects\BorderTopSensorObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameUIObjects\NextFruitDisplayObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
