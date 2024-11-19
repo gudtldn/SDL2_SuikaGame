@@ -10,6 +10,7 @@
 
 GameStage::GameStage(GameEngine* engine)
     : Stage(engine)
+    , is_game_over(false)
 {
 }
 
