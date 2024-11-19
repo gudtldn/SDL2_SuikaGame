@@ -123,7 +123,7 @@ public:
         auto copy_funcs = funcs;
         for (const auto& [handle, func] : copy_funcs)
         {
-            func(std::forward<ParamTypes>(params)...);
+            func(params...);
         }
     }
 };
