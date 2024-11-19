@@ -79,7 +79,6 @@ void BorderObject::BeginPlay()
 
 void BorderObject::Render(SDL_Renderer* renderer) const
 {
-    const Vector2D border_size = border_texture->GetSize();
     border_texture->Render(
         renderer,
         texture_position

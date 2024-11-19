@@ -1,7 +1,4 @@
 #pragma once
-#include <memory>
-#include <unordered_set>
-
 #include "Engine/Manager/ObjectManager.h"
 
 // forward declaration

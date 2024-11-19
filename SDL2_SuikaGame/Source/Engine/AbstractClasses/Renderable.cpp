@@ -7,16 +7,17 @@ SDL_FRect Renderable::CalculateDestRect(
     const Vector2D& size,
     RenderAnchor anchor
 ) const {
-    SDL_FRect dest_rect;
-    dest_rect.w = size.X;
-    dest_rect.h = size.Y;
+    SDL_FRect dest_rect = {
+        .x = position.X,
+        .y = position.Y,
+        .w = size.X,
+        .h = size.Y
+    };
 
     // TODO: 나중에 비트 플래그로 수정
     switch (anchor)
     {
     case RenderAnchor::TopLeft:
-        dest_rect.x = position.X;
-        dest_rect.y = position.Y;
         break;
     case RenderAnchor::TopCenter:
         dest_rect.x = position.X - size.X / 2;

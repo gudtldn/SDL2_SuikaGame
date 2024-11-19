@@ -68,13 +68,13 @@ public:
     /****** Getter & Setter ******/
 
     /// @brief z-order를 가져옵니다.
-    inline int GetZOrder() const { return z_order; }
+    int GetZOrder() const { return z_order; }
 
     /// @brief z-order를 설정합니다.
-    inline void SetZOrder(int new_z_order) { z_order = new_z_order; }
+    void SetZOrder(int new_z_order) { z_order = new_z_order; }
 
     /// @brief 태그를 가져옵니다.
-    inline const std::unordered_set<std::string>& GetTags() const { return tags; }
+    const std::unordered_set<std::string>& GetTags() const { return tags; }
 
     /// @brief 태그를 추가합니다.
     void AddTag(const std::string& tag) { tags.insert(tag); }
@@ -83,7 +83,7 @@ public:
     void RemoveTag(const std::string& tag) { tags.erase(tag); }
 
     /// @brief 게임 엔진을 가져옵니다.
-    inline GameEngine* GetEngine() const { return engine; }
+    GameEngine* GetEngine() const { return engine; }
 
     /// @brief 현재 스테이지를 가져옵니다.
     inline Stage* GetCurrentStage() const;

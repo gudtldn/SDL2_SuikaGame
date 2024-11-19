@@ -19,7 +19,7 @@ public:
     Box2DManager& GetBox2DManager() { return box2d_manager; }
 
     /// @brief 게임 오버 여부를 반환합니다.
-    bool IsGameOver() const { return is_game_over; }
+    [[nodiscard]] bool IsGameOver() const { return is_game_over; }
 
     /// @brief 게임 오버 여부를 설정합니다.
     void SetGameOver(bool new_game_over) { is_game_over = new_game_over; }

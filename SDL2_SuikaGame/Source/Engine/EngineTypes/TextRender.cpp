@@ -4,10 +4,10 @@
 
 TextRender::TextRender(const char* font_path, int font_size)
     : cached_texture(nullptr, SDL_DestroyTexture)
+    , reload_cache(false)
     , font(nullptr, TTF_CloseFont)
     , color({.r = 0x00, .g = 0x00, .b = 0x00, .a = 0x00})
     , font_size(font_size)
-    , reload_cache(false)
 {
     TTF_Font* raw_font = TTF_OpenFont(font_path, font_size);
     if (!raw_font)

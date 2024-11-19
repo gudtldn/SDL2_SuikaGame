@@ -60,7 +60,7 @@ void ObjectManager::ProcessPendingDestroyObjects()
 {
     while (!pending_destroy_objects.empty())
     {
-        auto object = pending_destroy_objects.front();
+        const auto object = pending_destroy_objects.front();
         pending_destroy_objects.pop();
 
         // 완전히 삭제하기 전에 OnDestroy()를 호출

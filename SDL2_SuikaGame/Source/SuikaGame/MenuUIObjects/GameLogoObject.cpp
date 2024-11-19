@@ -19,7 +19,6 @@ GameLogoObject::GameLogoObject(GameEngine* engine)
 void GameLogoObject::Render(SDL_Renderer* renderer) const
 {
     // 로고 렌더링
-    const Vector2D logo_size = logo_texture->GetSize();
     logo_texture->Render(
         renderer,
         Vector2D(

@@ -46,18 +46,18 @@ float Vector2D::Distance(const Vector2D& lhs, const Vector2D& rhs)
 
 Vector2D Vector2D::Clamp(const Vector2D& value, const Vector2D& min, const Vector2D& max)
 {
-    return Vector2D(
+    return {
         Math::Clamp(value.X, min.X, max.X),
         Math::Clamp(value.Y, min.Y, max.Y)
-    );
+    };
 }
 
 Vector2D Vector2D::Clamp(const Vector2D& value, float min, float max)
 {
-    return Vector2D(
+    return {
         Math::Clamp(value.X, min, max),
         Math::Clamp(value.Y, min, max)
-    );
+    };
 }
 
 float Vector2D::Length() const
@@ -72,8 +72,8 @@ float Vector2D::LengthSquared() const
 
 Vector2D Vector2D::Normalize() const
 {
-    float length = Length();
-    return Vector2D(X / length, Y / length);
+    const float length = Length();
+    return { X / length, Y / length };
 }
 
 float Vector2D::DistanceTo(const Vector2D& rhs) const
@@ -108,12 +108,12 @@ bool Vector2D::Equals(const Vector2D& rhs, float tolerance) const
 
 Vector2D Vector2D::operator+(const Vector2D& rhs) const
 {
-    return Vector2D(X + rhs.X, Y + rhs.Y);
+    return { X + rhs.X, Y + rhs.Y };
 }
 
 Vector2D Vector2D::operator+(float value) const
 {
-    return Vector2D(X + value, Y + value);
+    return { X + value, Y + value };
 }
 
 Vector2D& Vector2D::operator+=(const Vector2D& rhs)
@@ -132,12 +132,12 @@ Vector2D& Vector2D::operator+=(float value)
 
 Vector2D Vector2D::operator-(const Vector2D& rhs) const
 {
-    return Vector2D(X - rhs.X, Y - rhs.Y);
+    return { X - rhs.X, Y - rhs.Y };
 }
 
 Vector2D Vector2D::operator-(float value) const
 {
-    return Vector2D(X - value, Y - value);
+    return { X - value, Y - value };
 }
 
 Vector2D& Vector2D::operator-=(const Vector2D& rhs)
@@ -156,12 +156,12 @@ Vector2D& Vector2D::operator-=(float value)
 
 Vector2D Vector2D::operator*(const Vector2D& rhs) const
 {
-    return Vector2D(X * rhs.X, Y * rhs.Y);
+    return { X * rhs.X, Y * rhs.Y };
 }
 
 Vector2D Vector2D::operator*(float value) const
 {
-    return Vector2D(X * value, Y * value);
+    return { X * value, Y * value };
 }
 
 Vector2D& Vector2D::operator*=(const Vector2D& rhs)
@@ -180,12 +180,12 @@ Vector2D& Vector2D::operator*=(float value)
 
 Vector2D Vector2D::operator/(const Vector2D& rhs) const
 {
-    return Vector2D(X / rhs.X, Y / rhs.Y);
+    return { X / rhs.X, Y / rhs.Y };
 }
 
 Vector2D Vector2D::operator/(float value) const
 {
-    return Vector2D(X / value, Y / value);
+    return { X / value, Y / value };
 }
 
 Vector2D& Vector2D::operator/=(const Vector2D& rhs)
@@ -214,8 +214,8 @@ bool Vector2D::operator!=(const Vector2D& rhs) const
 
 std::partial_ordering Vector2D::operator<=>(const Vector2D& rhs) const
 {
-    float lhs_length = Length();
-    float rhs_length = rhs.Length();
+    const float lhs_length = Length();
+    const float rhs_length = rhs.Length();
 
     if (lhs_length < rhs_length)
     {
@@ -232,7 +232,7 @@ std::partial_ordering Vector2D::operator<=>(const Vector2D& rhs) const
 
 Vector2D Vector2D::operator-() const
 {
-    return Vector2D(-X, -Y);
+    return { -X, -Y };
 }
 
 float Vector2D::operator|(const Vector2D& rhs) const
