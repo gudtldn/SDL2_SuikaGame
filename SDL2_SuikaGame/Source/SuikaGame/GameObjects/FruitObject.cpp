@@ -1,4 +1,4 @@
-﻿#include "FruitObject.h"
+#include "FruitObject.h"
 #include "SuikaGame/Stages/GameStage.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
 #include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
@@ -46,7 +46,7 @@ void FruitObject::InitFruit(size_t idx)
     b2BodyDef body_def = b2DefaultBodyDef();
     body_def.type = b2_dynamicBody;
     body_def.linearDamping = 0.1f;
-    body_def.angularDamping = 0.4f;
+    body_def.angularDamping = 0.2f;
     body_def.userData = this;
 
     fruit_body = b2CreateBody(
