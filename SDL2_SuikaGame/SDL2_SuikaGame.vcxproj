@@ -128,6 +128,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source/SuikaGame/SuikaGame.h" />
     <ClInclude Include="Source\Engine\AbstractClasses\Renderable.h" />
     <ClInclude Include="Source\Engine\EngineTypes\RenderAnchor.h" />
+    <ClInclude Include="Source\Engine\EngineTypes\TextRender.h" />
     <ClInclude Include="Source\Engine\Manager\Box2DManager.h" />
     <ClInclude Include="Source\Engine\Utils\Delegate.h" />
     <ClInclude Include="Source\Engine\Utils\DelegateCombination.h" />
@@ -240,6 +241,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
       <AdditionalOptions>/utf-8 </AdditionalOptions>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="Source\Engine\EngineTypes\TextRender.cpp" />
     <ClCompile Include="Source\Engine\Manager\Box2DManager.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\BackgroundObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/BgmObject.cpp" />
