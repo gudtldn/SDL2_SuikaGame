@@ -1,5 +1,5 @@
 #include "SDLManager.h"
-#include "LogMacros.h"
+#include "Engine/Utils/LogMacros.h"
 
 #include <stdexcept>
 #include <SDL.h>
