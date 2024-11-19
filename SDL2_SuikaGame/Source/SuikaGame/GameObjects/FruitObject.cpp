@@ -121,7 +121,7 @@ void FruitObject::BeginPlay()
             // 같은 과일일 경우
             if (fruit_idx == other_fruit_obj->fruit_idx)
             {
-                if (fruit_idx < FruitResourceObject::FRUIT_COUNT)
+                if (fruit_idx < FruitResourceObject::FRUIT_COUNT-1)
                 {
                     FruitObject* new_fruit = game_stage->GetObjectManager().CreateGameObject<FruitObject>();
                     new_fruit->InitFruit(fruit_idx + 1);
@@ -133,6 +133,8 @@ void FruitObject::BeginPlay()
 
                     // TODO: 합쳐지는 효과음 재생
                 }
+                b2Body_Disable(other_fruit_obj->fruit_body);
+                b2Body_Disable(fruit_body);
                 other_fruit_obj->Destroy();
                 Destroy();
             }
@@ -178,8 +180,14 @@ void FruitObject::OnDestroy()
         OnLandedBottomCollision.Execute();
     }
 
-    b2DestroyShape(fruit_shape);
-    b2DestroyBody(fruit_body);
+    if (b2Shape_IsValid(fruit_shape))
+    {
+        b2DestroyShape(fruit_shape);
+    }
+    if (b2Body_IsValid(fruit_body))
+    {
+        b2DestroyBody(fruit_body);
+    }
     
     fruit_shape = b2_nullShapeId;
     fruit_body = b2_nullBodyId;
