@@ -26,6 +26,9 @@ private:
     /// @brief 새로운 게임 오브젝트의 벡터
     std::queue<GameObject*> new_game_objects;
 
+    /// @brief 게임 오브젝트 제거 대기열
+    std::queue<std::shared_ptr<GameObject>> pending_destroy_objects;
+
 public:
     ObjectManager(GameEngine* engine)
         : engine(engine) {}
@@ -63,6 +66,9 @@ public:
 
     /// @brief 모든 게임 오브젝트를 제거합니다.
     virtual void RemoveAllGameObjects();
+
+    /// @brief 제거 대기열에 있는 게임 오브젝트를 처리합니다.
+    virtual void ProcessPendingDestroyObjects();
 
     /// @brief 게임 오브젝트를 가져옵니다.
     /// @tparam T GameObject를 상속받은 클래스

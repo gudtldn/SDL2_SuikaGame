@@ -125,6 +125,14 @@ void GameEngine::Run()
         }
 
 
+        // 게임 오브젝트 제거
+        if (current_stage)
+        {
+            current_stage->GetObjectManager().ProcessPendingDestroyObjects();
+        }
+        object_manager.ProcessPendingDestroyObjects();
+
+
         // 화면 지우기
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);

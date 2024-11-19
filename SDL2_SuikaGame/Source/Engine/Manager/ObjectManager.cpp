@@ -41,17 +41,31 @@ void ObjectManager::DestroyGameObject(const std::shared_ptr<GameObject>& object)
     // object가 존재하지 않으면 return
     if (!object) return;
 
-    // 완전히 삭제하기 전에 OnDestroy()를 호출
-    object->OnDestroy();
-
-    // TODO: 추후에 지연 삭제 기능 추가
-    // https://www.perplexity.ai/search/igeon-jeogjeolhage-jal-sagjeha-hQZ4F0llSH.ZFqhWgJ..SQ
-    game_objects.erase(object);
+    if (game_objects.erase(object) > 0)
+    {
+        pending_destroy_objects.push(object);
+    }
 }
 
 void ObjectManager::RemoveAllGameObjects()
 {
+    for (const auto& object : game_objects)
+    {
+        pending_destroy_objects.push(object);
+    }
     game_objects.clear();
+}
+
+void ObjectManager::ProcessPendingDestroyObjects()
+{
+    while (!pending_destroy_objects.empty())
+    {
+        auto object = pending_destroy_objects.front();
+        pending_destroy_objects.pop();
+
+        // 완전히 삭제하기 전에 OnDestroy()를 호출
+        object->OnDestroy();
+    }
 }
 
 void ObjectManager::GetGameObjectsByTag(const std::string& tag, std::vector<GameObject*>& out_objects) const
