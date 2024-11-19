@@ -1,6 +1,7 @@
-#include "FruitObject.h"
+﻿#include "FruitObject.h"
 #include "SuikaGame/Stages/GameStage.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
+#include "SuikaGame/GameUIObjects/ScoreboardObject.h"
 #include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
 #include <limits>
 
@@ -25,7 +26,8 @@ void FruitObject::InitFruit(size_t idx)
 {
     // fruit_texture 설정
     std::vector<FruitResourceObject*> fruit_resource;
-    GetCurrentStage()->GetObjectManager().GetGameObjectsOfClass<FruitResourceObject>(fruit_resource);
+    GetCurrentStage()->GetObjectManager()
+        .GetGameObjectsOfClass<FruitResourceObject>(fruit_resource);
 
     THROW_IF_FAILED(
         !fruit_resource.empty(),
@@ -130,9 +132,25 @@ void FruitObject::BeginPlay()
                     );
                     new_fruit->is_first_landed = true;
                     new_fruit->SetFruitActive(true);
-
-                    // TODO: 합쳐지는 효과음 재생
                 }
+
+                // TODO: 합쳐지는 효과음 재생
+
+                // 점수 증가
+                std::vector<ScoreboardObject*> scoreboard_objects;
+                game_stage->GetObjectManager()
+                    .GetGameObjectsOfClass<ScoreboardObject>(scoreboard_objects);
+
+                THROW_IF_FAILED(
+                    !scoreboard_objects.empty(),
+                    "Failed to find ScoreboardObject in the current stage"
+                )
+                ScoreboardObject* scoreboard_obj = scoreboard_objects.front();
+
+                const int temp_idx = static_cast<int>(fruit_idx) + 1;
+                scoreboard_obj->AddScore(temp_idx * (temp_idx + 1) / 2);
+
+                // 과일 물리엔진 비활성화
                 b2Body_Disable(other_fruit_obj->fruit_body);
                 b2Body_Disable(fruit_body);
                 other_fruit_obj->Destroy();

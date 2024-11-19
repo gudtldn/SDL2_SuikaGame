@@ -9,6 +9,8 @@ private:
     /// @brief 스코어보드 배경 텍스처
     std::unique_ptr<Texture2D> bubble_texture;
 
+    std::unique_ptr<TextRender> score_text;
+
     /// @brief 스코어
     int score = 0;
 
@@ -19,12 +21,15 @@ public:
     /****** Getter && Setter ******/
 
     /// @brief 스코어를 가져옵니다.
-    inline int GetScore() const { return score; }
+    int GetScore() const { return score; }
 
     /// @brief 스코어를 증가시킵니다.
-    inline void AddScore(int value) { score += value; }
+    void AddScore(int value)
+    {
+        score += value;
+        score_text->SetText(std::to_string(score));
+    }
 
 protected:
-    virtual void Update(float delta_time) override;
     virtual void Render(SDL_Renderer* renderer) const override;
 };
