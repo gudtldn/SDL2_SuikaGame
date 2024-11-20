@@ -31,11 +31,11 @@ private:
     /// @brief 현재 스테이지
     std::unique_ptr<Stage> current_stage;
 
-    /// @brief SDL 관리자
-    SDLManager sdl_manager;
-
     /// @brief 게임 오브젝트 관리자
     ObjectManager object_manager;
+
+    /// @brief SDL 관리자
+    SDLManager sdl_manager;
 
     /// @brief 게임이 실행 중인지 여부
     bool is_running;
