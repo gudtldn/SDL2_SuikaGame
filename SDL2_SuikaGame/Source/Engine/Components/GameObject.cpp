@@ -33,13 +33,13 @@ void GameObject::Destroy()
     const auto self = shared_from_this();
 
     // 오브젝트 매니저에서 제거
-    if (GetCurrentStage()->GetObjectManager().GetGameObjects().contains(self))
+    if (GetEngine()->GetObjectManager().GetGameObjects().contains(self))
     {
-        GetCurrentStage()->GetObjectManager().DestroyGameObject(self);
+        GetEngine()->GetObjectManager().DestroyGameObject(self);
     }
     else
     {
-        GetEngine()->GetObjectManager().DestroyGameObject(self);
+        GetCurrentStage()->GetObjectManager().DestroyGameObject(self);
     }
 }
 
