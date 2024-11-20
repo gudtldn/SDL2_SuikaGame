@@ -1,4 +1,9 @@
 #pragma once
+#include <memory>
+#include <SDL_render.h>
+
+// forward declaration
+class Texture2D;
 
 
 /// @brief SDL 초기화를 담당하는 매니저 클래스
@@ -11,4 +16,8 @@ public:
 
     /// @brief 사용한 자원을 해제합니다.
     ~SDLManager();
+
+public:
+    /// @brief 게임 화면을 캡쳐합니다.
+    [[nodiscard]] static std::unique_ptr<Texture2D> CaptureScreen(SDL_Renderer* renderer);
 };

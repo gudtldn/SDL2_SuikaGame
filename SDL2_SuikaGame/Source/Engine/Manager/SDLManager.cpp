@@ -1,5 +1,6 @@
 #include "SDLManager.h"
 #include "Engine/Utils/LogMacros.h"
+#include "Engine/Components/Texture2D.h"
 
 #include <stdexcept>
 #include <SDL.h>
@@ -57,6 +58,44 @@ SDLManager::~SDLManager()
 
     // SDL 종료
     SDL_Quit();
+}
+
+std::unique_ptr<Texture2D> SDLManager::CaptureScreen(SDL_Renderer* renderer)
+{
+    int width, height;
+    SDL_GetRendererOutputSize(renderer, &width, &height);
+
+    SDL_Surface* surface = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0);  
+    CHECK_AND_LOG_ERROR(
+        surface == nullptr,
+        "Failed to create surface for screen capture! SDL_Error: {}", SDL_GetError()
+    )
+
+    // 렌더러의 내용을 캡쳐
+    if (
+        SDL_RenderReadPixels(
+            renderer,
+            nullptr,
+            SDL_PIXELFORMAT_ARGB8888,
+            surface->pixels,
+            surface->pitch
+        ) != 0
+    ) {
+        LOG_ERROR("Failed to read pixels: {}", SDL_GetError());
+        SDL_FreeSurface(surface);
+        throw std::runtime_error(SDL_GetError());
+    }
+
+    std::unique_ptr<Texture2D> result = std::make_unique<Texture2D>(
+        SDL_CreateTextureFromSurface(renderer, surface)
+    );
+    CHECK_AND_LOG_ERROR(
+        result == nullptr,
+        "Failed to create texture for screen capture! SDL_Error: {}", SDL_GetError()
+    )
+
+    SDL_FreeSurface(surface);
+    return result;
 }
 
 #undef CHECK_AND_LOG_ERROR

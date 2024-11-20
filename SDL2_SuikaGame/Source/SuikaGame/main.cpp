@@ -20,9 +20,6 @@ int main(int argc, char* args[])
 
     try
     {
-        // SDL Manager 초기화
-        SDLManager sdl_manager = SDLManager{};
-
         // Engine 생성
         GameEngine engine = GameEngine{
             "Suika Game",
