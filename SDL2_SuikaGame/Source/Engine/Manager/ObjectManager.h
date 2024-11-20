@@ -23,11 +23,11 @@ private:
     /// @brief 게임 오브젝트를 담을 집합
     std::unordered_set<std::shared_ptr<GameObject>> game_objects;
 
-    /// @brief 새로운 게임 오브젝트의 벡터
-    std::queue<GameObject*> new_game_objects;
-
     /// @brief 게임 오브젝트 제거 대기열
     std::queue<std::shared_ptr<GameObject>> pending_destroy_objects;
+
+    /// @brief 새로운 게임 오브젝트의 벡터
+    std::queue<GameObject*> new_game_objects;
 
 public:
     ObjectManager(GameEngine* engine)
