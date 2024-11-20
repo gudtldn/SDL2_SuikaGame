@@ -110,6 +110,7 @@ void PlayerObject::Update(float delta_time)
     // 플레이어 위치 적용
     SetPlayerPosition(new_x);
 
+    // 활성화 되지 않은 과일의 위치 적용
     if (current_fruit != nullptr && !current_fruit->GetFruitActive())
     {
         current_fruit->SetFruitPosition({
