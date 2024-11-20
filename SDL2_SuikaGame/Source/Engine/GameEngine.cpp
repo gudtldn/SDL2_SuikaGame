@@ -26,6 +26,12 @@ GameEngine::GameEngine(
     , accumulated_time(0.0f)
     , fixed_time_v(1.0f / TARGET_FPS)
 {
+    // SDL 미 초기화 시 예외 처리
+    if (SDL_WasInit(SDL_INIT_VIDEO) == 0)
+    {
+        throw std::runtime_error("SDL is not initialized.");
+    }
+
     // SDL 화면 생성
     window = SDL_CreateWindow(
         title_name,
