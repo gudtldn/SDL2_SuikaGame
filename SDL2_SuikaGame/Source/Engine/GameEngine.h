@@ -34,9 +34,6 @@ private:
     /// @brief 게임 오브젝트 관리자
     ObjectManager object_manager;
 
-    /// @brief SDL 관리자
-    SDLManager sdl_manager;
-
     /// @brief 게임이 실행 중인지 여부
     bool is_running;
 
@@ -86,9 +83,6 @@ public:
 
     /// @brief 게임 오브젝트 관리자를 가져옵니다.
     ObjectManager& GetObjectManager() { return object_manager; }
-
-    /// @brief SDL 관리자를 가져옵니다.
-    SDLManager& GetSDLManager() { return sdl_manager; }
 
     /// @brief 현재 스테이지를 가져옵니다.
     Stage* GetCurrentStage() const { return current_stage.get(); }
