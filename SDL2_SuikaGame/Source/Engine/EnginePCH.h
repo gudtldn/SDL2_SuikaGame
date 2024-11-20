@@ -29,11 +29,11 @@
 
 #include "Engine/Components/Stage.h"
 #include "Engine/Components/GameObject.h"
+#include "Engine/Components/TextRender.h"
+#include "Engine/Components/Rectangle.h"
+#include "Engine/Components/FTexture2D.h"
+#include "Engine/Components/Texture2D.h"
 
-#include "Engine/EngineTypes/TextRender.h"
-#include "Engine/EngineTypes/Texture2D.h"
-#include "Engine/EngineTypes/FTexture2D.h"
-#include "Engine/EngineTypes/Rectangle.h"
 #include "Engine/EngineTypes/Vector2D.h"
 #include "Engine/EngineTypes/RenderAnchor.h"
 
