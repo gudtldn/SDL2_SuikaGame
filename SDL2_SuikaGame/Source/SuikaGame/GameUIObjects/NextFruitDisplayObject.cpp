@@ -5,7 +5,7 @@
 
 NextFruitDisplayObject::NextFruitDisplayObject(GameEngine* engine)
     : GameObject(engine)
-    , bubble_position({
+    , display_position({
         SCREEN_WIDTH * 0.85f,
         SCREEN_HEIGHT * 0.25f
     })
@@ -15,6 +15,12 @@ NextFruitDisplayObject::NextFruitDisplayObject(GameEngine* engine)
     THROW_IF_FAILED(
         raw_bubble_texture,
         "Failed to load bubble texture! SDL Error: {}", SDL_GetError()
+    )
+
+    SDL_Texture* raw_text_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/next_text.png");
+    THROW_IF_FAILED(
+        raw_text_texture,
+        "Failed to load text texture! SDL Error: {}", SDL_GetError()
     )
 
     int w, h;
@@ -27,6 +33,7 @@ NextFruitDisplayObject::NextFruitDisplayObject(GameEngine* engine)
             static_cast<float>(h) * 0.75f
         )
     );
+    text_texture = std::make_unique<Texture2D>(raw_text_texture);
 }
 
 void NextFruitDisplayObject::BeginPlay()
@@ -41,14 +48,18 @@ void NextFruitDisplayObject::BeginPlay()
     PlayerObject* player = players.front();
     player->next_fruit_delegate.BindFunction([this](FruitObject* fruit)
     {
-        fruit->SetFruitPosition(bubble_position);
+        fruit->SetFruitPosition(display_position);
     });
 }
 
 void NextFruitDisplayObject::Render(SDL_Renderer* renderer) const
 {
-    bubble_texture->Render(
+    bubble_texture->Render(renderer, display_position);
+    text_texture->Render(
         renderer,
-        bubble_position
+        {
+            display_position.X,
+            display_position.Y - 95.0f
+        }
     );
 }

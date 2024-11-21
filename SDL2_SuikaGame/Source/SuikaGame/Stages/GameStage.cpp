@@ -5,6 +5,7 @@
 #include "SuikaGame/GameUIObjects/BorderBackgroundObject.h"
 #include "SuikaGame/GameUIObjects/ScoreboardObject.h"
 #include "SuikaGame/GameUIObjects/NextFruitDisplayObject.h"
+#include "SuikaGame/GameUIObjects/CircleOfEvolutionDisplayObject.h"
 #include "SuikaGame/GameResources/FruitResourceObject.h"
 
 
@@ -33,6 +34,9 @@ void GameStage::InitializeObjects()
 
     // NextFruitDisplayObject 오브젝트 생성
     obj_manager.CreateGameObject<NextFruitDisplayObject>();
+
+    // CircleOfEvolutionDisplayObject 오브젝트 생성
+    obj_manager.CreateGameObject<CircleOfEvolutionDisplayObject>();
 
     // PlayerObject 오브젝트 생성
     obj_manager.CreateGameObject<PlayerObject>();
