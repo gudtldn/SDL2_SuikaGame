@@ -1,6 +1,36 @@
 ﻿#include "FruitResourceObject.h"
 #include <ranges>
 
+// TODO: 나중에 스프라이트 시트로 변경
+// 과일 이미지 Path
+static constexpr std::array fruits_png_path = {
+    "Contents/Textures/fruits/fruit_0.png",  // 체리
+    "Contents/Textures/fruits/fruit_1.png",  // 딸기
+    "Contents/Textures/fruits/fruit_2.png",  // 포도
+    "Contents/Textures/fruits/fruit_3.png",  // 오렌지
+    "Contents/Textures/fruits/fruit_4.png",  // 감
+    "Contents/Textures/fruits/fruit_5.png",  // 사과
+    "Contents/Textures/fruits/fruit_6.png",  // 자몽
+    "Contents/Textures/fruits/fruit_7.png",  // 복숭아
+    "Contents/Textures/fruits/fruit_8.png",  // 파인애플
+    "Contents/Textures/fruits/fruit_9.png",  // 멜론
+    "Contents/Textures/fruits/fruit_10.png", // 수박
+};
+
+// 과일 이미지 스케일
+static constexpr std::array fruits_scale = {
+    0.175f,  // 체리
+    0.2f,    // 딸기
+    0.275f,  // 포도
+    0.3f,    // 오렌지
+    0.375f,  // 감
+    0.425f,  // 사과
+    0.55f,   // 자몽
+    0.65f,   // 복숭아
+    0.8f,    // 파인애플
+    0.875f,  // 멜론
+    1.0f,    // 수박
+};
 
 FruitResourceObject::FruitResourceObject(GameEngine* engine)
     : GameObject(engine)
@@ -30,39 +60,18 @@ FruitResourceObject::FruitResourceObject(GameEngine* engine)
         -1.0f,  // 멜론
         -1.0f,  // 수박
     }
+    , fruit_merge_sound(nullptr, Mix_FreeChunk)
 {
-    // TODO: 나중에 스프라이트 시트로 변경
-    // 과일 이미지 Path
-    constexpr std::array fruits_png = {
-        "Contents/Textures/fruits/fruit_0.png",  // 체리
-        "Contents/Textures/fruits/fruit_1.png",  // 딸기
-        "Contents/Textures/fruits/fruit_2.png",  // 포도
-        "Contents/Textures/fruits/fruit_3.png",  // 오렌지
-        "Contents/Textures/fruits/fruit_4.png",  // 감
-        "Contents/Textures/fruits/fruit_5.png",  // 사과
-        "Contents/Textures/fruits/fruit_6.png",  // 자몽
-        "Contents/Textures/fruits/fruit_7.png",  // 복숭아
-        "Contents/Textures/fruits/fruit_8.png",  // 파인애플
-        "Contents/Textures/fruits/fruit_9.png",  // 멜론
-        "Contents/Textures/fruits/fruit_10.png", // 수박
-    };
+    // pop 사운드 로드
+    Mix_Chunk* raw_fruit_merge_sound = Mix_LoadWAV("Contents/Sounds/pop.mp3");
+    THROW_IF_FAILED(
+        raw_fruit_merge_sound,
+        "Failed to load fruit merge sound! SDL_mixer Error: {}", Mix_GetError()
+    )
+    fruit_merge_sound.reset(raw_fruit_merge_sound);
 
-    // 과일 이미지 스케일
-    constexpr std::array fruits_scale = {
-        0.175f,  // 체리
-        0.2f,    // 딸기
-        0.275f,  // 포도
-        0.3f,    // 오렌지
-        0.375f,  // 감
-        0.425f,  // 사과
-        0.55f,   // 자몽
-        0.65f,   // 복숭아
-        0.8f,    // 파인애플
-        0.875f,  // 멜론
-        1.0f,    // 수박
-    };
-
-    for (const auto [idx, png] : fruits_png | std::ranges::views::enumerate)
+    // 과일 이미지 로드
+    for (const auto [idx, png] : fruits_png_path | std::ranges::views::enumerate)
     {
         SDL_Texture* raw_fruit_texture = IMG_LoadTexture(engine->GetRenderer(), png);
         THROW_IF_FAILED(

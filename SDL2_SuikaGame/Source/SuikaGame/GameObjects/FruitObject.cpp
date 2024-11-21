@@ -12,6 +12,7 @@ FruitObject::FruitObject(GameEngine* engine)
     , fruit_idx(std::numeric_limits<size_t>::max())
     , fruit_offset_position(std::numeric_limits<float>::infinity())
     , fruit_offset_size(std::numeric_limits<float>::infinity())
+    , merge_sound(nullptr)
     , fruit_active(false)
     , is_first_landed(false)
     , is_init(false)
@@ -43,6 +44,8 @@ void FruitObject::InitFruit(size_t idx)
         fruit_offset_position,
         fruit_offset_size
     );
+
+    merge_sound = fruit_resource_obj->GetFruitMergeSound();
 
     // Box2D Body 초기화
     b2BodyDef body_def = b2DefaultBodyDef();
@@ -134,7 +137,8 @@ void FruitObject::BeginPlay()
                     new_fruit->SetFruitActive(true);
                 }
 
-                // TODO: 합쳐지는 효과음 재생
+                // pop사운드 재생
+                Mix_PlayChannel(-1, merge_sound, 0);
 
                 // 점수 증가
                 std::vector<ScoreboardObject*> scoreboard_objects;

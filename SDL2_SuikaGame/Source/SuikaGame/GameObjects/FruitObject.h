@@ -27,6 +27,9 @@ private:
     /// @brief 과일 오프셋 크기 (꼭지 부분을 제외한, 실제 과육의 크기 오프셋)
     float fruit_offset_size;
 
+    /// @brief 과일이 합쳐질 때 나는 소리
+    Mix_Chunk* merge_sound;
+
     /// @brief 오브젝트 활성화 여부
     bool fruit_active;
 
