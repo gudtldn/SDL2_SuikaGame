@@ -57,7 +57,7 @@ void TextRender::Render(SDL_Renderer* renderer, const Vector2D& position, Render
 inline void TextRender::ConvertTextToTexture(SDL_Renderer* renderer) const
 {
     // 텍스트 렌더링
-    SDL_Surface* surface = TTF_RenderText_Solid(font.get(), text.c_str(), color);
+    SDL_Surface* surface = TTF_RenderText_Blended(font.get(), text.c_str(), color);
 
     if (!surface)
     {
