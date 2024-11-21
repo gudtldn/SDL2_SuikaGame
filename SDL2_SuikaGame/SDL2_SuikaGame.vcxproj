@@ -144,6 +144,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source\SuikaGame\GameObjects\BorderTopSensorObject.h" />
     <ClInclude Include="Source\SuikaGame\GameObjects\FruitObject.h" />
     <ClInclude Include="Source\SuikaGame\GameResources\FruitResourceObject.h" />
+    <ClInclude Include="Source\SuikaGame\GameUIObjects\CircleOfEvolutionDisplayObject.h" />
     <ClInclude Include="Source\SuikaGame\GameUIObjects\NextFruitDisplayObject.h" />
     <ClInclude Include="Source\SuikaGame\GameUIObjects\ScoreboardObject.h" />
     <ClInclude Include="Source/SuikaGame/MenuUIObjects/GameLogoObject.h" />
@@ -178,6 +179,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClCompile Include="Source\SuikaGame\GameObjects\BorderTopSensorObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\FruitObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameResources\FruitResourceObject.cpp" />
+    <ClCompile Include="Source\SuikaGame\GameUIObjects\CircleOfEvolutionDisplayObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameUIObjects\NextFruitDisplayObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameUIObjects\ScoreboardObject.cpp" />
     <ClCompile Include="Source/SuikaGame/MenuUIObjects/GameLogoObject.cpp" />
