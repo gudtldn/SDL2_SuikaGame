@@ -18,7 +18,7 @@ BorderTopSensorObject::BorderTopSensorObject(GameEngine* engine)
 
     SDL_FRect top_offset = {
         .x = 0.0f,
-        .y = -300.0f,
+        .y = -280.0f,
         .w = 224.0f,
         .h = 16.0f
     };
@@ -45,19 +45,28 @@ BorderTopSensorObject::BorderTopSensorObject(GameEngine* engine)
 
 void BorderTopSensorObject::BeginPlay()
 {
+    // TODO: 조건식을 수정해야함
+    // 처음에 센서에 감지가 되는데, 감지된 상태로 FirstLanded가 true로 되면 게임 오버가 안됨
     GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
-    game_stage->GetBox2DManager().OnBeginSensorOverlap.AddFunction([this, game_stage](GameObject* visitor)
+    begin_sensor_overlap_handle = game_stage->GetBox2DManager()
+        .OnBeginSensorOverlap.AddFunction([this, game_stage](GameObject* visitor)
     {
-        if (
-            const FruitObject* fruit_obj = dynamic_cast<FruitObject*>(visitor);
-            fruit_obj && fruit_obj->IsFirstLanded()
-        ) {
-            game_stage->SetGameOver(true);
-            // TODO: 3초 타이머 작동 후, 아직도 Overlap되어있으면, 게임 오버
+        if (const FruitObject* fruit_obj = dynamic_cast<FruitObject*>(visitor))
+        {
+            if (fruit_obj->IsFirstLanded()) 
+            {
+                game_stage->SetGameOver(true);
+                // TODO: 3초 타이머 작동 후, 아직도 Overlap되어있으면, 게임 오버
+            }
+            else
+            {
+                // TODO: FirstLanded가 false인 상태로 왔을 때, 나중에 델리게이트로 착지시 한번 더 확인
+            }
         }
     });
 
-    game_stage->GetBox2DManager().OnEndSensorOverlap.AddFunction([this, game_stage](GameObject* visitor)
+    end_sensor_overlap_handle = game_stage->GetBox2DManager()
+        .OnEndSensorOverlap.AddFunction([this, game_stage](GameObject* visitor)
     {
         if (
             const FruitObject* fruit_obj = dynamic_cast<FruitObject*>(visitor);
@@ -69,8 +78,38 @@ void BorderTopSensorObject::BeginPlay()
     });
 }
 
+#pragma region DebugDraw
+void BorderTopSensorObject::Render(SDL_Renderer* renderer) const
+{
+    // b2PolygonShape에서 정점 정보 가져오기
+    auto [x, y] = b2Body_GetPosition(border_sensor_body);
+    const b2Polygon polygon = b2Shape_GetPolygon(border_sensor_shape);
+    const int vertexCount = polygon.count;
+    const b2Vec2* vertices = polygon.vertices;
+
+    // SDL2로 사각형 그리기
+    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);  // 빨간색으로 설정
+
+    for (int i = 0; i < vertexCount; ++i) {
+        const int j = (i + 1) % vertexCount;
+        SDL_RenderDrawLineF(
+            renderer,
+            x + vertices[i].x,
+            y + vertices[i].y,
+            x + vertices[j].x,
+            y + vertices[j].y
+        );
+    }
+}
+#pragma endregion DebugDraw
+
 void BorderTopSensorObject::OnDestroy()
 {
+    // 델리게이트 해제
+    GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
+    game_stage->GetBox2DManager().OnBeginSensorOverlap.Remove(begin_sensor_overlap_handle);
+    game_stage->GetBox2DManager().OnEndSensorOverlap.Remove(end_sensor_overlap_handle);
+
     b2DestroyShape(border_sensor_shape);
     b2DestroyBody(border_sensor_body);
 
