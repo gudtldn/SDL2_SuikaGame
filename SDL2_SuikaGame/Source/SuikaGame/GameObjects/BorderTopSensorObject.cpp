@@ -20,7 +20,7 @@ BorderTopSensorObject::BorderTopSensorObject(GameEngine* engine)
         .x = 0.0f,
         .y = -280.0f,
         .w = 224.0f,
-        .h = 16.0f
+        .h = 8.0f
     };
 
     b2BodyDef body_def = b2DefaultBodyDef();
@@ -45,8 +45,6 @@ BorderTopSensorObject::BorderTopSensorObject(GameEngine* engine)
 
 void BorderTopSensorObject::BeginPlay()
 {
-    // TODO: 조건식을 수정해야함
-    // 처음에 센서에 감지가 되는데, 감지된 상태로 FirstLanded가 true로 되면 게임 오버가 안됨
     GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
     begin_sensor_overlap_handle = game_stage->GetBox2DManager()
         .OnBeginSensorOverlap.AddFunction([this, game_stage](GameObject* visitor)
