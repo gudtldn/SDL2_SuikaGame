@@ -2,7 +2,7 @@
 #include "EnginePCH.h"
 
 
-class FruitResourceObject : public GameResource
+class FruitResource : public GameResource
 {
 public:
     static constexpr size_t FRUIT_COUNT = 11;
@@ -20,7 +20,7 @@ private:
     std::unique_ptr<Mix_Chunk, decltype(&Mix_FreeChunk)> fruit_merge_sound;
 
 public:
-    FruitResourceObject();
+    FruitResource();
     virtual void Load() override;
 
 

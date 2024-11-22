@@ -1,4 +1,4 @@
-﻿#include "FruitResourceObject.h"
+﻿#include "FruitResource.h"
 #include <ranges>
 
 // TODO: 나중에 스프라이트 시트로 변경
@@ -32,7 +32,7 @@ static constexpr std::array fruits_scale = {
     1.0f,    // 수박
 };
 
-FruitResourceObject::FruitResourceObject()
+FruitResource::FruitResource()
     : fruits_offset_position {
         Vector2D(-1.0f, 4.5f),  // 체리
         Vector2D(-1.0f, 0.0f),  // 딸기
@@ -63,7 +63,7 @@ FruitResourceObject::FruitResourceObject()
 {
 }
 
-void FruitResourceObject::Load()
+void FruitResource::Load()
 {
     // pop 사운드 로드
     Mix_Chunk* raw_fruit_merge_sound = Mix_LoadWAV("Contents/Sounds/pop.mp3");

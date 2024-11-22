@@ -6,7 +6,7 @@
 #include "SuikaGame/GameUIObjects/ScoreboardObject.h"
 #include "SuikaGame/GameUIObjects/NextFruitDisplayObject.h"
 #include "SuikaGame/GameUIObjects/CircleOfEvolutionDisplayObject.h"
-#include "SuikaGame/GameResources/FruitResourceObject.h"
+#include "SuikaGame/GameResources/FruitResource.h"
 
 
 GameStage::GameStage(GameEngine* engine)

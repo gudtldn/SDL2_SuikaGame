@@ -1,6 +1,6 @@
 ﻿#include "FruitObject.h"
 #include "SuikaGame/Stages/GameStage.h"
-#include "SuikaGame/GameResources/FruitResourceObject.h"
+#include "SuikaGame/GameResources/FruitResource.h"
 #include "SuikaGame/GameUIObjects/ScoreboardObject.h"
 #include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
 #include "SuikaGame/GameObjects/BorderTopSensorObject.h"
@@ -27,8 +27,8 @@ FruitObject::FruitObject(GameEngine* engine)
 void FruitObject::InitFruit(size_t idx)
 {
     // fruit_texture 설정
-    const FruitResourceObject* fruit_resource_obj =
-        GetEngine()->GetResourceManager().GetResource<FruitResourceObject>();
+    const FruitResource* fruit_resource_obj =
+        GetEngine()->GetResourceManager().GetResource<FruitResource>();
 
     // 체리, 딸기, 포도, 오렌지
     fruit_idx = idx;
@@ -122,7 +122,7 @@ void FruitObject::BeginPlay()
             // 같은 과일일 경우
             if (fruit_idx == other_fruit_obj->fruit_idx)
             {
-                if (fruit_idx < FruitResourceObject::FRUIT_COUNT-1)
+                if (fruit_idx < FruitResource::FRUIT_COUNT-1)
                 {
                     FruitObject* new_fruit = game_stage->GetObjectManager().CreateGameObject<FruitObject>();
                     new_fruit->InitFruit(fruit_idx + 1);
