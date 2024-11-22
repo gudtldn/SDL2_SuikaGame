@@ -27,15 +27,8 @@ FruitObject::FruitObject(GameEngine* engine)
 void FruitObject::InitFruit(size_t idx)
 {
     // fruit_texture 설정
-    std::vector<FruitResourceObject*> fruit_resource;
-    GetCurrentStage()->GetObjectManager()
-        .GetGameObjectsOfClass<FruitResourceObject>(fruit_resource);
-
-    THROW_IF_FAILED(
-        !fruit_resource.empty(),
-        "Failed to find FruitResourceObject in the current stage"
-    )
-    const FruitResourceObject* fruit_resource_obj = fruit_resource.front();
+    const FruitResourceObject* fruit_resource_obj =
+        GetEngine()->GetResourceManager().GetResource<FruitResourceObject>();
 
     // 체리, 딸기, 포도, 오렌지
     fruit_idx = idx;

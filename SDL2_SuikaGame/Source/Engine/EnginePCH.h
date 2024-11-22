@@ -10,6 +10,7 @@
 #include <box2d/box2d.h>
 
 // C++ Standard Library
+#include <array>
 #include <vector>
 #include <string>
 #include <format>
@@ -25,6 +26,7 @@
 
 #include "Engine/AbstractClasses/Stage.h"
 #include "Engine/AbstractClasses/GameObject.h"
+#include "Engine/AbstractClasses/GameResource.h"
 
 #include "Engine/Manager/SDLManager.h"
 #include "Engine/Manager/Box2DManager.h"

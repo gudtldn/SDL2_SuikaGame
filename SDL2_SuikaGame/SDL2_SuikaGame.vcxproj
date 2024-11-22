@@ -173,7 +173,6 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClCompile Include="Source\Engine\Components\TextRender.cpp" />
     <ClCompile Include="Source\Engine\Components\Texture2D.cpp" />
     <ClCompile Include="Source\Engine\Manager\Box2DManager.cpp" />
-    <ClCompile Include="Source\Engine\Manager\ResourceManager.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\BackgroundObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/BgmObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/PlayerObject.cpp" />

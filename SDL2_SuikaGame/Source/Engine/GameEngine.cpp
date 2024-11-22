@@ -22,6 +22,7 @@ GameEngine::GameEngine(
     , renderer(nullptr)
     , controller(nullptr)
     , object_manager(this)
+    , resource_manager(this)
     , is_running(false)
     , accumulated_time(0.0f)
     , fixed_time_v(1.0f / TARGET_FPS)

@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/Manager/ObjectManager.h"
+#include "Manager/ResourceManager.h"
 
 // forward declaration
 class GameEngine;
@@ -15,6 +16,9 @@ private:
 
     /// @brief 게임 오브젝트 매니저
     ObjectManager object_manager;
+
+    /// @brief 게임 리소스 매니저
+    ResourceManager resource_manager;
 
 public:
     Stage(GameEngine* engine);
@@ -46,6 +50,9 @@ public:
 
     /// @brief 게임 오브젝트 매니저를 가져옵니다.
     ObjectManager& GetObjectManager() { return object_manager; }
+
+    /// @brief 게임 리소스 매니저를 가져옵니다.
+    ResourceManager& GetResourceManager() { return resource_manager; }
 
     /// @brief 게임 엔진을 가져옵니다.
     [[nodiscard]] GameEngine* GetEngine() const { return engine; }

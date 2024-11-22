@@ -20,9 +20,6 @@ void GameStage::InitializeStage()
     Stage::InitializeStage();
     ObjectManager& obj_manager = GetObjectManager();
 
-    // FruitsResourceObject 오브젝트 생성
-    obj_manager.CreateGameObject<FruitResourceObject>();
-
     // BorderBackgroundObject 오브젝트 생성
     obj_manager.CreateGameObject<BorderBackgroundObject>();
 

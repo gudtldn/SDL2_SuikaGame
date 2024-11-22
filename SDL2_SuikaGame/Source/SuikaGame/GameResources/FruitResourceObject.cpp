@@ -32,9 +32,8 @@ static constexpr std::array fruits_scale = {
     1.0f,    // 수박
 };
 
-FruitResourceObject::FruitResourceObject(GameEngine* engine)
-    : GameObject(engine)
-    , fruits_offset_position {
+FruitResourceObject::FruitResourceObject()
+    : fruits_offset_position {
         Vector2D(-1.0f, 4.5f),  // 체리
         Vector2D(-1.0f, 0.0f),  // 딸기
         Vector2D(-1.0f, 0.0f),  // 포도
@@ -61,6 +60,10 @@ FruitResourceObject::FruitResourceObject(GameEngine* engine)
         -1.0f,  // 수박
     }
     , fruit_merge_sound(nullptr, Mix_FreeChunk)
+{
+}
+
+void FruitResourceObject::Load()
 {
     // pop 사운드 로드
     Mix_Chunk* raw_fruit_merge_sound = Mix_LoadWAV("Contents/Sounds/pop.mp3");

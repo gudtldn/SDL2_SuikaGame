@@ -4,8 +4,9 @@
 #include <SDL.h>
 
 #include "Engine/AbstractClasses/Stage.h"
-#include "Engine/Manager/ObjectManager.h"
 #include "Engine/Manager/SDLManager.h"
+#include "Engine/Manager/ObjectManager.h"
+#include "Engine/Manager/ResourceManager.h"
 #include "Engine/Utils/Math.h"
 
 // forward declaration
@@ -32,6 +33,9 @@ private:
 
     /// @brief 게임 오브젝트 관리자
     ObjectManager object_manager;
+
+    /// @brief 게임 리소스 관리자
+    ResourceManager resource_manager;
 
     /// @brief 게임이 실행 중인지 여부
     bool is_running;
@@ -60,6 +64,7 @@ public:
         int screen_height
     );
 
+    // 이동 & 복사 연산자 제거
     GameEngine(GameEngine&&) = delete;
     GameEngine(const GameEngine&) = delete;
     GameEngine& operator=(const GameEngine&) = delete;
@@ -82,6 +87,9 @@ public:
 
     /// @brief 게임 오브젝트 관리자를 가져옵니다.
     ObjectManager& GetObjectManager() { return object_manager; }
+
+    /// @brief 게임 리소스 관리자를 가져옵니다.
+    ResourceManager& GetResourceManager() { return resource_manager; }
 
     /// @brief 현재 스테이지를 가져옵니다.
     Stage* GetCurrentStage() const { return current_stage.get(); }
