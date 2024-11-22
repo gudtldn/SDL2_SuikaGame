@@ -1,11 +1,11 @@
 ﻿#pragma once
 #include <string>
 #include <SDL_ttf.h>
-#include "Engine/AbstractClasses/Renderable.h"
+#include "Engine/AbstractClasses/RenderableBase.h"
 
 
 /// @brief 텍스트 렌더링을 담당하는 클래스
-class TextRender : public Renderable
+class TextRender : public RenderableBase
 {
     /// @brief 텍스트 렌더링에 사용할 텍스처
     mutable std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)> cached_texture;

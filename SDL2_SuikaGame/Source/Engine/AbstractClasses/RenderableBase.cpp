@@ -1,8 +1,8 @@
-﻿#include "Renderable.h"
+﻿#include "RenderableBase.h"
 #include <SDL.h>
 
 
-SDL_FRect Renderable::CalculateDestRect(
+SDL_FRect RenderableBase::CalculateDestRect(
     const Vector2D& position,
     const Vector2D& size,
     RenderAnchor anchor

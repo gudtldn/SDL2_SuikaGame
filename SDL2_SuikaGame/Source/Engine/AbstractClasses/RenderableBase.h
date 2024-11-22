@@ -7,10 +7,10 @@ struct SDL_Renderer;
 struct SDL_FRect;
 
 
-class Renderable
+class RenderableBase
 {
 public:
-    virtual ~Renderable() = default;
+    virtual ~RenderableBase() = default;
     virtual void Render(
         SDL_Renderer* renderer,
         const Vector2D& position,
