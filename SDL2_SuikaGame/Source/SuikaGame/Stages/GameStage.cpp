@@ -15,9 +15,9 @@ GameStage::GameStage(GameEngine* engine)
 {
 }
 
-void GameStage::InitializeObjects()
+void GameStage::InitializeStage()
 {
-    Stage::InitializeObjects();
+    Stage::InitializeStage();
     ObjectManager& obj_manager = GetObjectManager();
 
     // FruitsResourceObject 오브젝트 생성

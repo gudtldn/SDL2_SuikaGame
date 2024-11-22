@@ -9,5 +9,5 @@ public:
     MenuStage(GameEngine* engine);
 
 protected:
-    virtual void InitializeObjects() override;
+    virtual void InitializeStage() override;
 };

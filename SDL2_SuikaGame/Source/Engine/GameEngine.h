@@ -138,5 +138,5 @@ void GameEngine::SetStage()
 {
     // 새로운 스테이지 생성
     current_stage = std::make_unique<S>(this);
-    current_stage->InitializeObjects();
+    current_stage->InitializeStage();
 }

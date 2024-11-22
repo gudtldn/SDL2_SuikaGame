@@ -8,7 +8,7 @@ Stage::Stage(GameEngine* engine)
 {
 }
 
-void Stage::InitializeObjects()
+void Stage::InitializeStage()
 {
 }
 

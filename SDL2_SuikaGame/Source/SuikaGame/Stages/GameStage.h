@@ -25,7 +25,7 @@ public:
     void SetGameOver(bool new_game_over) { is_game_over = new_game_over; }
 
 protected:
-    virtual void InitializeObjects() override;
+    virtual void InitializeStage() override;
     virtual void HandleUpdate(float delta_time) override;
     virtual void HandleFixedUpdate(float fixed_time) override;
 };
