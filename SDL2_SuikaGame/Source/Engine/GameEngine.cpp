@@ -1,6 +1,6 @@
 #include "GameEngine.h"
-#include "Engine/Components/Stage.h"
-#include "Engine/Components/GameObject.h"
+#include "Engine/AbstractClasses/Stage.h"
+#include "Engine/AbstractClasses/GameObject.h"
 #include "Engine/Utils/Math.h"
 #include "Engine/Utils/LogMacros.h"
 #include "Engine/GlobalMacro.h"

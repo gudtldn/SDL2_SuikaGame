@@ -3,8 +3,7 @@
 #include <type_traits>
 #include <SDL.h>
 
-#include "Engine/Components/Stage.h"
-#include "Engine/Manager/Box2DManager.h"
+#include "Engine/AbstractClasses/Stage.h"
 #include "Engine/Manager/ObjectManager.h"
 #include "Engine/Manager/SDLManager.h"
 #include "Engine/Utils/Math.h"

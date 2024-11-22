@@ -1,5 +1,5 @@
 #include "ObjectManager.h"
-#include "Engine/Components/GameObject.h"
+#include "Engine/AbstractClasses/GameObject.h"
 
 #include <algorithm>
 

@@ -118,20 +118,21 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source/Engine/EnginePCH.h" />
     <ClInclude Include="Source/Engine/GameEngine.h" />
     <ClInclude Include="Source/Engine/GlobalMacro.h" />
-    <ClInclude Include="Source/Engine/Components/GameObject.h" />
-    <ClInclude Include="Source/Engine/Components/Stage.h" />
     <ClInclude Include="Source/Engine/EngineTypes/Vector2D.h" />
     <ClInclude Include="Source/Engine/Manager/ObjectManager.h" />
     <ClInclude Include="Source/Engine/Manager/SDLManager.h" />
     <ClInclude Include="Source/Engine/Utils/Math.h" />
     <ClInclude Include="Source/SuikaGame/SuikaGame.h" />
+    <ClInclude Include="Source\Engine\AbstractClasses\GameObject.h" />
     <ClInclude Include="Source\Engine\AbstractClasses\Renderable.h" />
+    <ClInclude Include="Source\Engine\AbstractClasses\Stage.h" />
     <ClInclude Include="Source\Engine\Components\FTexture2D.h" />
     <ClInclude Include="Source\Engine\Components\Rectangle.h" />
     <ClInclude Include="Source\Engine\Components\TextRender.h" />
     <ClInclude Include="Source\Engine\Components\Texture2D.h" />
     <ClInclude Include="Source\Engine\EngineTypes\RenderAnchor.h" />
     <ClInclude Include="Source\Engine\Manager\Box2DManager.h" />
+    <ClInclude Include="Source\Engine\Manager\ResourceManager.h" />
     <ClInclude Include="Source\Engine\Utils\Delegate.h" />
     <ClInclude Include="Source\Engine\Utils\DelegateCombination.h" />
     <ClInclude Include="Source\Engine\Utils\LogMacros.h" />
@@ -157,19 +158,20 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
   </ImportGroup>
   <ItemGroup>
     <ClCompile Include="Source/Engine/GameEngine.cpp" />
-    <ClCompile Include="Source/Engine/Components/GameObject.cpp" />
-    <ClCompile Include="Source/Engine/Components/Stage.cpp" />
     <ClCompile Include="Source/Engine/EngineTypes/Vector2D.cpp" />
     <ClCompile Include="Source/Engine/Manager/ObjectManager.cpp" />
     <ClCompile Include="Source/Engine/Manager/SDLManager.cpp" />
     <ClCompile Include="Source/SuikaGame/main.cpp" />
     <ClCompile Include="Source/SuikaGame/SuikaGame.cpp" />
+    <ClCompile Include="Source\Engine\AbstractClasses\GameObject.cpp" />
     <ClCompile Include="Source\Engine\AbstractClasses\Renderable.cpp" />
+    <ClCompile Include="Source\Engine\AbstractClasses\Stage.cpp" />
     <ClCompile Include="Source\Engine\Components\FTexture2D.cpp" />
     <ClCompile Include="Source\Engine\Components\Rectangle.cpp" />
     <ClCompile Include="Source\Engine\Components\TextRender.cpp" />
     <ClCompile Include="Source\Engine\Components\Texture2D.cpp" />
     <ClCompile Include="Source\Engine\Manager\Box2DManager.cpp" />
+    <ClCompile Include="Source\Engine\Manager\ResourceManager.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\BackgroundObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/BgmObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/PlayerObject.cpp" />

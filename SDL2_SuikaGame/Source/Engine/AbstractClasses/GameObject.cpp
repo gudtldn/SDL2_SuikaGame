@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
 #include "Engine/GameEngine.h"
-#include "Engine/Components/Stage.h"
+#include "Engine/AbstractClasses/Stage.h"
 
 
 void GameObject::BeginPlay()
