@@ -124,6 +124,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source/Engine/Utils/Math.h" />
     <ClInclude Include="Source/SuikaGame/SuikaGame.h" />
     <ClInclude Include="Source\Engine\AbstractClasses\GameObject.h" />
+    <ClInclude Include="Source\Engine\AbstractClasses\GameResource.h" />
     <ClInclude Include="Source\Engine\AbstractClasses\RenderableBase.h" />
     <ClInclude Include="Source\Engine\AbstractClasses\Stage.h" />
     <ClInclude Include="Source\Engine\Components\FTexture2D.h" />
@@ -164,6 +165,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClCompile Include="Source/SuikaGame/main.cpp" />
     <ClCompile Include="Source/SuikaGame/SuikaGame.cpp" />
     <ClCompile Include="Source\Engine\AbstractClasses\GameObject.cpp" />
+    <ClCompile Include="Source\Engine\AbstractClasses\GameResource.cpp" />
     <ClCompile Include="Source\Engine\AbstractClasses\RenderableBase.cpp" />
     <ClCompile Include="Source\Engine\AbstractClasses\Stage.cpp" />
     <ClCompile Include="Source\Engine\Components\FTexture2D.cpp" />
