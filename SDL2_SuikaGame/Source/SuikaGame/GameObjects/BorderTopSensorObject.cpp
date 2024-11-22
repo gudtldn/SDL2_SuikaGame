@@ -58,10 +58,6 @@ void BorderTopSensorObject::BeginPlay()
                 game_stage->SetGameOver(true);
                 // TODO: 3초 타이머 작동 후, 아직도 Overlap되어있으면, 게임 오버
             }
-            else
-            {
-                // TODO: FirstLanded가 false인 상태로 왔을 때, 나중에 델리게이트로 착지시 한번 더 확인
-            }
         }
     });
 

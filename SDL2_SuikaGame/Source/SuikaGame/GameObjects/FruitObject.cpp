@@ -3,6 +3,7 @@
 #include "SuikaGame/GameResources/FruitResourceObject.h"
 #include "SuikaGame/GameUIObjects/ScoreboardObject.h"
 #include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
+#include "SuikaGame/GameObjects/BorderTopSensorObject.h"
 #include <limits>
 
 
@@ -106,7 +107,7 @@ void FruitObject::BeginPlay()
         if (dynamic_cast<BorderBottomCollisionObject*>(a) && !is_first_landed)
         {
             is_first_landed = true;
-            OnLandedBottomCollision.Execute();
+            bool _ = OnLandedBottomCollision.ExecuteIfBound();
         }
 
         // FruitObject와 충돌했을 경우
@@ -115,12 +116,14 @@ void FruitObject::BeginPlay()
             if (!is_first_landed)
             {
                 is_first_landed = true;
-                OnLandedBottomCollision.Execute();
+                bool _ = OnLandedBottomCollision.ExecuteIfBound();
+                CheckFruitCollisionWithBorderSensor();
             }
             else if (!other_fruit_obj->is_first_landed)
             {
                 other_fruit_obj->is_first_landed = true;
-                other_fruit_obj->OnLandedBottomCollision.Execute();
+                bool _ = other_fruit_obj->OnLandedBottomCollision.ExecuteIfBound();
+                CheckFruitCollisionWithBorderSensor();
             }
 
             // 같은 과일일 경우
@@ -133,7 +136,6 @@ void FruitObject::BeginPlay()
                     new_fruit->SetFruitPosition(
                         (fruit_position + other_fruit_obj->GetFruitPosition()) / 2.0f
                     );
-                    new_fruit->is_first_landed = true;
                     new_fruit->SetFruitActive(true);
                 }
 
@@ -175,7 +177,7 @@ void FruitObject::Update(float delta_time)
         if (!is_first_landed)
         {
             is_first_landed = true;
-            OnLandedBottomCollision.Execute();
+            bool _ = OnLandedBottomCollision.ExecuteIfBound();
         }
         Destroy();
     }
@@ -199,7 +201,7 @@ void FruitObject::OnDestroy()
 
     if (!is_first_landed)
     {
-        OnLandedBottomCollision.Execute();
+        bool _ = OnLandedBottomCollision.ExecuteIfBound();
     }
 
     if (b2Shape_IsValid(fruit_shape))
@@ -213,4 +215,29 @@ void FruitObject::OnDestroy()
     
     fruit_shape = b2_nullShapeId;
     fruit_body = b2_nullBodyId;
+}
+
+void FruitObject::CheckFruitCollisionWithBorderSensor() const
+{
+    BorderTopSensorObject* border_sensor;
+    {
+        std::vector<BorderTopSensorObject*> borders;
+        GetCurrentStage()->GetObjectManager().GetGameObjectsOfClass(borders);
+        THROW_IF_FAILED(
+            !borders.empty(),
+            "Failed to get borders for fruit object"
+        )
+        border_sensor = borders.front();
+    }
+
+    const b2AABB sensor_aabb = b2Shape_GetAABB(border_sensor->GetSensorShape());
+    const b2AABB self_aabb = b2Shape_GetAABB(fruit_shape);
+
+    // 과일이 센서에 닿았는지 AABB로 확인
+    if (
+        sensor_aabb.lowerBound.x <= self_aabb.upperBound.x && self_aabb.lowerBound.x <= sensor_aabb.upperBound.x
+        && sensor_aabb.lowerBound.y <= self_aabb.upperBound.y && self_aabb.lowerBound.y <= sensor_aabb.upperBound.y
+    ) {
+        dynamic_cast<GameStage*>(GetCurrentStage())->SetGameOver(true);
+    }
 }
