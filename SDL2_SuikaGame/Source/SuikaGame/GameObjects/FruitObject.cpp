@@ -133,7 +133,7 @@ void FruitObject::BeginPlay()
                 }
 
                 // pop사운드 재생
-                Mix_PlayChannel(-1, merge_sound, 0);
+                Mix_PlayChannel(0, merge_sound, 0);
 
                 // 점수 증가
                 ScoreResource* score_resource = GetEngine()->GetResourceManager().GetResource<ScoreResource>();
