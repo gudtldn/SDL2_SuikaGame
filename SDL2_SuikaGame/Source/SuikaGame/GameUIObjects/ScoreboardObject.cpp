@@ -61,6 +61,13 @@ ScoreboardObject::ScoreboardObject(GameEngine* engine)
     {
         high_score_text->SetText(std::to_string(score_resource->GetHighScore()));
     });
+
+    origin = display_position;
+}
+
+void ScoreboardObject::Update(float delta_time)
+{
+    display_position.Y = origin.Y + (Math::Sin(GetEngine()->GetAccumulatedTime() * 2.0f) * 8.0f);
 }
 
 void ScoreboardObject::Render(SDL_Renderer* renderer) const

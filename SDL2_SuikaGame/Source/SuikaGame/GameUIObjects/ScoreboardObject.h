@@ -24,9 +24,13 @@ private:
     /// @brief 스코어 표시 위치
     Vector2D display_position;
 
+    /// @brief 원래 위치
+    Vector2D origin;
+
 public:
     ScoreboardObject(GameEngine* engine);
 
 protected:
+    virtual void Update(float delta_time) override;
     virtual void Render(SDL_Renderer* renderer) const override;
 };

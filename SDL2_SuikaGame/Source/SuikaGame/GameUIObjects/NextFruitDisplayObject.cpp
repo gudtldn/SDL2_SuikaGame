@@ -9,7 +9,7 @@ NextFruitDisplayObject::NextFruitDisplayObject(GameEngine* engine)
         SCREEN_WIDTH * 0.85f,
         SCREEN_HEIGHT * 0.25f
     })
-    , display_fruit_texture(nullptr)
+    , display_fruit(nullptr)
 {
     SDL_Texture* raw_bubble_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/bubble.png");
     THROW_IF_FAILED(
@@ -48,8 +48,18 @@ void NextFruitDisplayObject::BeginPlay()
     PlayerObject* player = players.front();
     player->next_fruit_delegate.BindFunction([this](FruitObject* fruit)
     {
+        // TODO: 나중에 unique_ptr로 바꿔서 fruit을 소유권 이동
         fruit->SetFruitPosition(display_position);
+        display_fruit = fruit;
     });
+
+    origin = display_position;
+}
+
+void NextFruitDisplayObject::Update(float delta_time)
+{
+    display_position.Y = origin.Y + (Math::Sin(GetEngine()->GetAccumulatedTime() * 2.0f) * 8.0f);
+    display_fruit->SetFruitPosition(display_position);
 }
 
 void NextFruitDisplayObject::Render(SDL_Renderer* renderer) const
