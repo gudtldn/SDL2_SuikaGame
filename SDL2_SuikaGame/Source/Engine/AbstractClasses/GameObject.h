@@ -17,6 +17,9 @@ private:
     /// @brief 게임 엔진
     GameEngine* engine;
 
+    /// @brief 게임 오브젝트가 유효한지 확인하는 변수
+    bool is_valid = true;
+
 protected:
     /// @brief 게임 오브젝트의 z-order
     int z_order = 0;
@@ -80,6 +83,9 @@ public:
 
     /// @brief 태그를 제거합니다.
     void RemoveTag(const std::string& tag) { tags.erase(tag); }
+
+    /// @brief 오브젝트가 유효한지 확인합니다.
+    bool IsValid() const { return is_valid; }
 
     /// @brief 게임 엔진을 가져옵니다.
     GameEngine* GetEngine() const { return engine; }
