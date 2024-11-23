@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/Manager/ObjectManager.h"
+#include "Engine/Manager/ResourceManager.h"
 
 // forward declaration
 class GameEngine;
@@ -16,6 +17,9 @@ private:
     /// @brief 게임 오브젝트 매니저
     ObjectManager object_manager;
 
+    /// @brief 게임 리소스 매니저
+    ResourceManager resource_manager;
+
 public:
     Stage(GameEngine* engine);
     virtual ~Stage() = default;
@@ -27,7 +31,7 @@ public:
     Stage& operator=(Stage&&) = delete;
 
     /// @brief 게임 오브젝트를 초기화합니다.
-    virtual void InitializeObjects() = 0;
+    virtual void InitializeStage() = 0;
 
     /// @brief SDL 이벤트 발생 시 호출됩니다.
     /// @param event SDL 이벤트
@@ -46,6 +50,9 @@ public:
 
     /// @brief 게임 오브젝트 매니저를 가져옵니다.
     ObjectManager& GetObjectManager() { return object_manager; }
+
+    /// @brief 게임 리소스 매니저를 가져옵니다.
+    ResourceManager& GetResourceManager() { return resource_manager; }
 
     /// @brief 게임 엔진을 가져옵니다.
     [[nodiscard]] GameEngine* GetEngine() const { return engine; }

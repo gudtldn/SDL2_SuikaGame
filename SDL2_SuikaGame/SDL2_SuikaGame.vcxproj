@@ -118,20 +118,22 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source/Engine/EnginePCH.h" />
     <ClInclude Include="Source/Engine/GameEngine.h" />
     <ClInclude Include="Source/Engine/GlobalMacro.h" />
-    <ClInclude Include="Source/Engine/Components/GameObject.h" />
-    <ClInclude Include="Source/Engine/Components/Stage.h" />
     <ClInclude Include="Source/Engine/EngineTypes/Vector2D.h" />
     <ClInclude Include="Source/Engine/Manager/ObjectManager.h" />
     <ClInclude Include="Source/Engine/Manager/SDLManager.h" />
     <ClInclude Include="Source/Engine/Utils/Math.h" />
     <ClInclude Include="Source/SuikaGame/SuikaGame.h" />
-    <ClInclude Include="Source\Engine\AbstractClasses\Renderable.h" />
+    <ClInclude Include="Source\Engine\AbstractClasses\GameObject.h" />
+    <ClInclude Include="Source\Engine\AbstractClasses\GameResource.h" />
+    <ClInclude Include="Source\Engine\AbstractClasses\RenderableBase.h" />
+    <ClInclude Include="Source\Engine\AbstractClasses\Stage.h" />
     <ClInclude Include="Source\Engine\Components\FTexture2D.h" />
     <ClInclude Include="Source\Engine\Components\Rectangle.h" />
     <ClInclude Include="Source\Engine\Components\TextRender.h" />
     <ClInclude Include="Source\Engine\Components\Texture2D.h" />
     <ClInclude Include="Source\Engine\EngineTypes\RenderAnchor.h" />
     <ClInclude Include="Source\Engine\Manager\Box2DManager.h" />
+    <ClInclude Include="Source\Engine\Manager\ResourceManager.h" />
     <ClInclude Include="Source\Engine\Utils\Delegate.h" />
     <ClInclude Include="Source\Engine\Utils\DelegateCombination.h" />
     <ClInclude Include="Source\Engine\Utils\LogMacros.h" />
@@ -143,7 +145,8 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source\SuikaGame\GameObjects\BorderObject.h" />
     <ClInclude Include="Source\SuikaGame\GameObjects\BorderTopSensorObject.h" />
     <ClInclude Include="Source\SuikaGame\GameObjects\FruitObject.h" />
-    <ClInclude Include="Source\SuikaGame\GameResources\FruitResourceObject.h" />
+    <ClInclude Include="Source\SuikaGame\GameResources\FruitResource.h" />
+    <ClInclude Include="Source\SuikaGame\GameResources\ScoreResource.h" />
     <ClInclude Include="Source\SuikaGame\GameUIObjects\CircleOfEvolutionDisplayObject.h" />
     <ClInclude Include="Source\SuikaGame\GameUIObjects\NextFruitDisplayObject.h" />
     <ClInclude Include="Source\SuikaGame\GameUIObjects\ScoreboardObject.h" />
@@ -157,14 +160,15 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
   </ImportGroup>
   <ItemGroup>
     <ClCompile Include="Source/Engine/GameEngine.cpp" />
-    <ClCompile Include="Source/Engine/Components/GameObject.cpp" />
-    <ClCompile Include="Source/Engine/Components/Stage.cpp" />
     <ClCompile Include="Source/Engine/EngineTypes/Vector2D.cpp" />
     <ClCompile Include="Source/Engine/Manager/ObjectManager.cpp" />
     <ClCompile Include="Source/Engine/Manager/SDLManager.cpp" />
     <ClCompile Include="Source/SuikaGame/main.cpp" />
     <ClCompile Include="Source/SuikaGame/SuikaGame.cpp" />
-    <ClCompile Include="Source\Engine\AbstractClasses\Renderable.cpp" />
+    <ClCompile Include="Source\Engine\AbstractClasses\GameObject.cpp" />
+    <ClCompile Include="Source\Engine\AbstractClasses\GameResource.cpp" />
+    <ClCompile Include="Source\Engine\AbstractClasses\RenderableBase.cpp" />
+    <ClCompile Include="Source\Engine\AbstractClasses\Stage.cpp" />
     <ClCompile Include="Source\Engine\Components\FTexture2D.cpp" />
     <ClCompile Include="Source\Engine\Components\Rectangle.cpp" />
     <ClCompile Include="Source\Engine\Components\TextRender.cpp" />
@@ -178,7 +182,8 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClCompile Include="Source\SuikaGame\GameObjects\BorderObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\BorderTopSensorObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\FruitObject.cpp" />
-    <ClCompile Include="Source\SuikaGame\GameResources\FruitResourceObject.cpp" />
+    <ClCompile Include="Source\SuikaGame\GameResources\FruitResource.cpp" />
+    <ClCompile Include="Source\SuikaGame\GameResources\ScoreResource.cpp" />
     <ClCompile Include="Source\SuikaGame\GameUIObjects\CircleOfEvolutionDisplayObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameUIObjects\NextFruitDisplayObject.cpp" />
     <ClCompile Include="Source\SuikaGame\GameUIObjects\ScoreboardObject.cpp" />

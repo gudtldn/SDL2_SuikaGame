@@ -1,10 +1,8 @@
 ﻿#pragma once
 #include "EnginePCH.h"
-#include <array>
 
 
-// TODO: 나중에 ResourceManager만들어서 관리
-class FruitResourceObject : public GameObject
+class FruitResource : public GameResource
 {
 public:
     static constexpr size_t FRUIT_COUNT = 11;
@@ -22,7 +20,8 @@ private:
     std::unique_ptr<Mix_Chunk, decltype(&Mix_FreeChunk)> fruit_merge_sound;
 
 public:
-    FruitResourceObject(GameEngine* engine);
+    FruitResource();
+    virtual void Load() override;
 
 
     /****** Getters ******/

@@ -10,32 +10,22 @@ private:
     std::unique_ptr<Texture2D> bubble_texture;
 
     /// @brief "점수" 텍스쳐
-    std::unique_ptr<Texture2D> text_texture;
+    std::unique_ptr<Texture2D> score_label_texture;
 
     /// @brief 점수를 렌더링하는 객체
     std::unique_ptr<TextRender> score_text;
 
-    /// @brief 스코어
-    int score = 0;
+    /// @brief "BEST SCORE"를 렌더링 하는 객체
+    std::unique_ptr<TextRender> high_score_label;
+
+    /// @brief 최고점수를 렌더링하는 객체
+    std::unique_ptr<TextRender> high_score_text;
 
     /// @brief 스코어 표시 위치
     Vector2D display_position;
 
 public:
     ScoreboardObject(GameEngine* engine);
-
-
-    /****** Getter && Setter ******/
-
-    /// @brief 스코어를 가져옵니다.
-    int GetScore() const { return score; }
-
-    /// @brief 스코어를 증가시킵니다.
-    void AddScore(int value)
-    {
-        score += value;
-        score_text->SetText(std::to_string(score));
-    }
 
 protected:
     virtual void Render(SDL_Renderer* renderer) const override;

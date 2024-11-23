@@ -2,7 +2,7 @@
 #include "EnginePCH.h"
 
 // forward declaration
-class FruitResourceObject;
+class FruitResource;
 
 // delegate declaration
 DECLARE_DELEGATE(FOnLandedBottomCollision);

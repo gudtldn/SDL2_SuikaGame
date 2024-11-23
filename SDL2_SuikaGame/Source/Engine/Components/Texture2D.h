@@ -1,13 +1,13 @@
 #pragma once
 #include "Engine/EngineTypes/Vector2D.h"
-#include "Engine/AbstractClasses/Renderable.h"
+#include "Engine/AbstractClasses/RenderableBase.h"
 
 #include <SDL.h>
 #include <memory>
 
 
 /// @brief SDL_Texture Wrapper 클래스
-class Texture2D : public Renderable
+class Texture2D : public RenderableBase
 {
 private:
     std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)> texture;

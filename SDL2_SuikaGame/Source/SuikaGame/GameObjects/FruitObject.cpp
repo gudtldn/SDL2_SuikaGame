@@ -1,7 +1,7 @@
 ﻿#include "FruitObject.h"
 #include "SuikaGame/Stages/GameStage.h"
-#include "SuikaGame/GameResources/FruitResourceObject.h"
-#include "SuikaGame/GameUIObjects/ScoreboardObject.h"
+#include "SuikaGame/GameResources/FruitResource.h"
+#include "SuikaGame/GameResources/ScoreResource.h"
 #include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
 #include "SuikaGame/GameObjects/BorderTopSensorObject.h"
 #include <limits>
@@ -27,15 +27,8 @@ FruitObject::FruitObject(GameEngine* engine)
 void FruitObject::InitFruit(size_t idx)
 {
     // fruit_texture 설정
-    std::vector<FruitResourceObject*> fruit_resource;
-    GetCurrentStage()->GetObjectManager()
-        .GetGameObjectsOfClass<FruitResourceObject>(fruit_resource);
-
-    THROW_IF_FAILED(
-        !fruit_resource.empty(),
-        "Failed to find FruitResourceObject in the current stage"
-    )
-    const FruitResourceObject* fruit_resource_obj = fruit_resource.front();
+    const FruitResource* fruit_resource_obj =
+        GetEngine()->GetResourceManager().GetResource<FruitResource>();
 
     // 체리, 딸기, 포도, 오렌지
     fruit_idx = idx;
@@ -129,7 +122,7 @@ void FruitObject::BeginPlay()
             // 같은 과일일 경우
             if (fruit_idx == other_fruit_obj->fruit_idx)
             {
-                if (fruit_idx < FruitResourceObject::FRUIT_COUNT-1)
+                if (fruit_idx < FruitResource::FRUIT_COUNT-1)
                 {
                     FruitObject* new_fruit = game_stage->GetObjectManager().CreateGameObject<FruitObject>();
                     new_fruit->InitFruit(fruit_idx + 1);
@@ -143,18 +136,10 @@ void FruitObject::BeginPlay()
                 Mix_PlayChannel(-1, merge_sound, 0);
 
                 // 점수 증가
-                std::vector<ScoreboardObject*> scoreboard_objects;
-                game_stage->GetObjectManager()
-                    .GetGameObjectsOfClass<ScoreboardObject>(scoreboard_objects);
-
-                THROW_IF_FAILED(
-                    !scoreboard_objects.empty(),
-                    "Failed to find ScoreboardObject in the current stage"
-                )
-                ScoreboardObject* scoreboard_obj = scoreboard_objects.front();
+                ScoreResource* score_resource = GetEngine()->GetResourceManager().GetResource<ScoreResource>();
 
                 const int temp_idx = static_cast<int>(fruit_idx) + 1;
-                scoreboard_obj->AddScore(temp_idx * (temp_idx + 1) / 2);
+                score_resource->AddScore(temp_idx * (temp_idx + 1) / 2);
 
                 // 과일 물리엔진 비활성화
                 b2Body_Disable(other_fruit_obj->fruit_body);

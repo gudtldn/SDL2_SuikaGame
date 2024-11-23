@@ -1,5 +1,7 @@
 #include "EnginePCH.h"
 #include "SuikaGame/Stages/MenuStage.h"
+#include "SuikaGame/GameResources/FruitResource.h"
+#include "SuikaGame/GameResources/ScoreResource.h"
 #include "SuikaGame/GameObjects/BackgroundObject.h"
 #include "SuikaGame/GameObjects/BgmObject.h"
 
@@ -33,6 +35,8 @@ int main(int argc, char* args[])
 
         // Engine 실행
         engine.SetStage<MenuStage>();
+        engine.GetResourceManager().AddResource<FruitResource>();
+        engine.GetResourceManager().AddResource<ScoreResource>();
         engine.GetObjectManager().CreateGameObject<BackgroundObject>();
         engine.GetObjectManager().CreateGameObject<BgmObject>();
         engine.Run();

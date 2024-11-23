@@ -5,10 +5,11 @@
 Stage::Stage(GameEngine* engine)
     : engine(engine)
     , object_manager(engine)
+    , resource_manager(engine)
 {
 }
 
-void Stage::InitializeObjects()
+void Stage::InitializeStage()
 {
 }
 

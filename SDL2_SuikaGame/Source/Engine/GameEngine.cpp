@@ -1,6 +1,6 @@
 #include "GameEngine.h"
-#include "Engine/Components/Stage.h"
-#include "Engine/Components/GameObject.h"
+#include "Engine/AbstractClasses/Stage.h"
+#include "Engine/AbstractClasses/GameObject.h"
 #include "Engine/Utils/Math.h"
 #include "Engine/Utils/LogMacros.h"
 #include "Engine/GlobalMacro.h"
@@ -22,6 +22,7 @@ GameEngine::GameEngine(
     , renderer(nullptr)
     , controller(nullptr)
     , object_manager(this)
+    , resource_manager(this)
     , is_running(false)
     , accumulated_time(0.0f)
     , fixed_time_v(1.0f / TARGET_FPS)

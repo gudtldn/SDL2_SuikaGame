@@ -1,11 +1,11 @@
 #pragma once
 #include "Engine/EngineTypes/Vector2D.h"
-#include "Engine/AbstractClasses/Renderable.h"
+#include "Engine/AbstractClasses/RenderableBase.h"
 #include <SDL.h>
 
 
 /// @brief 기본 사각형 클래스
-class Rectangle : public Renderable
+class Rectangle : public RenderableBase
 {
 private:
     /// @brief 크기
