@@ -44,8 +44,8 @@ void FruitObject::InitFruit(size_t idx)
     // Box2D Body 초기화
     b2BodyDef body_def = b2DefaultBodyDef();
     body_def.type = b2_dynamicBody;
-    body_def.linearDamping = 0.1f;
-    body_def.angularDamping = 0.2f;
+    body_def.linearDamping = 0.0f;
+    body_def.angularDamping = 0.1f;
     body_def.userData = this;
 
     fruit_body = b2CreateBody(
@@ -67,7 +67,7 @@ void FruitObject::InitFruit(size_t idx)
 
     b2ShapeDef shape_def = b2DefaultShapeDef();
     shape_def.density = 1.0f;
-    shape_def.friction = 0.3f;
+    shape_def.friction = 0.15f;
     shape_def.userData = this;
 
     fruit_shape = b2CreateCircleShape(fruit_body, &shape_def, &circle);
