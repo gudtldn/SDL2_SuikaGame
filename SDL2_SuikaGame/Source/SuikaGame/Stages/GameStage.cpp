@@ -6,7 +6,7 @@
 #include "SuikaGame/GameUIObjects/ScoreboardObject.h"
 #include "SuikaGame/GameUIObjects/NextFruitDisplayObject.h"
 #include "SuikaGame/GameUIObjects/CircleOfEvolutionDisplayObject.h"
-#include "SuikaGame/GameResources/FruitResource.h"
+#include "SuikaGame/GameResources/ScoreResource.h"
 
 
 GameStage::GameStage(GameEngine* engine)
@@ -42,7 +42,18 @@ void GameStage::InitializeStage()
 void GameStage::HandleUpdate(float delta_time)
 {
     Stage::HandleUpdate(delta_time);
-    // TODO: 게임 오버 처리
+
+    // TODO: 게임 오버시 GameOver 스테이지로 전환
+    if (is_game_over)
+    {
+        // 게임 오버시 최고점수 저장
+        ScoreResource* score_resource = GetEngine()->GetResourceManager().GetResource<ScoreResource>();
+        if (score_resource->GetScore() > score_resource->GetHighScore())
+        {
+            score_resource->SetHighScore(score_resource->GetScore());
+            score_resource->SaveToFile();
+        }
+    }
 }
 
 void GameStage::HandleFixedUpdate(float fixed_time)

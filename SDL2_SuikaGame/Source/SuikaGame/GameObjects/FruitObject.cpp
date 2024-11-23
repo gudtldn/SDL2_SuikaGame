@@ -1,7 +1,7 @@
 ﻿#include "FruitObject.h"
 #include "SuikaGame/Stages/GameStage.h"
 #include "SuikaGame/GameResources/FruitResource.h"
-#include "SuikaGame/GameUIObjects/ScoreboardObject.h"
+#include "SuikaGame/GameResources/ScoreResource.h"
 #include "SuikaGame/GameObjects/BorderBottomCollisionObject.h"
 #include "SuikaGame/GameObjects/BorderTopSensorObject.h"
 #include <limits>
@@ -136,18 +136,10 @@ void FruitObject::BeginPlay()
                 Mix_PlayChannel(-1, merge_sound, 0);
 
                 // 점수 증가
-                std::vector<ScoreboardObject*> scoreboard_objects;
-                game_stage->GetObjectManager()
-                    .GetGameObjectsOfClass<ScoreboardObject>(scoreboard_objects);
-
-                THROW_IF_FAILED(
-                    !scoreboard_objects.empty(),
-                    "Failed to find ScoreboardObject in the current stage"
-                )
-                ScoreboardObject* scoreboard_obj = scoreboard_objects.front();
+                ScoreResource* score_resource = GetEngine()->GetResourceManager().GetResource<ScoreResource>();
 
                 const int temp_idx = static_cast<int>(fruit_idx) + 1;
-                scoreboard_obj->AddScore(temp_idx * (temp_idx + 1) / 2);
+                score_resource->AddScore(temp_idx * (temp_idx + 1) / 2);
 
                 // 과일 물리엔진 비활성화
                 b2Body_Disable(other_fruit_obj->fruit_body);
