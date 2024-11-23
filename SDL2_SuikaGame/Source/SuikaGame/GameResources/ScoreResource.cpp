@@ -10,7 +10,7 @@ ScoreResource::ScoreResource()
     // .exe 파일의 절대 경로 가져오기
     wchar_t path[MAX_PATH] = { 0 };
     GetModuleFileNameW(NULL, path, MAX_PATH);
-    save_file_path = fs::path(path).parent_path() / "SuikaGameData.bin";
+    save_file_path = fs::path(path).parent_path() / "SuikaGameData.dat";
 }
 
 void ScoreResource::Load()
