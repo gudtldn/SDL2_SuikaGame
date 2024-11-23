@@ -89,7 +89,8 @@
             "ranges": "cpp",
             "semaphore": "cpp",
             "span": "cpp",
-            "variant": "cpp"
+            "variant": "cpp",
+            "filesystem": "cpp"
         }
     },
 	"extensions": {
