@@ -1,6 +1,6 @@
 #pragma once
 #include "Engine/Manager/ObjectManager.h"
-#include "Manager/ResourceManager.h"
+#include "Engine/Manager/ResourceManager.h"
 
 // forward declaration
 class GameEngine;
