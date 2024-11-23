@@ -23,6 +23,9 @@ class NextFruitDisplayObject : public GameObject
     /// @brief 원래 위치
     Vector2D origin;
 
+    /// @brief 애니메이션에 사용될 랜덤 오프셋
+    float random_offset;
+
 public:
     NextFruitDisplayObject(GameEngine* engine);
 

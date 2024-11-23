@@ -5,11 +5,11 @@
 
 NextFruitDisplayObject::NextFruitDisplayObject(GameEngine* engine)
     : GameObject(engine)
+    , display_fruit(nullptr)
     , display_position({
         SCREEN_WIDTH * 0.85f,
         SCREEN_HEIGHT * 0.25f
     })
-    , display_fruit(nullptr)
 {
     SDL_Texture* raw_bubble_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/bubble.png");
     THROW_IF_FAILED(
@@ -34,6 +34,9 @@ NextFruitDisplayObject::NextFruitDisplayObject(GameEngine* engine)
         )
     );
     text_texture = std::make_unique<Texture2D>(raw_text_texture);
+
+    origin = display_position;
+    random_offset = Math::RandRange(-1.0f, 1.0f);
 }
 
 void NextFruitDisplayObject::BeginPlay()
@@ -52,13 +55,12 @@ void NextFruitDisplayObject::BeginPlay()
         fruit->SetFruitPosition(display_position);
         display_fruit = fruit;
     });
-
-    origin = display_position;
 }
 
 void NextFruitDisplayObject::Update(float delta_time)
 {
-    display_position.Y = origin.Y + (Math::Sin(GetEngine()->GetAccumulatedTime() * 2.0f) * 8.0f);
+    display_position.Y =
+        origin.Y + (Math::Sin((GetEngine()->GetAccumulatedTime() + random_offset) * 2.0f) * 6.0f);
     display_fruit->SetFruitPosition(display_position);
 }
 

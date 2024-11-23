@@ -7,7 +7,7 @@ ScoreboardObject::ScoreboardObject(GameEngine* engine)
     : GameObject(engine)
     , display_position{
         SCREEN_WIDTH * 0.15f,  // 화면 너비의 15%
-        SCREEN_HEIGHT * 0.25f  // 화면 높이의 25%
+        SCREEN_HEIGHT * 0.3f   // 화면 높이의 30%
     }
 {
     // z-order 설정
@@ -63,11 +63,13 @@ ScoreboardObject::ScoreboardObject(GameEngine* engine)
     });
 
     origin = display_position;
+    random_offset = Math::RandRange(-1.0f, 1.0f);
 }
 
 void ScoreboardObject::Update(float delta_time)
 {
-    display_position.Y = origin.Y + (Math::Sin(GetEngine()->GetAccumulatedTime() * 2.0f) * 8.0f);
+    display_position.Y =
+        origin.Y + (Math::Sin((GetEngine()->GetAccumulatedTime() + random_offset) * 2.0f) * 8.0f);
 }
 
 void ScoreboardObject::Render(SDL_Renderer* renderer) const
