@@ -36,7 +36,7 @@ FruitResource::FruitResource()
     : fruits_offset_position {
         Vector2D(-1.0f, 4.5f),  // 체리
         Vector2D(-1.0f, 0.0f),  // 딸기
-        Vector2D(-1.0f, 0.0f),  // 포도
+        Vector2D(-1.1f, 0.0f),  // 포도
         Vector2D(-1.0f, 1.0f),  // 오렌지
         Vector2D(-1.0f, 4.0f),  // 감
         Vector2D(-1.0f, 1.0f),  // 사과
@@ -48,8 +48,8 @@ FruitResource::FruitResource()
     }
     , fruits_offset_size {
         -5.0f,  // 체리
-        0.0f,   // 딸기
-        0.0f,   // 포도
+        -1.0f,  // 딸기
+        -2.0f,  // 포도
         -4.0f,  // 오렌지
         -5.0f,  // 감
         -2.0f,  // 사과
