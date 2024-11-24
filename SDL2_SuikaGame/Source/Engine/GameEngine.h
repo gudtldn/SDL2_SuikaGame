@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 #include "Engine/AbstractClasses/Stage.h"
+#include "Engine/AbstractClasses/GameObject.h"
 #include "Engine/Manager/SDLManager.h"
 #include "Engine/Manager/ObjectManager.h"
 #include "Engine/Manager/ResourceManager.h"
@@ -144,6 +145,17 @@ template <typename S>
     requires std::derived_from<S, Stage>
 void GameEngine::SetStage()
 {
+    // 모든 오브젝트 제거
+    if (current_stage)
+    {
+        auto& game_objects = current_stage->GetObjectManager().GetGameObjects();
+        for (auto& object : game_objects)
+        {
+            // 완전히 삭제하기 전에 OnDestroy()를 호출
+            object->OnDestroy();
+        }
+    }
+
     // 새로운 스테이지 생성
     current_stage = std::make_unique<S>(this);
     current_stage->InitializeStage();
