@@ -222,10 +222,7 @@ inline void GameEngine::Update(float delta_time)
         ObjectManager& stage_obj_manager = current_stage->GetObjectManager();
         while (GameObject* new_obj = stage_obj_manager.PopNewGameObject())
         {
-            if (new_obj->IsValid())
-            {
-                new_obj->BeginPlay();
-            }
+            new_obj->BeginPlay();
         }
     }
 
