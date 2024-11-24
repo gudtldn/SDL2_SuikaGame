@@ -41,6 +41,9 @@ void GameObject::Destroy()
     {
         GetCurrentStage()->GetObjectManager().DestroyGameObject(self);
     }
+
+    // 오브젝트 무효화
+    is_valid = false;
 }
 
 inline Stage* GameObject::GetCurrentStage() const

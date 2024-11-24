@@ -1,4 +1,4 @@
-﻿#include "FruitObject.h"
+#include "FruitObject.h"
 #include "SuikaGame/Stages/GameStage.h"
 #include "SuikaGame/GameResources/FruitResource.h"
 #include "SuikaGame/GameResources/ScoreResource.h"
@@ -93,8 +93,11 @@ void FruitObject::BeginPlay()
     on_begin_overlap_handle = game_stage->GetBox2DManager()
         .OnBeginOverlap.AddFunction([this, game_stage](GameObject* a, const GameObject* b)
     {
-        // 과일이 비활성화 되어있거나, 자신하고 발생한 이벤트가 아닐 경우 리턴
-        if (!GetFruitActive() || b != this) return;
+        if (
+            !GetFruitActive() // 과일이 비활성화 되어있거나
+            || !IsValid()     // 자신이 유효하지 않거나
+            || b != this      // 자신하고 발생한 이벤트가 아닐 경우
+        ) return;             // 무시하고 리턴
 
         // BorderBottomCollisionObject와 충돌했을 경우
         if (dynamic_cast<BorderBottomCollisionObject*>(a) && !is_first_landed)
