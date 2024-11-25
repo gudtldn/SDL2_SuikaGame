@@ -109,6 +109,9 @@ void FruitObject::BeginPlay()
         // FruitObject와 충돌했을 경우
         else if (FruitObject* other_fruit_obj = dynamic_cast<FruitObject*>(a))
         {
+            // other_obj가 유효하지 않으면 리턴
+            if (!other_fruit_obj->IsValid()) return;
+
             if (!is_first_landed)
             {
                 is_first_landed = true;
