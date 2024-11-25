@@ -16,6 +16,25 @@
 
 namespace
 {
+// 메세지 박스 띄우기
+void ShowMessageBox(const std::string& message)
+{
+    // WCHAR 배열을 위한 버퍼
+    WCHAR error_message[256];
+
+    // ANSI 문자열을 WCHAR로 변환
+    MultiByteToWideChar(
+        CP_UTF8,
+        0,
+        message.c_str(),
+        -1,
+        error_message,
+        sizeof(error_message) / sizeof(WCHAR)
+    );
+
+    // 메세지 박스 띄우기
+    MessageBoxW(nullptr, error_message, L"Error", MB_OK | MB_ICONERROR);
+}
 
 // 예외 처리기 및 메모리 덤프 생성
 LONG WINAPI ExceptionCallBack(EXCEPTION_POINTERS* exceptionInfo)
@@ -59,7 +78,7 @@ LONG WINAPI ExceptionCallBack(EXCEPTION_POINTERS* exceptionInfo)
 	);
     CloseHandle(hFile);
 
-    LOG_ERROR("An error occurred: Exception code: {}", exceptionInfo->ExceptionRecord->ExceptionCode);
+    ShowMessageBox("An error occurred. The program will be terminated.");
 	return 0L;
 }
 
@@ -99,20 +118,7 @@ int main(int argc, char* args[])
     catch (const std::exception& e)
     {
         LOG_ERROR("An error occurred: {}", e.what());
-
-        // WCHAR 배열을 위한 버퍼
-        WCHAR error_message[256];
-
-        // e.what()에서 반환된 ANSI 문자열을 WCHAR로 변환
-        MultiByteToWideChar(
-            CP_UTF8,
-            0,
-            std::format("An error occurred: {}", e.what()).c_str(),
-            -1,
-            error_message,
-            sizeof(error_message) / sizeof(WCHAR)
-        );
-        MessageBoxW(nullptr, error_message, L"Error", MB_OK | MB_ICONERROR);
+        ShowMessageBox(e.what());
         return -1;
     }
 
