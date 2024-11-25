@@ -38,5 +38,17 @@ public:
     [[nodiscard]] SDL_Color GetColor() const { return color; }
 
     /// @brief 색상을 설정합니다.
-    void SetColor(uint8_t R, uint8_t G, uint8_t B, uint8_t A) { color = { .r= R, .g= G, .b= B, .a= A}; }
+    void SetColor(const SDL_Color& new_color) { color = new_color; }
+    void SetColor(uint8_t R, uint8_t G, uint8_t B, uint8_t A) { color = { .r = R, .g = G, .b = B, .a = A}; }
+    void SetColor(uint8_t new_color)
+    {
+        SDL_GetRGBA(
+            new_color,
+            SDL_AllocFormat(SDL_PIXELFORMAT_RGBA8888),
+            &color.r,
+            &color.g,
+            &color.b,
+            &color.a
+        );
+    }
 };
