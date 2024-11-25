@@ -90,7 +90,10 @@
             "semaphore": "cpp",
             "span": "cpp",
             "variant": "cpp",
-            "filesystem": "cpp"
+            "filesystem": "cpp",
+            "cfenv": "cpp",
+            "fstream": "cpp",
+            "print": "cpp"
         }
     },
 	"extensions": {

@@ -2,6 +2,7 @@
 #include "SuikaGame/Stages/MenuStage.h"
 #include "SuikaGame/GameResources/FruitResource.h"
 #include "SuikaGame/GameResources/ScoreResource.h"
+#include "SuikaGame/GameResources/TempScreenCaptureResource.h"
 #include "SuikaGame/GameObjects/BackgroundObject.h"
 #include "SuikaGame/GameObjects/BgmObject.h"
 
@@ -111,6 +112,7 @@ int main(int argc, char* args[])
         engine.SetStage<MenuStage>();
         engine.GetResourceManager().AddResource<FruitResource>();
         engine.GetResourceManager().AddResource<ScoreResource>();
+        engine.GetResourceManager().AddResource<TempScreenCaptureResource>();
         engine.GetObjectManager().CreateGameObject<BackgroundObject>();
         engine.GetObjectManager().CreateGameObject<BgmObject>();
         engine.Run();

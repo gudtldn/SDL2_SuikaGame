@@ -1,5 +1,6 @@
 #include "GameStage.h"
 
+#include "SuikaGame/Stages/GameOverStage.h"
 #include "SuikaGame/GameObjects/PlayerObject.h"
 #include "SuikaGame/GameObjects/BorderObject.h"
 #include "SuikaGame/GameUIObjects/BorderBackgroundObject.h"
@@ -7,6 +8,7 @@
 #include "SuikaGame/GameUIObjects/NextFruitDisplayObject.h"
 #include "SuikaGame/GameUIObjects/CircleOfEvolutionDisplayObject.h"
 #include "SuikaGame/GameResources/ScoreResource.h"
+#include "SuikaGame/GameResources/TempScreenCaptureResource.h"
 
 
 GameStage::GameStage(GameEngine* engine)
@@ -53,6 +55,16 @@ void GameStage::HandleUpdate(float delta_time)
             score_resource->SetHighScore(score_resource->GetScore());
             score_resource->SaveToFile();
         }
+
+        // 스크린샷 찍기
+        TempScreenCaptureResource* capture_resource =
+            GetEngine()->GetResourceManager().GetResource<TempScreenCaptureResource>();
+        capture_resource->SetTexture(
+            SDLManager::CaptureScreen(GetEngine()->GetRenderer())
+        );
+
+        // 스테이지 이동
+        GetEngine()->SetStage<GameOverStage>();
     }
 }
 
