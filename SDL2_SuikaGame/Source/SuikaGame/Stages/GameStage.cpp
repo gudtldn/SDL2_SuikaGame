@@ -45,7 +45,6 @@ void GameStage::HandleUpdate(float delta_time)
 {
     Stage::HandleUpdate(delta_time);
 
-    // TODO: 게임 오버시 GameOver 스테이지로 전환
     if (is_game_over)
     {
         // 게임 오버시 최고점수 저장
@@ -71,7 +70,7 @@ void GameStage::HandleUpdate(float delta_time)
 void GameStage::HandleFixedUpdate(float fixed_time)
 {
     Stage::HandleFixedUpdate(fixed_time);
-    if (is_game_over) return; // TODO: 게임 오버 처리
+    if (is_game_over) return;
 
     // Box2D Sensor Event
     const b2SensorEvents sensor_events = b2World_GetSensorEvents(box2d_manager.GetWorldID());
