@@ -157,9 +157,11 @@ void PlayerObject::OnEvent(const SDL_Event& event)
             const_cast<SDL_Event&>(event).cbutton.button = SDL_CONTROLLER_BUTTON_INVALID;
         }
 
-        // 다음 과일이 준비되지 않았다면 리턴
+        // 게임이 오버되었으면 리턴
         const GameStage* game_stage = dynamic_cast<GameStage*>(GetCurrentStage());
         if (!game_stage || game_stage->IsGameOver()) return;
+
+        // 다음 과일이 준비되지 않았다면 리턴
         if (!next_fruit_ready) return;
 
         if (
