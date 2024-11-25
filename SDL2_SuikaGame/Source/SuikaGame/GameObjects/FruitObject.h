@@ -72,6 +72,8 @@ public:
             is_init,
             "FruitObject is not initialized please call InitFruit or InitRandomFruit"
         )
+        if (!b2Body_IsValid(fruit_body)) return;
+
         fruit_position = new_position;
         b2Body_SetTransform(
             fruit_body,
