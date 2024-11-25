@@ -133,6 +133,35 @@ void FruitObject::BeginPlay()
                         (fruit_position + other_fruit_obj->GetFruitPosition()) / 2.0f
                     );
                     new_fruit->SetFruitActive(true);
+
+                    // 새로운 과일이 다른 과일들과 겹치는경우, 다른 과일들을 밀어내기
+                    const b2Circle new_fruit_circle = b2Shape_GetCircle(new_fruit->fruit_shape);
+                    const b2Transform new_fruit_transform = b2Body_GetTransform(b2Shape_GetBody(new_fruit->fruit_shape));
+                    const b2QueryFilter filter = b2DefaultQueryFilter();
+
+                    b2World_OverlapCircle(
+                        game_stage->GetBox2DManager().GetWorldID(),
+                        &new_fruit_circle,
+                        new_fruit_transform,
+                        filter,
+                        [](b2ShapeId shape, void* context) -> bool
+                        {
+                            const FruitObject* self = static_cast<FruitObject*>(context);
+                            if (shape.index1 == self->fruit_shape.index1) return true;
+                    
+                            const b2BodyId other_body = b2Shape_GetBody(shape);
+                            b2Body_ApplyLinearImpulseToCenter(
+                                other_body,
+                                b2Mul(
+                                    b2Sub(b2Body_GetPosition(other_body), b2Body_GetPosition(self->fruit_body)),
+                                    { .x = 10000.0f, .y = 10000.0f }
+                                ),
+                                false
+                            );
+                            return true;
+                        },
+                        new_fruit
+                    );
                 }
 
                 // pop사운드 재생
