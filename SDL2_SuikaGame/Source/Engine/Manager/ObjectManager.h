@@ -26,8 +26,8 @@ private:
     /// @brief 게임 오브젝트 제거 대기열
     std::queue<std::shared_ptr<GameObject>> pending_destroy_objects;
 
-    /// @brief 새로운 게임 오브젝트의 벡터
-    std::queue<GameObject*> new_game_objects;
+    /// @brief 새로운 게임 오브젝트의 대기열
+    std::queue<std::weak_ptr<GameObject>> new_game_objects;
 
 public:
     ObjectManager(GameEngine* engine)
@@ -60,6 +60,9 @@ public:
         requires std::derived_from<Obj, GameObject>
     Obj* CreateGameObject();
 
+    /// @brief 새로운 게임 오브젝트들의 BeginPlay를 호출합니다.
+    virtual void InitializeNewGameObjects();
+
     /// @brief 게임 오브젝트를 제거합니다.
     /// @param object 제거할 게임 오브젝트
     virtual void DestroyGameObject(const std::shared_ptr<GameObject>& object);
@@ -91,18 +94,6 @@ public:
 
     /// @brief 게임 오브젝트를 가져옵니다.
     [[nodiscard]] const auto& GetGameObjects() const { return game_objects; }
-
-    /// @brief 새롭게 추가된 게임 오브젝트를 뒤에서부터 하나씩 가져옵니다.
-    GameObject* PopNewGameObject()
-    {
-        if (new_game_objects.empty())
-        {
-            return nullptr;
-        }
-        GameObject* obj = new_game_objects.front();
-        new_game_objects.pop();
-        return obj;
-    }
 };
 
 
@@ -111,13 +102,12 @@ template <typename Obj>
 Obj* ObjectManager::CreateGameObject()
 {
     auto object = std::make_shared<Obj>(engine);
-    Obj* raw_pointer = object.get();
 
     // 게임 오브젝트를 관리하는 컨테이너에 추가
     game_objects.insert(object);
-    new_game_objects.push(raw_pointer);
+    new_game_objects.emplace(object);
 
-    return raw_pointer;
+    return object.get();
 }
 
 template <typename T>

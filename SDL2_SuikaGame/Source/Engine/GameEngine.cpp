@@ -211,19 +211,13 @@ inline void GameEngine::HandleEvent(const SDL_Event& event)
 inline void GameEngine::Update(float delta_time)
 {
     // 새로운 게임 오브젝트의 BeginPlay 호출
-    while (GameObject* new_obj = object_manager.PopNewGameObject())
-    {
-        new_obj->BeginPlay();
-    }
+    object_manager.InitializeNewGameObjects();
 
     // 현재 스테이지의 새로운 게임 오브젝트의 BeginPlay 호출
     if (current_stage)
     {
         ObjectManager& stage_obj_manager = current_stage->GetObjectManager();
-        while (GameObject* new_obj = stage_obj_manager.PopNewGameObject())
-        {
-            new_obj->BeginPlay();
-        }
+        stage_obj_manager.InitializeNewGameObjects();
     }
 
 

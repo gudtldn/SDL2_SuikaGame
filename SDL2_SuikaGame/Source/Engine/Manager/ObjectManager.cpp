@@ -36,6 +36,20 @@ void ObjectManager::HandleFixedUpdate(float fixed_time)
 //     requires std::derived_from<Obj, GameObject>
 // Obj* ObjectManager::CreateGameObject() {}
 
+void ObjectManager::InitializeNewGameObjects()
+{
+    while (!new_game_objects.empty())
+    {
+        const auto object = new_game_objects.front().lock();
+        new_game_objects.pop();
+
+        if (object)
+        {
+            object->BeginPlay();
+        }
+    }
+}
+
 void ObjectManager::DestroyGameObject(const std::shared_ptr<GameObject>& object)
 {
     // object가 존재하지 않으면 return
