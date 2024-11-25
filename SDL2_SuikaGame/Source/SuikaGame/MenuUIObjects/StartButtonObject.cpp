@@ -90,11 +90,15 @@ void StartButtonObject::OnEvent(const SDL_Event& event)
     }
 
 
-    // 게임 컨트롤러 버튼 이벤트 처리
-    if (event.type == SDL_CONTROLLERBUTTONDOWN)
-    {
-        if (event.cbutton.button == SDL_CONTROLLER_BUTTON_A)
-        {
+    // 키보드 및 게임 컨트롤러 버튼 이벤트 처리
+    if (
+        event.type == SDL_CONTROLLERBUTTONDOWN
+        || event.type == SDL_KEYDOWN
+    ) {
+        if (
+            event.cbutton.button == SDL_CONTROLLER_BUTTON_A
+            || event.key.keysym.sym == SDLK_SPACE
+        ) {
             GetEngine()->SetStage<GameStage>();
             return;
         }
