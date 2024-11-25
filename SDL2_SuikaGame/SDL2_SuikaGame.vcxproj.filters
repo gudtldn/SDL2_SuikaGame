@@ -18,21 +18,6 @@
     <ClCompile Include="Source/Engine/GameEngine.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Source/Engine/Components/GameObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Source/Engine/Components/Stage.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Source/Engine/EngineTypes/FTexture2D.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Source/Engine/EngineTypes/Rectangle.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Source/Engine/EngineTypes/Texture2D.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Source/Engine/EngineTypes/Vector2D.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -81,15 +66,6 @@
     <ClCompile Include="Source\SuikaGame\GameObjects\FruitObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SuikaGame\GameResources\FruitResourceObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Engine\AbstractClasses\Renderable.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Engine\EngineTypes\TextRender.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Source\SuikaGame\GameObjects\BorderBottomCollisionObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -102,6 +78,39 @@
     <ClCompile Include="Source\SuikaGame\GameUIObjects\NextFruitDisplayObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Engine\AbstractClasses\GameObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\AbstractClasses\GameResource.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\AbstractClasses\RenderableBase.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\AbstractClasses\Stage.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Components\FTexture2D.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Components\Rectangle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Components\TextRender.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\Components\Texture2D.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameResources\FruitResource.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameResources\ScoreResource.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SuikaGame\GameUIObjects\CircleOfEvolutionDisplayObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source/Engine/EnginePCH.h">
@@ -111,21 +120,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Source/Engine/GlobalMacro.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Source/Engine/Components/GameObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Source/Engine/Components/Stage.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Source/Engine/EngineTypes/FTexture2D.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Source/Engine/EngineTypes/Rectangle.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Source/Engine/EngineTypes/Texture2D.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Source/Engine/EngineTypes/Vector2D.h">
@@ -176,16 +170,7 @@
     <ClInclude Include="Source\SuikaGame\GameObjects\FruitObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SuikaGame\GameResources\FruitResourceObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Engine\AbstractClasses\Renderable.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Engine\EngineTypes\RenderAnchor.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Engine\EngineTypes\TextRender.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Source\Engine\Utils\Delegate.h">
@@ -207,6 +192,42 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Source\SuikaGame\GameUIObjects\NextFruitDisplayObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\AbstractClasses\GameObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\AbstractClasses\GameResource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\AbstractClasses\RenderableBase.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\AbstractClasses\Stage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Components\FTexture2D.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Components\Rectangle.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Components\TextRender.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Components\Texture2D.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Manager\ResourceManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameResources\FruitResource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameResources\ScoreResource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SuikaGame\GameUIObjects\CircleOfEvolutionDisplayObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

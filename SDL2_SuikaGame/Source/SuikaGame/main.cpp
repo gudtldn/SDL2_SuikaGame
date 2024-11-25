@@ -6,6 +6,7 @@
 #include "SuikaGame/GameObjects/BgmObject.h"
 
 #include <windows.h>
+#include <dbghelp.h>
 
 
 // https://lazyfoo.net/tutorials/SDL/index.php
@@ -13,12 +14,66 @@
 // https://box2d.org/documentation/hello.html
 // https://wikidocs.net/book/6636
 
+namespace
+{
+
+// 예외 처리기 및 메모리 덤프 생성
+LONG WINAPI ExceptionCallBack(EXCEPTION_POINTERS* exceptionInfo)
+{
+	MINIDUMP_EXCEPTION_INFORMATION info {
+		.ThreadId = GetCurrentThreadId(),
+		.ExceptionPointers = exceptionInfo,
+		.ClientPointers = false
+	};
+
+	const std::wstring stamp(L"test.dmp");
+	const HANDLE hFile = CreateFileW(
+	    stamp.c_str(),
+	    GENERIC_WRITE,
+	    FILE_SHARE_WRITE,
+	    nullptr,
+	    CREATE_ALWAYS,
+	    FILE_ATTRIBUTE_NORMAL,
+	    nullptr
+	);
+
+#ifdef _DEBUG
+	constexpr DWORD flags = MiniDumpWithFullMemory
+						| MiniDumpWithFullMemoryInfo
+						| MiniDumpWithHandleData
+						| MiniDumpWithUnloadedModules
+						| MiniDumpWithThreadInfo;
+#else
+    constexpr DWORD flags = MiniDumpNormal;
+#endif
+
+	// 위에서 받은 내용들을 토대로 덤프 파일을 만든다.
+	MiniDumpWriteDump(
+		GetCurrentProcess(),
+		GetCurrentProcessId(),
+		hFile,
+		static_cast<MINIDUMP_TYPE>(flags),
+		&info,
+		nullptr,
+		nullptr
+	);
+    CloseHandle(hFile);
+
+    LOG_ERROR("An error occurred: Exception code: {}", exceptionInfo->ExceptionRecord->ExceptionCode);
+	return 0L;
+}
+
+}
+
 int main(int argc, char* args[])
 {
 #if _DEBUG
     // Debug 모드일 때 로그 레벨을 Debug로 설정
     SDL_LogSetAllPriority(SDL_LOG_PRIORITY_DEBUG);
 #endif
+
+    // 예외 처리기 등록
+    SetUnhandledExceptionFilter(ExceptionCallBack);
 
     try
     {

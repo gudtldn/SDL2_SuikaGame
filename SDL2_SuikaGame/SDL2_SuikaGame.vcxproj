@@ -70,7 +70,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;box2d.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
@@ -104,7 +104,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)\box2d.pdb" "$(O
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_image\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_mixer\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget);$(SolutionDir)ThirdParty\box2d\lib\$(Configuration)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;box2d.lib;Dbghelp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)ThirdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll" "$(OutDir)"
