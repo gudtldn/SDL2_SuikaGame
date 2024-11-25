@@ -45,7 +45,7 @@ LONG WINAPI ExceptionCallBack(EXCEPTION_POINTERS* exceptionInfo)
 		.ClientPointers = false
 	};
 
-	const std::wstring stamp(L"test.dmp");
+	const std::wstring stamp(L"crash.dmp");
 	const HANDLE hFile = CreateFileW(
 	    stamp.c_str(),
 	    GENERIC_WRITE,
