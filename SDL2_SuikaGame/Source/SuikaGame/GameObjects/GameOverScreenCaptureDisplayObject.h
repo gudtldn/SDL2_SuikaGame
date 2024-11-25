@@ -6,7 +6,7 @@
 class GameOverScreenCaptureDisplayObject : public GameObject
 {
     /// @brief 게임오버 전 스샷을 저장 할 객체
-    std::unique_ptr<Texture2D> game_over_texture;
+    std::unique_ptr<Texture2D> game_over_captured_texture;
 
 public:
     GameOverScreenCaptureDisplayObject(GameEngine* engine);
