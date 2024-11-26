@@ -4,13 +4,13 @@
 #include <functional>
 
 // forward declaration
-class Texture2D;
+class FTexture2D;
 
 
 /// @brief 텍스처 버튼 컴포넌트
 class TextureButtonComponent : public RenderableBase
 {
-    std::unique_ptr<Texture2D> texture;
+    std::unique_ptr<FTexture2D> texture;
 
 private:
     bool is_hovered = false;
@@ -25,8 +25,8 @@ private:
     std::function<void()> on_hover_clicked_callback; // 마우스가 버튼하고 상호작용을 완료했을 때
 
 public:
-    explicit TextureButtonComponent(Texture2D* texture);
-    explicit TextureButtonComponent(std::unique_ptr<Texture2D> texture);
+    explicit TextureButtonComponent(FTexture2D* texture);
+    explicit TextureButtonComponent(std::unique_ptr<FTexture2D> texture);
 
     void HandleEvents(const SDL_Event& event, const Vector2D& position);
     virtual void Render(
@@ -70,12 +70,12 @@ public:
 
     /// @brief 텍스처를 가져옵니다.
     /// @return 텍스처
-    [[nodiscard]] Texture2D* GetTexture() const { return texture.get(); }
+    [[nodiscard]] FTexture2D* GetTexture() const { return texture.get(); }
 
     /// @brief 텍스처를 설정합니다.
     /// @param new_texture 새로운 텍스처
-    void SetTexture(Texture2D* new_texture) { texture.reset(new_texture); }
-    void SetTexture(std::unique_ptr<Texture2D> new_texture) { texture = std::move(new_texture); }
+    void SetTexture(FTexture2D* new_texture) { texture.reset(new_texture); }
+    void SetTexture(std::unique_ptr<FTexture2D> new_texture) { texture = std::move(new_texture); }
 
 
     /****** SetCallback ******/

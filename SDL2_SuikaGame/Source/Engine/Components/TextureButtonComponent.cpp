@@ -1,13 +1,13 @@
 ﻿#include "TextureButtonComponent.h"
-#include "Engine/Components/Texture2D.h"
+#include "Engine/Components/FTexture2D.h"
 
 
-TextureButtonComponent::TextureButtonComponent(Texture2D* texture)
+TextureButtonComponent::TextureButtonComponent(FTexture2D* texture)
     : texture(texture)
 {
 }
 
-TextureButtonComponent::TextureButtonComponent(std::unique_ptr<Texture2D> texture)
+TextureButtonComponent::TextureButtonComponent(std::unique_ptr<FTexture2D> texture)
     : texture(std::move(texture))
 {
 }

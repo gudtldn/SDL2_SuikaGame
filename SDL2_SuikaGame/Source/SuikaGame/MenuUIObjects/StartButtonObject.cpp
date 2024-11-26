@@ -15,7 +15,7 @@ StartButtonObject::StartButtonObject(GameEngine* engine)
 
     // 버튼 초기화
     start_button = std::make_unique<TextureButtonComponent>(
-        std::make_unique<Texture2D>(raw_button_texture)
+        std::make_unique<FTexture2D>(raw_button_texture)
     );
 
     start_button->SetOnHoverClickedCallback([this]
