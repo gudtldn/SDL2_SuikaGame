@@ -27,6 +27,8 @@ void Texture2D::Render(SDL_Renderer* renderer, const Vector2D& position, RenderA
         .w = static_cast<int>(cal_w),
         .h = static_cast<int>(cal_h),
     };
+
+    SDL_SetRenderDrawBlendMode(renderer, blend_mode);
     SDL_RenderCopyEx(
         renderer,
         texture.get(),

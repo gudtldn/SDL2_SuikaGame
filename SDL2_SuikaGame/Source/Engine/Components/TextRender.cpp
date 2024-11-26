@@ -43,6 +43,7 @@ void TextRender::Render(SDL_Renderer* renderer, const Vector2D& position, Render
         anchor
     );
 
+    SDL_SetRenderDrawBlendMode(renderer, blend_mode);
     SDL_RenderCopyExF(
         renderer,
         cached_texture.get(),

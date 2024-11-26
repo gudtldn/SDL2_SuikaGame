@@ -24,8 +24,9 @@ void Rectangle::Render(SDL_Renderer* renderer, const Vector2D& position, RenderA
         throw std::runtime_error("Rectangle::Render: angle is not supported!");
     }
 #endif
-
     const SDL_FRect dst_rect = CalculateDestRect(position, size, anchor);
+
+    SDL_SetRenderDrawBlendMode(renderer, blend_mode);
 
     // 색상 설정
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);

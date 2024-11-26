@@ -21,6 +21,8 @@ FTexture2D::FTexture2D(
 void FTexture2D::Render(SDL_Renderer* renderer, const Vector2D& position, RenderAnchor anchor, float angle) const
 {
     const SDL_FRect dst_rect = CalculateDestRect(position, tex_size, anchor);
+
+    SDL_SetRenderDrawBlendMode(renderer, blend_mode);
     SDL_RenderCopyExF(
         renderer,
         texture.get(),
