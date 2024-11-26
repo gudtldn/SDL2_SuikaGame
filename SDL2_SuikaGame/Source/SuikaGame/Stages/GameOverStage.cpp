@@ -1,6 +1,6 @@
 #include "GameOverStage.h"
-#include "SuikaGame/GameObjects/GameOverBackgroundObject.h"
-#include "SuikaGame/GameObjects/GameOverScreenCaptureDisplayObject.h"
+#include "SuikaGame/GameUIObjects/GameOverBackgroundObject.h"
+#include "SuikaGame/GameUIObjects/GameOverScreenCaptureDisplayObject.h"
 
 
 void GameOverStage::InitializeStage()
