@@ -22,10 +22,22 @@ GameOverBackgroundObject::GameOverBackgroundObject(GameEngine* engine)
             SCREEN_HEIGHT
         )
     );
+
+    // 검은색 반투명 배경
+    background_rect = Rectangle({
+        SCREEN_WIDTH,
+        SCREEN_HEIGHT
+    });
+    background_rect.SetColor(0, 0, 0, 128);
+    background_rect.SetBlendMode(SDL_BLENDMODE_BLEND);
 }
 
 void GameOverBackgroundObject::Render(SDL_Renderer* renderer) const
 {
+    background_rect.Render(renderer, {
+        SCREEN_WIDTH / 2.0f,
+        SCREEN_HEIGHT / 2.0f
+    });
     background_texture->Render(renderer, {
         SCREEN_WIDTH / 2.0f,
         SCREEN_HEIGHT / 2.0f
