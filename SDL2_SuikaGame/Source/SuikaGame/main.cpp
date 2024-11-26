@@ -99,6 +99,7 @@ int main(int argc, char* args[])
     {
         // SDL 관리자 생성
         SDLManager sdl_manager{};
+    	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
         // Engine 생성
         GameEngine engine = GameEngine{
