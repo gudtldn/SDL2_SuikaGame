@@ -4,11 +4,13 @@
 
 TextureButtonComponent::TextureButtonComponent(FTexture2D* texture)
     : texture(texture)
+    , disable_texture(nullptr)
 {
 }
 
 TextureButtonComponent::TextureButtonComponent(std::unique_ptr<FTexture2D> texture)
     : texture(std::move(texture))
+    , disable_texture(nullptr)
 {
 }
 
@@ -82,7 +84,14 @@ void TextureButtonComponent::HandleEvents(const SDL_Event& event, const Vector2D
 void TextureButtonComponent::Render(
     SDL_Renderer* renderer, const Vector2D& position, RenderAnchor anchor, float angle
 ) const {
-    texture->Render(renderer, position, anchor, angle);
+    if (disable_texture && !is_hovered)
+    {
+        disable_texture->Render(renderer, position, anchor, angle);
+    }
+    else
+    {
+        texture->Render(renderer, position, anchor, angle);
+    }
 }
 
 void TextureButtonComponent::SimulateHover()

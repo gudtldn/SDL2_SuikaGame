@@ -11,6 +11,7 @@ class FTexture2D;
 class TextureButtonComponent : public RenderableBase
 {
     std::unique_ptr<FTexture2D> texture;
+    std::unique_ptr<FTexture2D> disable_texture;
 
 private:
     bool is_hovered = false;
@@ -76,6 +77,14 @@ public:
     /// @param new_texture 새로운 텍스처
     void SetTexture(FTexture2D* new_texture) { texture.reset(new_texture); }
     void SetTexture(std::unique_ptr<FTexture2D> new_texture) { texture = std::move(new_texture); }
+
+    /// @brief 비활성화시 표시될 텍스쳐를 설정합니다.
+    /// @param new_disable_texture 새로운 비활성화 텍스쳐
+    void SetDisableTexture(FTexture2D* new_disable_texture) { disable_texture.reset(new_disable_texture); }
+    void SetDisableTexture(std::unique_ptr<FTexture2D> new_texture) { disable_texture = std::move(new_texture); }
+
+    /// @brief 비활성화시 표시될 텍스쳐를 초기화 합니다.
+    void ResetDisableTexture() { disable_texture.reset(); }
 
 
     /****** SetCallback ******/

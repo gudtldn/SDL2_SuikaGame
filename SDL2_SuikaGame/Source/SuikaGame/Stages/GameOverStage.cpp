@@ -1,6 +1,7 @@
 #include "GameOverStage.h"
 #include "SuikaGame/GameUIObjects/GameOverBackgroundObject.h"
 #include "SuikaGame/GameUIObjects/GameOverScreenCaptureDisplayObject.h"
+#include "SuikaGame/GameUIObjects/GameOverButtonsObject.h"
 
 
 void GameOverStage::InitializeStage()
@@ -14,5 +15,5 @@ void GameOverStage::InitializeStage()
     // TODO: 점수 표시하기
     // TODO: 최고점수 표시하기
 
-    // TODO: 다시하기 및 메뉴로 돌아가기 버튼 만들기
+    GetObjectManager().CreateGameObject<GameOverButtonsObject>();
 }
