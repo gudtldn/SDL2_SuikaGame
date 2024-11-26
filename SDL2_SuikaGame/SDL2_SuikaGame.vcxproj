@@ -131,6 +131,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClInclude Include="Source\Engine\Components\Rectangle.h" />
     <ClInclude Include="Source\Engine\Components\TextRender.h" />
     <ClInclude Include="Source\Engine\Components\Texture2D.h" />
+    <ClInclude Include="Source\Engine\Components\TextureButtonComponent.h" />
     <ClInclude Include="Source\Engine\EngineTypes\RenderAnchor.h" />
     <ClInclude Include="Source\Engine\Manager\Box2DManager.h" />
     <ClInclude Include="Source\Engine\Manager\ResourceManager.h" />
@@ -177,6 +178,7 @@ xcopy /y /d "$(SolutionDir)ThirdParty\SDL2_ttf\lib\$(PlatformTarget)\SDL2_ttf.dl
     <ClCompile Include="Source\Engine\Components\Rectangle.cpp" />
     <ClCompile Include="Source\Engine\Components\TextRender.cpp" />
     <ClCompile Include="Source\Engine\Components\Texture2D.cpp" />
+    <ClCompile Include="Source\Engine\Components\TextureButtonComponent.cpp" />
     <ClCompile Include="Source\Engine\Manager\Box2DManager.cpp" />
     <ClCompile Include="Source\SuikaGame\GameObjects\BackgroundObject.cpp" />
     <ClCompile Include="Source/SuikaGame/GameObjects/BgmObject.cpp" />

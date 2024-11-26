@@ -36,6 +36,7 @@
 #include "Engine/Components/Rectangle.h"
 #include "Engine/Components/FTexture2D.h"
 #include "Engine/Components/Texture2D.h"
+#include "Engine/Components/TextureButtonComponent.h"
 
 #include "Engine/EngineTypes/Vector2D.h"
 #include "Engine/EngineTypes/RenderAnchor.h"

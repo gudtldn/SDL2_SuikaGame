@@ -6,8 +6,8 @@
 class StartButtonObject : public GameObject
 {
 private:
-    // 버튼 텍스처
-    std::unique_ptr<FTexture2D> button_texture;
+    // 버튼 컴포넌트
+    std::unique_ptr<TextureButtonComponent> start_button;
 
     // 버튼 원래 위치
     Vector2D button_origin;
@@ -18,9 +18,6 @@ private:
     // 버튼 애니메이션 상수
     static constexpr float BUTTON_OSCILLATION_SPEED = 3.0f; // 버튼 움직임의 속도 (주기)
     static constexpr float BUTTON_OSCILLATION_RANGE = 8.0f; // 버튼 움직임의 범위 (진폭)
-
-    // 버튼이 클릭되었는지 여부
-    bool is_clicked = false;
 
 public:
     StartButtonObject(GameEngine* engine);
