@@ -72,31 +72,6 @@ void BorderTopSensorObject::BeginPlay()
     });
 }
 
-#pragma region DebugDraw
-void BorderTopSensorObject::Render(SDL_Renderer* renderer) const
-{
-    // b2PolygonShape에서 정점 정보 가져오기
-    auto [x, y] = b2Body_GetPosition(border_sensor_body);
-    const b2Polygon polygon = b2Shape_GetPolygon(border_sensor_shape);
-    const int vertexCount = polygon.count;
-    const b2Vec2* vertices = polygon.vertices;
-
-    // SDL2로 사각형 그리기
-    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);  // 빨간색으로 설정
-
-    for (int i = 0; i < vertexCount; ++i) {
-        const int j = (i + 1) % vertexCount;
-        SDL_RenderDrawLineF(
-            renderer,
-            x + vertices[i].x,
-            y + vertices[i].y,
-            x + vertices[j].x,
-            y + vertices[j].y
-        );
-    }
-}
-#pragma endregion DebugDraw
-
 void BorderTopSensorObject::OnDestroy()
 {
     // 델리게이트 해제

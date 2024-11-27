@@ -10,6 +10,9 @@
 #include "SuikaGame/GameResources/ScoreResource.h"
 #include "SuikaGame/GameResources/TempScreenCaptureResource.h"
 
+#ifdef _DEBUG
+#include "SuikaGame/DebugObjects/DebugDrawObject.h"
+#endif
 
 GameStage::GameStage(GameEngine* engine)
     : Stage(engine)
@@ -39,6 +42,11 @@ void GameStage::InitializeStage()
 
     // PlayerObject 오브젝트 생성
     obj_manager.CreateGameObject<PlayerObject>();
+
+#ifdef _DEBUG
+    // 디버그 오브젝트 생성
+    obj_manager.CreateGameObject<DebugDrawObject>();
+#endif
 }
 
 void GameStage::HandleUpdate(float delta_time)

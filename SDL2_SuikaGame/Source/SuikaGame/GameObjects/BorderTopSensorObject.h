@@ -13,10 +13,10 @@ class BorderTopSensorObject : public GameObject
 public:
     BorderTopSensorObject(GameEngine* engine);
 
+    b2BodyId GetSensorBody() const { return border_sensor_body; }
     b2ShapeId GetSensorShape() const { return border_sensor_shape; }
 
 protected:
     virtual void BeginPlay() override;
-    virtual void Render(SDL_Renderer* renderer) const override; // TEST: 테스트용 코드
     virtual void OnDestroy() override;
 };

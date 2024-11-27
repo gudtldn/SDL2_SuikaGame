@@ -109,6 +109,14 @@ public:
         }
     }
 
+    /// @brief 과일의 Body를 반환합니다.
+    /// @return b2BodyId
+    b2BodyId GetFruitBody() const { return fruit_body; }
+
+    /// @brief 과일의 Shape를 반환합니다.
+    /// @return b2ShapeId
+    b2ShapeId GetFruitShape() const { return fruit_shape; }
+
     /// @brief 과일이 처음 땅에 닿았는지 여부를 반환합니다.
     bool IsFirstLanded() const { return is_first_landed; }
 

@@ -1,4 +1,5 @@
-#include "GameOverStage.h"
+﻿#include "GameOverStage.h"
+
 #include "SuikaGame/GameUIObjects/GameOverBackgroundObject.h"
 #include "SuikaGame/GameUIObjects/GameOverScreenCaptureDisplayObject.h"
 #include "SuikaGame/GameUIObjects/GameOverButtonsObject.h"
