@@ -10,9 +10,6 @@ ScoreboardObject::ScoreboardObject(GameEngine* engine)
         SCREEN_HEIGHT * 0.3f   // 화면 높이의 30%
     }
 {
-    // z-order 설정
-    z_order = 1;
-
     // 스코어보드 배경 텍스처 로드
     SDL_Texture* raw_bubble_texture = IMG_LoadTexture(engine->GetRenderer(), "Contents/Textures/bubble.png");
     THROW_IF_FAILED(
