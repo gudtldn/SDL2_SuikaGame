@@ -8,6 +8,7 @@
 DebugDrawObject::DebugDrawObject(GameEngine* engine)
     : GameObject(engine)
 {
+    z_order = 999;
 }
 
 void DebugDrawObject::OnEvent(const SDL_Event& event)
