@@ -1,12 +1,11 @@
 # 엔진 기능 구현
 - [ ] TimerManager 구현
-- [ ] IButton 인터페이스 구현
+- [x] Button 컴포넌트 구현
 - [ ] ICollider 인터페이스 구현 (충돌 처리, 충돌 이벤트)
 - [x] RenderingAnchor 구현
 - [x] Box2D 물리 엔진 연동
   - [x] Box2DManger 구현
     - [x] 기본적인 World 생성 및 소멸
-- [ ] EnginePCH.h 간소화
 - [x] Texture2D, FTexture2D의 Render에 position받아서 그리기
 - [x] OnDestroy함수 두번 호출되는 문제 해결
 - [x] ResourceManager 구현
@@ -38,10 +37,10 @@
 
 ## 게임 오버 화면
 - [ ] 게임 오버 화면 구현
-  - [ ] 점수 표시
+  - [x] 점수 표시
   - [ ] 최고 점수 표시
-  - [ ] 게임오버 직전 화면 스샷 표시
-- [ ] 재시작 및 타이틀로 돌아가기 버튼 구현
+  - [x] 게임오버 직전 화면 스샷 표시
+- [x] 재시작 및 타이틀로 돌아가기 버튼 구현
 
 
 ## 일시정지 화면
