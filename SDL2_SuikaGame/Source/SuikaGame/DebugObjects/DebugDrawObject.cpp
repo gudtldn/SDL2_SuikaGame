@@ -14,7 +14,7 @@ void DebugDrawObject::OnEvent(const SDL_Event& event)
 {
     if (
         event.type == SDL_KEYDOWN
-        || event.key.keysym.sym == SDLK_BACKQUOTE
+        && event.key.keysym.sym == SDLK_BACKQUOTE
     ) {
         toggle_debug = !toggle_debug;
     }
